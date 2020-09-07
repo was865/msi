@@ -16,7 +16,6 @@ header {
   margin-bottom: 65px;
 }
 html {
-  background: url(https://dl.dropboxusercontent.com/u/159328383/background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -34,7 +33,11 @@ button {
 .main_login {
   position: relative;
   background-image: url(https://msi-net.co.jp/main/wp-content/uploads/2020/01/computer-1591018_1920-1024x669.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
+  background-color: #464646;
   color: white;
   text-align: center;
   height: 100%;

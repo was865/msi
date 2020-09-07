@@ -1,3 +1,5 @@
+
+
 * {
     box-sizing: border-box;
   }
@@ -25,7 +27,19 @@
     margin: 0;
     font-family: "Hiragino Kaku Gothic ProN";
     height: 100%;
+    background-image: url(https://msi-net.co.jp/main/wp-content/uploads/2020/01/image5.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
   }
+
+@media only screen and (max-width: 767px) {
+  body {
+    background-image: url(https://msi-net.co.jp/main/wp-content/uploads/2020/01/image5.jpg);
+  }
+}
 
   p {
     font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -74,9 +88,6 @@
     transform: translate(-50%, -50%) 
   }
 
-  .th_password {
-    padding-top:15px;
-  }
 
   .table_edit {
     margin: 15px auto 30px auto;
@@ -113,17 +124,11 @@
 
 
   .table_index {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top:130px;
-    margin-bottom: 130px;
     border-collapse: collapse;
     border-spacing: 5px;
     margin-left:auto;
     margin-right:auto;
-    width: 80%;
+    width: 100%;
     height: 100%;
 }
 
@@ -138,7 +143,6 @@
   .table_index th,.table_index td{
     padding: 10px ;
     border-bottom: 1px solid #eee;
-    
   }
 
   .table_index th{
@@ -200,31 +204,28 @@
     margin: 5px 12px;
   }
 
-  .main_login {
-    position: relative;
-    background-image: url(https://msi-net.co.jp/main/wp-content/uploads/2020/01/computer-1591018_1920-1024x669.jpg);
-    background-size: cover;
-    color: white;
-    text-align: center;
-    height: 100%;
-  }
-
   .index-form {
-    padding:130px
-  }
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) ;
+    width: 80%;
+    min-height: 400px;
+    margin: 0 auto 0 auto;
+}
 
-  .main_index {
-    background-image: url(https://msi-net.co.jp/main/wp-content/uploads/2020/01/image5.jpg);
+   .main_index {
+    margin-top:130px;
+    position: relative;
     background-size: cover;
     color: white;
     text-align: center;
-    height: auto;
-    width: 100%;
     height: 100%;
   }
 
   .main_edit {
-    background-image: url(https://msi-net.co.jp/main/wp-content/uploads/2020/01/image5.jpg);
     background-size: cover;
     color: white;
     text-align: center;
@@ -353,6 +354,9 @@
     top: calc(100% - 3px);
   }
 
+.space {
+  margin-top:100px;
+}
 
 
   
