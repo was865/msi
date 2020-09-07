@@ -150,6 +150,7 @@
     font-size: 14px;
     text-align: center;
     background-color: rgb(155, 226, 226);
+    border-radius: 33px 33px 0 0;
   }
 
   .table_index td{
