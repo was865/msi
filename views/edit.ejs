@@ -235,7 +235,7 @@
 				<input type="hidden" name="id" value="<%= content.id %>">
 			</table>
 		</form>
-		<p><a href="/" class="backhome">>>一覧に戻る</a></p>
+		<p><a href="/" class="backhome">>> 一覧に戻る</a></p>
     <p class="space"><br></p>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -296,11 +296,11 @@
 
 			})
 
-			// $('.backhome').hover(function() {
-			// 	$(this).animate({'font-size':'17px'},70);
-			// },function() {
-			// 	$(this).animate({'font-size':'15px'},50);
-			// })
+			$('.backhome').hover(function() {
+				$(this).animate({'font-size':'17px'},70);
+			},function() {
+				$(this).animate({'font-size':'15px'},50);
+			})
 
 		}); 
 	</script>
