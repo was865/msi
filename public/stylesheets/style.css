@@ -113,7 +113,10 @@
 
 
   .table_index {
-    padding:130px auto auto auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-collapse: collapse;
     border-spacing: 5px;
     margin-left:auto;
