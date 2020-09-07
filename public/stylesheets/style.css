@@ -1,5 +1,3 @@
-
-
 * {
     box-sizing: border-box;
   }
@@ -9,13 +7,6 @@
     font-size: 30px;
     letter-spacing: 5px;
     margin: 12px 0 0 30px;
-}
-
-.login_title {
-  color: #f6f6f6ee;
-  font-size: 30px;
-  letter-spacing: 5px;
-  margin: 12px 0 0 30px;
 }
 
   h2 {
@@ -145,21 +136,21 @@
 
 
   .table_index th,.table_index td{
-    padding: 10px ;
+    padding: 10px;
     border-bottom: 1px solid #eee;
   }
 
   .table_index th{
     width:auto;
     color:white;
-    font-size: 14px;
+    font-size: 17px;
     text-align: center;
     background-color: rgb(22, 157, 219);
     border-radius: 33px 33px 0 0;
   }
 
   .table_index td{
-    font-size: 14px;
+    font-size: 16px;
     height: 30px;
     text-align: center;
     border-left: 1px solid #c3c3c3;
@@ -260,7 +251,7 @@
   a.btn,
   button.btn {
     opacity: 0.6;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 1.5;
     position: relative;
@@ -387,7 +378,7 @@
 }
 
 
-@media only screen and (max-width: 1000px) {
+/* @media only screen and (max-width: 1200px) {
 
   .index-form {
     width: 90%;
@@ -403,34 +394,72 @@
     font-size: larger;
   }
 
-}
+} */
 
-@media only screen and (max-width: 700px) { 
+@media only screen and (max-width: 1200px) { 
 
-  .main_index {
-    margin-top: 80px;
+  header {
+    height: 100px;
+    width: 100%;
+    background-color: rgba(34, 49, 52, 0.9);
+    position :fixed;
+    top: 0;
+    z-index: 10;
   }
+  .logo {
+    float: right;
+    width: 300px;
+    margin:2px 20px;
+  }
+  .index_title {
+    color: #f6f6f6ee;
+    font-size: 40px;
+    letter-spacing: 5px;
+    margin: 22px 0 0 30px;
+}
+  
   .index-form {
     width: 98%;
   }
   .table_index th{
     border-radius: 0;
+    font-size: 23px;
   }
   .table_index td {
-    margin-top: 0;
+    font-size: 28px;
+    padding:0 1px;
     width: 400px;
-    font-size: 16px;
-    padding:0px;
   }
   .table_edit {
-    width: 80%;
-    font-size: larger;
+    width: 95%;
+    font-size: 40px;
+  }
+  .table_edit th,select {
+    font-size:40px;
+    width: 100%;
+  }
+  .table_edit select {
+    height:80px;
+  }
+  
+  .table_edit textarea{
+    height:200px;
+    font-size:40px;
+    width: 100%;
+  }
+  .backhome {
+    margin-top:50px;
+    font-size: 40px;
+  }
+  .btn,
+  a.btn,
+  button.btn {
+    font-size: 26px;
   }
   .space {
     margin-top:0;
   }
   
+
+
 }
-
-
-  
