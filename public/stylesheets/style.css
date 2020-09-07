@@ -117,8 +117,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding-top:130px;
-    padding-bottom: 130px;
+    margin-top:130px;
+    margin-bottom: 130px;
     border-collapse: collapse;
     border-spacing: 5px;
     margin-left:auto;
