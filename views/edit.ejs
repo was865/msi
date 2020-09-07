@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title><%= title %></title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+	</head>
+
+<body>
+	<header>
+		<div class="header">
+			<a href="/"><img class="logo" src="https://msi-net.co.jp/main/wp-content/uploads/2020/01/logo.png"></a>
+			<h1 class="index_title"><%- subtitle %></h1>
+		</div>
+	</header>
+
+	<div role="main" class="main_edit">
+		<form name="form_edit" method="POST" action="/edit/<%= content.id %>">
+			<table class="table_edit">
+				<p class="editing_name"><span>ログイン中のユーザー：<%= login.name %></span><br><%- greeting %></p>
+				<tr><th>苗字</th></tr>
+				<tr><td><input type="hidden" name="name" id="name" value="<%= content.name %>" ><%= content.name %></td></tr>
+				<tr><th>情報</th></tr>
+				<tr><td><input type="hidden" name="information" id="information" value="<%= content.information %>" >
+					<%= content.information %></td></tr>
+				<tr><th>状態</th></tr>
+				<tr><td><select name="status" id="status" >
+					<% datastatus.forEach ( (element)=> { %>
+						<option value="<%= element.attributes.status %>" 
+							<% if (content.status == element.attributes.status){ %>
+								selected
+							<% } %> ><%= element.attributes.status %>
+						</option>
+					<% }); %>  
+				</td></tr>
+
+				<tr class="table_ikisaki"><th id="th_ikisaki">行先</th></tr>
+				<tr class="table_ikisaki"><td><select name="ikisaki" id="ikisaki">
+
+				<% if (content.status == "休暇") { %>
+					<option value="全休" 
+						<% if (content.ikisaki == "全休"){ %>
+							selected
+						<% } %>>全休
+					</option>
+					<option value="ＡＭ半休" 
+						<% if (content.ikisaki == "ＡＭ半休"){ %>
+							selected 
+						<% } %>>ＡＭ半休
+					</option>
+					<option value="ＰＭ半休"
+						<% if (content.ikisaki == "ＰＭ半休"){ %>
+							selected 
+						<% } %>>ＰＭ半休
+					</option>
+				<% } else if (content.status == "客先"){ %>
+					<% datakyakusaki.forEach ( (element)=> { %>
+						<option value="<%= element.attributes.kyakusaki %>" 
+							<% if (content.ikisaki == element.attributes.kyakusaki){ %>
+								selected
+							<% } %> ><%= element.attributes.kyakusaki %>
+						</option>
+					<% });  %>
+				<% } else if (content.status == "社内"){ %>
+					<% datashanai.forEach ( (element)=> { %>
+						<option value="<%= element.attributes.shanai %>" 
+							<% if (content.ikisaki == element.attributes.shanai){ %>
+								selected
+							<% } %> ><%= element.attributes.shanai %>
+						</option>
+					<% });  %>
+				<% } %></select>
+			</td></tr>
+				
+
+			<tr class="table_yoteijikoku"><th>予定時刻</th></tr>
+				<tr class="table_yoteijikoku"><td><select type="text" name="time">
+					<option value="~ 8:30"
+						<% if (content.time == "~ 8:30"){ %>
+							selected 
+						<% } %> >~ 8:30
+					</option>
+					<option value="~ 9:00"
+						<% if (content.time == "~ 9:00"){ %>
+							selected 
+						<% } %> >~ 9:00
+					</option>
+					<option value="~ 9:30"
+						<% if (content.time == "~ 9:30"){ %>
+							selected 
+						<% } %> >~ 9:30
+					</option>
+					<option value="~ 10:00"
+						<% if (content.time == "~ 10:00"){ %>
+							selected 
+						<% } %> >~ 10:00
+					</option>
+					<option value="~ 10:30"
+						<% if (content.time == "~ 10:30"){ %>
+							selected 
+						<% } %> >~ 10:30
+					</option>
+					<option value="~ 11:00"
+						<% if (content.time == "~ 11:00"){ %>
+							selected 
+						<% } %> >~ 11:00
+					</option>
+					<option value="~ 11:30"
+						<% if (content.time == "~ 11:30"){ %>
+							selected 
+						<% } %> >~ 11:30
+					</option>
+					<option value="~ 12:00"
+						<% if (content.time == "~ 12:00"){ %>
+							selected 
+						<% } %> >~ 12:00
+					</option>
+					<option value="~ 12:30"
+						<% if (content.time == "~ 12:30"){ %>
+							selected 
+						<% } %> >~ 12:30
+					</option>
+					<option value="~ 13:00"
+						<% if (content.time == "~ 13:00"){ %>
+							selected 
+						<% } %> >~ 13:00
+					</option>
+					<option value="~ 13:30"
+						<% if (content.time == "~ 13:30"){ %>
+							selected 
+						<% } %> >~ 13:30
+					</option>
+					<option value="~ 14:00"
+						<% if (content.time == "~ 14:00"){ %>
+							selected 
+						<% } %> >~ 14:00
+					</option>
+					<option value="~ 14:30"
+						<% if (content.time == "~ 14:30"){ %>
+							selected 
+						<% } %> >~ 14:30
+					</option>
+					<option value="~ 15:00"
+						<% if (content.time == "~ 15:00"){ %>
+							selected 
+						<% } %> >~ 15:00
+					</option>
+					<option value="~ 15:30"
+						<% if (content.time == "~ 15:30"){ %>
+							selected 
+						<% } %> >~ 15:30
+					</option>
+					<option value="~ 16:00"
+						<% if (content.time == "~ 16:00"){ %>
+							selected 
+						<% } %> >~ 16:00
+					</option>
+					<option value="~ 16:30"
+						<% if (content.time == "~ 16:30"){ %>
+							selected 
+						<% } %> >~ 13:30
+					</option>
+					<option value="~ 17:00"
+						<% if (content.time == "~ 17:00"){ %>
+							selected 
+						<% } %> >~ 17:00
+					</option>
+					<option value="~ 17:30"
+						<% if (content.time == "~ 17:30"){ %>
+							selected 
+						<% } %> >~ 17:30
+					</option>
+					<option value="~ 18:00"
+						<% if (content.time == "~ 18:00"){ %>
+							selected 
+						<% } %> >~ 18:00
+					</option>
+					<option value="~ 18:30"
+						<% if (content.time == "~ 18:30"){ %>
+							selected 
+						<% } %> >~ 18:30
+					</option>
+					<option value="~ 19:00"
+						<% if (content.time == "~ 19:00"){ %>
+							selected 
+						<% } %> >~ 19:00
+					</option>
+					<option value="~ 19:30"
+						<% if (content.time == "~ 19:30"){ %>
+							selected 
+						<% } %> >~ 19:30
+					</option>
+					<option value="~ 20:00"
+						<% if (content.time == "~ 20:00"){ %>
+							selected 
+						<% } %> >~ 20:00
+					</option>
+					<option value="~ 20:30"
+						<% if (content.time == "~ 20:30"){ %>
+							selected 
+						<% } %> >~ 20:30
+					</option>
+					<option value="~ 21:00"
+						<% if (content.time == "~ 21:00"){ %>
+							selected 
+						<% } %> >~ 21:00
+					</option>
+					<option value="~ 21:30"
+						<% if (content.time == "~ 21:30"){ %>
+							selected 
+						<% } %> >~ 21:30
+					</option>
+					<option value="~ 22:00"
+						<% if (content.time == "~ 22:00"){ %>
+							selected 
+						<% } %> >~ 22:00
+					</option>
+					<option value="22:00 ~"
+						<% if (content.time == "22:00 ~"){ %>
+							selected 
+						<% } %> >22:00 ~
+					</option>
+					<option value="不帰"
+						<% if (content.time == "不帰"){ %>
+							selected 
+						<% } %> >不帰
+					</option></select>
+
+				</td></tr>
+				<tr><th>メモ</th></tr>
+				<tr><td><textarea name="memo"><%= content.memo %></textarea></td></tr>
+				<tr><td>
+					<a href="javascript:form_edit.submit()" id="btn_post">更新</a>
+				</td></tr>
+				<input type="hidden" name="id" value="<%= content.id %>">
+			</table>
+		</form>
+		<p><a href="/" class="backhome">>>一覧に戻る</a></p>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="/javascripts/indexscript.js"></script> -->
+	<script>
+		$(function() {
+
+			if ($('#status').val() == '' || $('#status').val() == '在席' || $('#status').val() == '帰宅') {
+				$('.table_ikisaki').addClass('hide');
+				$('.table_yoteijikoku').addClass('hide');
+			} else if ($('#status').val() == '出張' ||　$('#status').val() == '研修' ||　$('#status').val() == 'その他') {
+				$('.table_ikisaki').addClass('hide');
+			} else if ($('#status').val() == '休暇') {
+				$('.table_yoteijikoku').addClass('hide');
+				$('#th_ikisaki').text('期間');
+			}
+
+			$('#status').change(function() {
+
+				var val = $(this).val();
+
+				switch (val) {
+					case '休暇':
+						var data = '<option value="全休">全休</option>' +
+								'<option value="ＡＭ半休">ＡＭ半休</option>' + 
+								'<option value="ＰＭ半休">ＰＭ半休</option>';
+						$('#ikisaki').html(data);
+						$('#th_ikisaki').text('期間');
+						$('.table_ikisaki').removeClass('hide');
+						$('.table_yoteijikoku').addClass('hide');
+						break;
+					case '客先':
+						var selectContent_kyakusaki = '<% datakyakusaki.forEach ( (element)=> { %><option value="<%= element.attributes.kyakusaki %>"><%= element.attributes.kyakusaki %></option><%  }) %>';
+						$('#ikisaki').html(selectContent_kyakusaki);
+						$('#th_ikisaki').text('行先');
+						$('.table_ikisaki').removeClass('hide');
+						$('.table_yoteijikoku').removeClass('hide');
+						break;
+					case '社内':
+						var selectContent_shanai = '<% datashanai.forEach ( (element)=> { %><option value="<%= element.attributes.shanai %>"><%= element.attributes.shanai %></option><%  }) %>';
+						$('#ikisaki').html(selectContent_shanai);
+						$('#th_ikisaki').text('行先');
+						$('.table_ikisaki').removeClass('hide');
+						$('.table_yoteijikoku').removeClass('hide');
+						break;
+					case '':
+					case '在席':
+					case '帰宅':
+						$('.table_ikisaki').addClass('hide');
+						$('.table_yoteijikoku').addClass('hide');
+						break;
+					default:
+						$('#th_ikisaki').text('行先');
+						$('.table_ikisaki').addClass('hide');
+						$('.table_yoteijikoku').removeClass('hide');
+						break;
+				}
+
+			})
+
+			// $('.backhome').hover(function() {
+			// 	$(this).animate({'font-size':'17px'},70);
+			// },function() {
+			// 	$(this).animate({'font-size':'15px'},50);
+			// })
+
+		}); 
+	</script>
+</body>
+</html>

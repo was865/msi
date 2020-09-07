@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title><%= title %></title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+	</head>
+
+<body>
+	<header>
+		<div class="container">
+			<div class="header">
+				<a href="/"><img class="logo" src="https://msi-net.co.jp/main/wp-content/uploads/2020/01/logo.png"></a>
+				<h1 class="index_title"><span>> </span><%= title %></h1>
+			</div>
+		</div>
+	</header>
+
+
+<div class="main_index">
+	<div role="main" class="index-form">
+        <form>
+            <p><table class="table_index">
+				<thead>
+					<tr>
+						<th>苗字</th>
+						<th>情報</th>
+						<th>状態</th>
+						<th>行先</th>
+						<th>予定時刻</th>
+						<th>メモ</th>
+						<th>前回更新</th>
+						<th>変更</th>
+					</tr>
+				</thead>
+                <% for(var i in usertabledata) { %>
+                    <%- include('data_item', {usertabledata:usertabledata[i]}) %>
+                <% } %>
+            </table>
+        </form></p>
+	</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(function() {
+
+		$('.btn_edit').hover(function(){
+			$(this).animate({opacity: 1},150)
+		},function(){
+			$(this).animate({opacity: 0.6}, 400)
+		});
+
+	});
+</script>
+</body>
+</html>
