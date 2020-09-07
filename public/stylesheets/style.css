@@ -113,7 +113,7 @@
 
 
   .table_index {
-    padding:130px auto;
+    padding:130px auto auto auto;
     border-collapse: collapse;
     border-spacing: 5px;
     margin-left:auto;
