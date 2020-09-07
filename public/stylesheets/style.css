@@ -136,21 +136,21 @@
 
 
   .table_index th,.table_index td{
-    padding: 10px ;
+    padding: 10px;
     border-bottom: 1px solid #eee;
   }
 
   .table_index th{
     width:auto;
     color:white;
-    font-size: 14px;
+    font-size: 17px;
     text-align: center;
     background-color: rgb(22, 157, 219);
     border-radius: 33px 33px 0 0;
   }
 
   .table_index td{
-    font-size: 14px;
+    font-size: 16px;
     height: 30px;
     text-align: center;
     border-left: 1px solid #c3c3c3;
@@ -251,7 +251,7 @@
   a.btn,
   button.btn {
     opacity: 0.6;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     line-height: 1.5;
     position: relative;
