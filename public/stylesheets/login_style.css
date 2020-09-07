@@ -131,7 +131,7 @@ button {
   -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
 }
-/* @media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px) {
   .login {
     width: 600px;
     font-size: 2em;
@@ -178,5 +178,5 @@ button {
     font-size: 0.7em;
     min-height: 0;
   }
-} */
+}
  
