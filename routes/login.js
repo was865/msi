@@ -21,7 +21,7 @@ router.get('/', (req, res, next) => {
     var data = {
         title:'login',
         form:{name:'', password:''},
-        content: '<p class="login_info">名前とパスワードを入力してください。</p>'
+        content: ''
     }
     res.render('login', data);
 });
