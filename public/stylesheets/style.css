@@ -1,4 +1,4 @@
-* {
+*{
     box-sizing: border-box;
   }
 
@@ -140,7 +140,8 @@
     border-bottom: 1px solid #eee;
   }
 
-  .table_index th{
+  .table_index th {
+    font-family: ＭＳ Ｐ明朝 ;
     width:auto;
     color:white;
     font-size: 17px;
@@ -150,6 +151,7 @@
   }
 
   .table_index td{
+    font-family: ヒラギノ角ゴ Pro W6 ;
     font-size: 16px;
     height: 30px;
     text-align: center;
@@ -158,6 +160,9 @@
     border-top:none;
     box-shadow: 0px -3px 8px 1px #eee inset;
     padding: 0px 20px;
+  }
+  .table_name {
+    font-weight: bolder;
   }
 
 
@@ -193,6 +198,26 @@
     position :fixed;
     top: 0;
     z-index: 10;
+  }
+
+  #searchbox-input-wrapper {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  #searchbox {
+    font-family: ヒラギノ角ゴ Pro W3,FontAwesome;
+    display: inline-block;
+    margin: -43px 0 0 0;
+    height: 38px;
+    width: 25%;
+    border-radius: 22px;
+    position: absolute;
+    box-sizing: border-box;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    padding: 0 8px;
   }
 
   .logo {
@@ -422,6 +447,7 @@
     width: 98%;
   }
   .table_index th{
+    font-family: 游ゴシック ;
     border-radius: 0;
     font-size: 23px;
   }
@@ -462,6 +488,5 @@
   .login {
     padding:0px
   }
-
 
 }
