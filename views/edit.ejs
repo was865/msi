@@ -17,7 +17,7 @@
 	<div role="main" class="main_edit">
 		<form name="form_edit" method="POST" action="/edit/<%= content.id %>">
 			<table class="table_edit">
-				<p class="editing_name"><span>ログイン中のユーザー：<%= login.name %></span><br><%- greeting %></p>
+				<p class="editing_name"><span>ログイン中のユーザー：<span class="loginName"><%= login.name %></span></span><br><%- greeting %></p>
 				<tr><th>苗字</th></tr>
 				<tr><td><input type="hidden" name="name" id="name" value="<%= content.name %>" ><%= content.name %></td></tr>
 				<tr><th>情報</th></tr>
