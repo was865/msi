@@ -256,6 +256,7 @@
   }
 
   .editing_name {
+    font-size:15px;
     float: center;
     padding-top:130px;
   }
@@ -467,6 +468,17 @@
   }
   .table_name {
     font-weight: bold;
+  }
+  
+  .editing_name {
+    font-size:22px;
+    float: center;
+    padding-top:130px;
+    padding-bottom:8px;
+  }
+  .loginName {
+    font-weight:bolder;
+    font-family: ＭＳ Ｐ明朝 ;
   }
   .table_edit {
     width: 95%;
