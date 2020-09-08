@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title><%= title %></title>
 		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	</head>
 
 <body>
@@ -12,7 +13,11 @@
 			<div class="header">
 				<a href="/"><img class="logo" src="https://msi-net.co.jp/main/wp-content/uploads/2020/01/logo.png"></a>
 				<h1 class="index_title"><span>> </span><%= title %></h1>
+				<div id="searchbox-input-wrapper">
+					<input id="searchbox" type="search" autocomplete="off" spellcheck="false" aria-live="polite" autofocus="" placeholder="&#xf002; 名前または部署を入力">
+				</div>
 			</div>
+			
 		</div>
 	</header>
 

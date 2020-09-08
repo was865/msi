@@ -115,12 +115,12 @@ router.post('/:id', function(req, res, next) {
   getShanai();
     
   if (req.body.status == '' ||  req.body.status == '在席' || req.body.status == '帰宅')　{
-    req.body.ikisaki = '' ;
-    req.body.time = '' ;
+    req.body.ikisaki = '／' ;
+    req.body.time = '／' ;
   } else if (req.body.status == '出張' || req.body.status == '研修' || req.body.status == 'その他') {
-    req.body.ikisaki = '' ;
+    req.body.ikisaki = '／' ;
   }else if (req.body.status == '休暇') {
-    req.body.time = '' ;
+    req.body.time = '／' ;
   }
 
   var rec = {
