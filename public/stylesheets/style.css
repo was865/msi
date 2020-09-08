@@ -208,7 +208,7 @@
   #searchbox {
     font-family: ヒラギノ角ゴ Pro W3,FontAwesome;
     display: inline-block;
-    margin: -43px 0 0 0;
+    margin: -39px 0 0 0;
     height: 38px;
     width: 25%;
     border-radius: 22px;
@@ -445,16 +445,24 @@
   
   .index-form {
     width: 98%;
+    margin-top:50px;
   }
   .table_index th{
-    font-family: 游ゴシック ;
+    font-family: ＭＳ Ｐ明朝 ;
     border-radius: 0;
     font-size: 23px;
   }
+  .table_name {
+    font-weight: bolder;
+  }
   .table_index td {
+    font-family: ヒラギノ角ゴ Pro W6;
     font-size: 28px;
     padding:0 1px;
     width: 400px;
+  }
+  .table_name {
+    font-weight: bold;
   }
   .table_edit {
     width: 95%;
@@ -487,6 +495,27 @@
   }
   .login {
     padding:0px
+  }
+  #searchbox-input-wrapper {
+    position: relative;
+    text-align: left;
+    width: 95%;
+    margin-left:2.5%;
+  }
+  #searchbox {
+    font-family: ヒラギノ角ゴ Pro W3,FontAwesome;
+    display: inline-block;
+/*     display:none; */
+    margin: 30px auto ;
+    height: 50px;
+    width: 100%;
+    border-radius: 22px;
+    position: absolute;
+    box-sizing: border-box;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    padding: 0 8px;
   }
 
 }
