@@ -80,7 +80,13 @@
     font: 19px "Lucida Grande", bold,Helvetica, Arial, sans-serif;
   }
 
-
+  #edit_name {
+    font-family: ＭＳ Ｐ明朝 ;
+    font-size:19px;
+    font-weight:bolder;
+    padding:4px;
+    letter-spacing:3px;
+  }
   .table_edit {
     margin: 15px auto 30px auto;
     font-size: 17px;
@@ -476,9 +482,12 @@
     padding-top:130px;
     padding-bottom:8px;
   }
-  .loginName {
-    font-weight:bolder;
+   #edit_name {
     font-family: ＭＳ Ｐ明朝 ;
+    font-size:42px;
+    font-weight:bolder;
+    padding:4px;
+    letter-spacing:5px;
   }
   .table_edit {
     width: 95%;
