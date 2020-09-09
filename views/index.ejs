@@ -14,7 +14,9 @@
 				<a href="/"><img class="logo" src="https://msi-net.co.jp/main/wp-content/uploads/2020/01/logo.png"></a>
 				<h1 class="index_title"><span>> </span><%= title %></h1>
 				<div id="searchbox-input-wrapper">
-					<input id="searchbox" type="search" autocomplete="off" spellcheck="false" aria-live="polite" autofocus="" placeholder="&#xf002; 名前または部署を入力">
+				<form method="POST" action="/">
+					<input id="searchbox" name="find" type="search" autocomplete="off" spellcheck="false" aria-live="polite" autofocus="" placeholder="&#xf002; <%= finding %>">
+				</form>
 				</div>
 			</div>
 			
@@ -28,6 +30,7 @@
             <p><table class="table_index">
 				<thead>
 					<tr>
+						<th>所属</th>
 						<th>苗字</th>
 						<th>情報</th>
 						<th>状態</th>
