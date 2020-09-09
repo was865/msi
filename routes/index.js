@@ -100,6 +100,7 @@ router.post('/', (req,res,next) => {
                 id: element.attributes.id,
                 name : element.attributes.name,
                 information : element.attributes.information,
+                department: element.attributes.department,
                 status : element.attributes.status,
                 ikisaki : element.attributes.ikisaki,
                 time : element.attributes.time,
