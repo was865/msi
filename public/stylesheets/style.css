@@ -1,4 +1,4 @@
-* {
+*{
     box-sizing: border-box;
   }
 
@@ -80,7 +80,13 @@
     font: 19px "Lucida Grande", bold,Helvetica, Arial, sans-serif;
   }
 
-
+  #edit_name {
+    font-family: ＭＳ Ｐ明朝 ;
+    font-size:19px;
+    font-weight:bolder;
+    padding:4px;
+    letter-spacing:3px;
+  }
   .table_edit {
     margin: 15px auto 30px auto;
     font-size: 17px;
@@ -136,11 +142,12 @@
 
 
   .table_index th,.table_index td{
-    padding: 10px;
     border-bottom: 1px solid #eee;
   }
 
-  .table_index th{
+  .table_index th {
+    padding: 10px;
+    font-family: ＭＳ Ｐ明朝 ;
     width:auto;
     color:white;
     font-size: 17px;
@@ -150,14 +157,17 @@
   }
 
   .table_index td{
+    font-family: ヒラギノ角ゴ Pro W6 ;
     font-size: 16px;
-    height: 30px;
     text-align: center;
     border-left: 1px solid #c3c3c3;
     border-bottom: 1px solid #c3c3c3;
     border-top:none;
     box-shadow: 0px -3px 8px 1px #eee inset;
-    padding: 0px 20px;
+    padding: 0px 15px;
+  }
+  .table_name {
+    font-weight: bolder;
   }
 
 
@@ -195,6 +205,26 @@
     z-index: 10;
   }
 
+  #searchbox-input-wrapper {
+    text-align: center;
+    width: 100%;
+  }
+  #searchbox {
+    top:14px;
+    font-family: ヒラギノ角ゴ Pro W3,FontAwesome;
+    display: inline-block;
+    margin: 0 0 0 0;
+    height: 38px;
+    width: 26%;
+    border-radius: 22px;
+    position: absolute;
+    box-sizing: border-box;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+  }
+
   .logo {
     float: right;
     width: 200px;
@@ -214,7 +244,7 @@
 }
 
    .main_index {
-    margin-top:130px;
+    margin-top:110px;
     position: relative;
     background-size: cover;
     color: white;
@@ -230,6 +260,7 @@
   }
 
   .editing_name {
+    font-size:15px;
     float: center;
     padding-top:130px;
   }
@@ -396,7 +427,12 @@
 
 } */
 
+
 @media only screen and (max-width: 1200px) { 
+
+  .mobile-hide {
+    display:none;
+  }
 
   header {
     height: 100px;
@@ -417,18 +453,44 @@
     letter-spacing: 5px;
     margin: 22px 0 0 30px;
 }
+  .main_index {
+    margin-top:100px;
+  }
   
   .index-form {
     width: 98%;
+    margin-top:70px;
   }
   .table_index th{
+    font-family: ＭＳ Ｐ明朝 ;
     border-radius: 0;
     font-size: 23px;
   }
+  .table_name {
+    font-weight: bolder;
+  }
   .table_index td {
+    font-family: ヒラギノ角ゴ Pro W6;
     font-size: 28px;
     padding:0 1px;
     width: 400px;
+  }
+  .table_name {
+    font-weight: bold;
+  }
+  
+  .editing_name {
+    font-size:22px;
+    float: center;
+    padding-top:130px;
+    padding-bottom:8px;
+  }
+   #edit_name {
+    font-family: ＭＳ Ｐ明朝 ;
+    font-size:42px;
+    font-weight:bolder;
+    padding:4px;
+    letter-spacing:5px;
   }
   .table_edit {
     width: 95%;
@@ -462,6 +524,23 @@
   .login {
     padding:0px
   }
-
+  #searchbox-input-wrapper {
+    text-align: left;
+  }
+  #searchbox {
+    font-family: ヒラギノ角ゴ Pro W3,FontAwesome;
+    display: inline-block;
+    top:110px;
+    height: 50px;
+    width: 95%;
+    margin-left:2.5%;
+    border-radius: 22px;
+    position: absolute;
+    box-sizing: border-box;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    padding: 0 8px;
+  }
 
 }
