@@ -31,7 +31,7 @@
 								selected
 							<% } %> ><%= element.attributes.status %>
 						</option>
-					<% }); %>  
+					<% }); %></select>
 				</td></tr>
 
 				<tr class="table_ikisaki"><th id="th_ikisaki">行先</th></tr>
@@ -259,10 +259,10 @@
 
 				switch (val) {
 					case '休暇':
-						var data = '<option value="全休">全休</option>' +
+						var selectContent_kyuuka = '<option value="全休">全休</option>' +
 								'<option value="ＡＭ半休">ＡＭ半休</option>' + 
 								'<option value="ＰＭ半休">ＰＭ半休</option>';
-						$('#ikisaki').html(data);
+						$('#ikisaki').html(selectContent_kyuuka);
 						$('#th_ikisaki').text('期間');
 						$('.table_ikisaki').removeClass('hide');
 						$('.table_yoteijikoku').addClass('hide');

@@ -45,17 +45,53 @@
                     <%- include('data_item', {usertabledata:usertabledata[i]}) %>
 				<% } %>
 				<tr>
-					<td class="mobile-hide"><input type="text" class="text_add" name="department"></td>
-					<td><input type="text" class="text_add add_name" name="name"></td>
-					<td><input type="text" class="text_add" name="information"></td>
-					<td><input type="text" class="text_add" name="status"></td>
-					<td><input type="text" class="text_add" name="ikisaki"></td>
-					<td><input type="text" class="text_add" name="time"></td>
-					<td><input type="text" class="text_add" name="memo"></td>
+					<td class="mobile-hide"><input type="text" class="text_add" name="department" placeholder="部署"></td>
+					<td><input type="text" class="text_add add_name" name="name" placeholder="苗字"></td>
+					<td><input type="text" class="text_add" name="information" placeholder="内線"></td>
+					<td><select name="status" class="select_add" id="status">
+						<% datastatus.forEach ( (element)=> {  console.log(element.attributes.status); %>
+							<option value="<%= element.attributes.status %>"><%= element.attributes.status %></option>
+						<% }); %>
+						</select>
+					</td>
+					<td><select class="select_add" name="ikisaki" id="ikisaki" style="display: none;"></select></td>
+					<td><select class="select_add" name="time" id="time" style="display: none;">
+						<option value="~ 8:30">~ 8:30</option>
+						<option value="~ 9:00">~ 9:00</option>
+						<option value="~ 9:30">~ 9:30</option>
+						<option value="~ 10:00">~ 10:00</option>
+						<option value="~ 10:30">~ 10:30</option>
+						<option value="~ 11:00">~ 11:00</option>
+						<option value="~ 11:30">~ 11:30</option>
+						<option value="~ 12:00">~ 12:00</option>
+						<option value="~ 12:30">~ 12:30</option>
+						<option value="~ 13:00">~ 13:00</option>
+						<option value="~ 13:30">~ 13:30</option>
+						<option value="~ 14:00">~ 14:00</option>
+						<option value="~ 14:30">~ 14:30</option>
+						<option value="~ 15:00">~ 15:00</option>
+						<option value="~ 15:30">~ 15:30</option>
+						<option value="~ 16:00"<>~ 16:00</option>
+						<option value="~ 16:30">~ 13:30</option>
+						<option value="~ 17:00">~ 17:00</option>
+						<option value="~ 17:30">~ 17:30</option>
+						<option value="~ 18:00">~ 18:00</option>
+						<option value="~ 18:30">~ 18:30</option>
+						<option value="~ 19:00">~ 19:00</option>
+						<option value="~ 19:30">~ 19:30</option>
+						<option value="~ 20:00">~ 20:00</option>
+						<option value="~ 20:30">~ 20:30</option>
+						<option value="~ 21:00">~ 21:00</option>
+						<option value="~ 21:30">~ 21:30</option>
+						<option value="~ 22:00">~ 22:00</option>
+						<option value="22:00 ~">22:00 ~</option>
+						<option value="不帰">不帰</option>
+					</select></td>
+					<td><textarea type="text" class="memo_add" name="memo" placeholder="メモ"></textarea></td>
 					<td>/</td>
 					<td>
 						<div class="btn-wrap">
-							<a href="javascript:form_table.submit()" class="btn btn-switch" id="btn_add"><span style="color: rgb(73, 71, 216);">新規</span></a>
+							<a href="javascript:form_table.submit()" class="btn btn-switch" id="btn_add"><span style="color: rgb(20, 16, 252);">新規</span></a>
 						</div>
 					</td>
 				</tr>
@@ -80,8 +116,46 @@
 				alert('名前は必ず入力してください！');
 				return false;
 			}
-			
 		});
+
+		$('#status').change(function() {
+
+			var val = $(this).val();
+
+			switch (val) {
+				case '休暇':
+					var selectContent_kyuuka = '<option value="全休">全休</option>' +
+							'<option value="ＡＭ半休">ＡＭ半休</option>' + 
+							'<option value="ＰＭ半休">ＰＭ半休</option>';
+					$('#ikisaki').append(selectContent_kyuuka);
+					$('#ikisaki').show();
+					$('#time').val('').hide();
+					break;
+				case '客先':
+					var selectContent_kyakusaki = '<% datakyakusaki.forEach ( (element)=> { %><option value="<%= element.attributes.kyakusaki %>"><%= element.attributes.kyakusaki %></option><%  }) %>';
+					$('#ikisaki').append(selectContent_kyakusaki);
+					$('#ikisaki').show();
+					$('#time').show();
+					break;
+				case '社内':
+					var selectContent_shanai = '<% datashanai.forEach ( (element)=> { %><option value="<%= element.attributes.shanai %>"><%= element.attributes.shanai %></option><%  }) %>';
+					$('#ikisaki').append(selectContent_shanai);
+					$('#ikisaki').show();
+					$('#time').show();
+					break;
+				case '':
+				case '在席':
+				case '帰宅':
+					$('#ikisaki').val('').hide();
+					$('#time').val('').hide();
+					break;
+				default:
+					$('#ikisaki').val('').hide();
+					$('#time').show();
+					break;
+			}
+
+			});
 
 	});
 </script>

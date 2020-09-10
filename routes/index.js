@@ -20,12 +20,65 @@ var Userdata = Bookshelf.Model.extend({
   hasTimestamps: true,
 });
 
+var statusdata = Bookshelf.Model.extend({
+  tableName: 'status_list',
+});
+
+var kyakusakidata = Bookshelf.Model.extend({
+  tableName: 'kyakusaki_list',
+});
+
+var shanaidata = Bookshelf.Model.extend({
+  tableName: 'shanai_list',
+});
+
+var datastatus;
+function getStatus(){
+  new statusdata().fetchAll().then((collection) => {
+    datastatus = collection.toArray();
+  }).catch((err) => { 
+    response.status(500).json({error: true, data: {message: err.message}});
+  }); 
+  
+  return datastatus;
+}
+
+var datakyakusaki;
+function getKyakusaki(){
+
+  new kyakusakidata().fetchAll().then((collection) => {
+    datakyakusaki = collection.toArray();
+  }).catch((err) => { 
+    response.status(500).json({error: true, data: {message: err.message}});
+  }); 
+
+  return datakyakusaki;
+
+}
+
+var datashanai;
+function getShanai(){
+
+  new shanaidata().fetchAll().then((collection) => {
+    datashanai = collection.toArray();
+  }).catch((err) => { 
+    response.status(500).json({error: true, data: {message: err.message}});
+  }); 
+
+  return datashanai;
+
+}
+
 router.get('/', function(req, res, next) {
 
   if (req.session.login == null) {
     res.redirect('/login');
     return;
   }
+
+  getStatus();
+  getKyakusaki();
+  getShanai();
 
     var usertabledata = new Array();
 
@@ -57,7 +110,10 @@ router.get('/', function(req, res, next) {
         var data = {
             title: '行先情報一覧',
             finding : '名前または部署名などを入力',
-            usertabledata: usertabledata
+            usertabledata: usertabledata,
+            datastatus: datastatus,
+            datakyakusaki: datakyakusaki,
+            datashanai: datashanai
         };
         res.render('index', data);
     }).catch((err) => { 
