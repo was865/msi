@@ -18,7 +18,7 @@
 		<form name="form_edit" method="POST" action="/edit/<%= content.id %>">
 			<table class="table_edit">
 				<p class="editing_name"><span>ログイン中のユーザー：<span class="loginName"><%= login.name %></span></span><br><%- greeting %></p>
-				<tr><th>苗字</th></tr>
+				<tr><th>名前</th></tr>
 				<tr><td id="edit_name"><input type="hidden" name="name" id="name" value="<%= content.name %>" ><%= content.name %></td></tr>
 				<tr><th>情報</th></tr>
 				<tr><td><input type="hidden" name="information" id="information" value="<%= content.information %>" >
@@ -232,11 +232,21 @@
 				<tr><td>
 					<a href="javascript:form_edit.submit()" id="btn_post">更新</a>
 				</td></tr>
+
 				<input type="hidden" name="id" value="<%= content.id %>">
 			</table>
 		</form>
 		<p><a href="/" class="backhome">>> 一覧に戻る</a></p>
-    <p class="space"><br></p>
+	<p class="space"><br></p>
+	<form method="POST" action="/delete" name="form_delete">
+		<input type="hidden" name="id" value="<%= content.id %>">
+		<div class="container">
+			<a href="javascript:form_delete.submit()" class="bnt-massage">
+			  DELETE
+			  <span>"<%= content.name %>"の情報が削除されます</span>
+			  </a>
+			</div>
+	</form>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- <script type="text/javascript" src="/javascripts/indexscript.js"></script> -->
@@ -303,6 +313,9 @@
 			// })
 
 		}); 
+
+		
+
 	</script>
 </body>
 </html>
