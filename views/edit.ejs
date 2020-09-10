@@ -237,8 +237,8 @@
 			</table>
 		</form>
 		<p><a href="/" class="backhome">>> 一覧に戻る</a></p>
-	<p class="space"><br></p>
-	<form method="POST" action="/delete" name="form_delete">
+	
+	<form method="POST" action="/edit/<%= content.id %>/delete" name="form_delete">
 		<input type="hidden" name="id" value="<%= content.id %>">
 		<div class="container">
 			<a href="javascript:form_delete.submit()" class="bnt-massage">

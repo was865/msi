@@ -133,6 +133,10 @@ router.post('/', (req,res,next) => {
     return;
   }
 
+  getStatus();
+  getKyakusaki();
+  getShanai();
+
   var usertabledata = new Array();
 
   new Userdata().orderBy('created_at','DESC')
@@ -173,7 +177,10 @@ router.post('/', (req,res,next) => {
         var data = {
           title: '検索結果',
           finding : '状態、行先、メモ内容などでも検索可能',
-          usertabledata: usertabledata
+          usertabledata: usertabledata,
+          datastatus: datastatus,
+          datakyakusaki: datakyakusaki,
+          datashanai: datashanai
       };
       res.render('index', data);
   }).catch((err) => { 
@@ -199,7 +206,7 @@ router.post('/add', (req,res,next) => {
     time: req.body.time,
     memo: req.body.memo
   }
-  console.log(rec);
+  console.log('新規登録レコード' + rec);
 
   new Userdata(rec).save().then((model) => {
     res.redirect('/');

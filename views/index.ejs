@@ -30,15 +30,15 @@
             <p><table class="table_index">
 				<thead>
 					<tr>
-						<th class="mobile-hide" style="width: 11.1%;">所属</th>
+						<th class="mobile-hide" style="width: 14%;">所属</th>
 						<th style="width: 9%;">名前</th>
 						<th style="width: 9.1%;">情報</th>
 						<th style="width: 9%;">状態</th>
-						<th style="width: 12.2%;">行先</th>
-						<th style="width: 10.1%;">予定時刻</th>
-						<th style="width: 18.3%;">メモ</th>
-						<th style="width: 10.1%;">前回更新</th>
-						<th style="width: 10%;">変更</th>
+						<th style="width: 14%;">行先</th>
+						<th style="width: 10%;">予定時刻</th>
+						<th>メモ</th>
+						<th style="width: 9.5%;">前回更新</th>
+						<th style="width: 12%;">変更</th>
 					</tr>
 				</thead>
                 <% for(var i in usertabledata) { %>
@@ -49,7 +49,7 @@
 					<td><input type="text" class="text_add add_name" name="name" placeholder="名前"></td>
 					<td><input type="text" class="text_add" name="information" placeholder="内線"></td>
 					<td><select name="status" class="select_add" id="status">
-						<% datastatus.forEach ( (element)=> {  console.log(element.attributes.status); %>
+						<% datastatus.forEach ( (element)=> {  %>
 							<option value="<%= element.attributes.status %>"><%= element.attributes.status %></option>
 						<% }); %>
 						</select>
@@ -115,6 +115,9 @@
 			if ($('.add_name').val() == ''){
 				alert('名前は必ず入力してください！');
 				return false;
+			} else if ($('#status').val() == ''){
+				$('#time').val('');
+				return true;
 			}
 		});
 

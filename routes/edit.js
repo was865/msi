@@ -131,7 +131,7 @@ router.post('/:id', function(req, res, next) {
     time: req.body.time,
     memo: req.body.memo
   }
-  console.log(rec);
+  console.log('更新レコード' + rec);
  
   new Userdata({id:req.body.id}).save(rec).then((model) => {
     var d2 = new Date(model.attributes.updated_at);
@@ -150,14 +150,14 @@ router.post('/:id', function(req, res, next) {
   });
 });
 
-router.post('/delete', function(req,res,next) {
+router.post('/:id/delete', function(req,res,next) {
   new Userdata().where('id','=',req.body.id)
     .fetch()
     .then((record)=>{
-        record.destroy();
+      record.destroy();
     })
-    .then((result=>{
-
+    .then((result)=>{
+      res.redirect('/');
     });
   });
 
