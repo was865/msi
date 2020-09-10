@@ -540,6 +540,9 @@
   .main_index {
     margin-top:100px;
   }
+/*   .main_edit {
+    height:100%;
+  } */
   
   .index-form {
     width: 98%;
@@ -629,6 +632,33 @@
     border: none;
     outline: none;
     padding: 0 8px;
+  }
+  
+  .btn-massage {
+    display: inline-block;
+    margin: 220px 0 120px 0;
+    min-width: 200px;
+    text-align: center;
+    background-color: rgb(231, 37, 37);
+    font-size: 40px;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px 30px 15px 100px;
+    position: relative;
+    transition: .9s;
+    border: 1px solid #FFF;
+  }
+  .btn-massage:before {
+    font-family: "FontAwesome";
+    content: "\f235";
+    position: absolute;
+    left: 30px;
+    top: 39%;
+    margin-top: -10px;
+  }
+  .btn-massage:hover span {
+    transform: translateY(84px);
   }
 
 }
