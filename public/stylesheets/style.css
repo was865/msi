@@ -117,7 +117,7 @@
   }
   
   .btn-massage:hover span {
-    transform: translateY(50px);
+    transform: translateY(48px);
   }
 
   .login_info {
@@ -637,14 +637,14 @@
   .btn-massage {
     display: inline-block;
     margin: 220px 0 120px 0;
-    min-width: 200px;
+    min-width: 220px;
     text-align: center;
     background-color: rgb(231, 37, 37);
     font-size: 40px;
     color: #FFF;
     text-decoration: none;
     font-weight: bold;
-    padding: 15px 30px 15px 100px;
+    padding: 15px 70px 15px 140px;
     position: relative;
     transition: .9s;
     border: 1px solid #FFF;
@@ -658,7 +658,18 @@
     margin-top: -10px;
   }
   .btn-massage:hover span {
-    transform: translateY(84px);
+    transform: translateY(88px);
+  }
+  .btn-massage span {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    line-height: 50px;
+    border-radius: 0 0 8px 0;
+    z-index: -1;
+    transition: .5s;
   }
 
 }
