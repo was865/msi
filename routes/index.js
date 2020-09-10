@@ -72,6 +72,10 @@ router.post('/', (req,res,next) => {
     res.redirect('/login');
     return;
   }
+  if (req.body.find == '') {
+    res.redirect('/');
+    return;
+  }
 
   var usertabledata = new Array();
 
@@ -112,7 +116,7 @@ router.post('/', (req,res,next) => {
 
         var data = {
           title: '検索結果',
-          finding : '入力で再検索、空欄検索でクリア',
+          finding : '状態、行先、メモ内容などでも検索可能',
           usertabledata: usertabledata
       };
       res.render('index', data);
