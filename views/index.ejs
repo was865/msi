@@ -26,24 +26,39 @@
 
 <div class="main_index">
 	<div role="main" class="index-form">
-        <form>
+        <form name="form_table" method="POST" action="/add">
             <p><table class="table_index">
 				<thead>
 					<tr>
-						<th class="mobile-hide">所属</th>
-						<th>苗字</th>
-						<th>情報</th>
-						<th>状態</th>
-						<th>行先</th>
-						<th>予定時刻</th>
-						<th>メモ</th>
-						<th>前回更新</th>
-						<th>変更</th>
+						<th class="mobile-hide" style="width: 11.1%;">所属</th>
+						<th style="width: 9%;">苗字</th>
+						<th style="width: 9.1%;">情報</th>
+						<th style="width: 9%;">状態</th>
+						<th style="width: 12.2%;">行先</th>
+						<th style="width: 10.1%;">予定時刻</th>
+						<th style="width: 18.3%;">メモ</th>
+						<th style="width: 10.1%;">前回更新</th>
+						<th style="width: 10%;">変更</th>
 					</tr>
 				</thead>
                 <% for(var i in usertabledata) { %>
                     <%- include('data_item', {usertabledata:usertabledata[i]}) %>
-                <% } %>
+				<% } %>
+				<tr>
+					<td class="mobile-hide"><input type="text" class="text_add" name="department"></td>
+					<td><input type="text" class="text_add add_name" name="name"></td>
+					<td><input type="text" class="text_add" name="information"></td>
+					<td><input type="text" class="text_add" name="status"></td>
+					<td><input type="text" class="text_add" name="ikisaki"></td>
+					<td><input type="text" class="text_add" name="time"></td>
+					<td><input type="text" class="text_add" name="memo"></td>
+					<td>/</td>
+					<td>
+						<div class="btn-wrap">
+							<a href="javascript:form_table.submit()" class="btn btn-switch" id="btn_add"><span style="color: rgb(73, 71, 216);">新規</span></a>
+						</div>
+					</td>
+				</tr>
             </table>
           <p class="space"><br></p>
         </form></p>
@@ -58,6 +73,14 @@
 			$(this).animate({opacity: 1},150)
 		},function(){
 			$(this).animate({opacity: 0.6}, 400)
+		});
+
+		$('#btn_add').click(function(){
+			if ($('.add_name').val() == ''){
+				alert('名前は必ず入力してください！');
+				return false;
+			}
+			
 		});
 
 	});

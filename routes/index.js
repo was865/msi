@@ -126,4 +126,29 @@ router.post('/', (req,res,next) => {
 
 })
 
+router.post('/add', (req,res,next) => {
+
+  if (req.session.login == null) {
+    res.redirect('/login');
+    return;
+  }
+
+  var rec = {
+    department: req.body.department,
+    name: req.body.name,
+    password: 1,
+    information: req.body.information,
+    status: req.body.status,
+    ikisaki: req.body.ikisaki,
+    time: req.body.time,
+    memo: req.body.memo
+  }
+  console.log(rec);
+
+  new Userdata(rec).save().then((model) => {
+    res.redirect('/');
+  });
+
+});
+
 module.exports = router;
