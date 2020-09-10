@@ -1,3 +1,5 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+
 *{
     box-sizing: border-box;
   }
@@ -70,7 +72,7 @@
     border-bottom: none;
   }
 
-  .bnt-massage {
+  .btn-massage {
     display: inline-block;
     margin: 220px 0 120px 0;
     min-width: 200px;
@@ -86,16 +88,16 @@
     border: 1px solid #FFF;
   }
   
-  .bnt-massage:before {
+  .btn-massage:before {
     font-family: "FontAwesome";
-    content: "Ⅹ";
+    content: "\f235";
     position: absolute;
     left: 20px;
     top: 50%;
     margin-top: -10px;
   }
   
-  .bnt-massage span {
+  .btn-massage span {
     display: block;
     position: absolute;
     background-color: #d9385f;
@@ -110,11 +112,11 @@
     transition: .5s;
   }
   
-  .bnt-massage:hover  {
+  .btn-massage:hover  {
     border-radius: 8px 0 0;
   }
   
-  .bnt-massage:hover span {
+  .btn-massage:hover span {
     transform: translateY(50px);
   }
 
@@ -339,7 +341,7 @@
     background-size: cover;
     color: white;
     text-align: center;
-    height: 100%;
+    height: 1100px;
   }
 
   .editing_name {

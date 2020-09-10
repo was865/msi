@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title><%= title %></title>
 		<link rel="stylesheet" href="/stylesheets/style.css" />
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 
 <body>
@@ -30,15 +30,15 @@
             <p><table class="table_index">
 				<thead>
 					<tr>
-						<th class="mobile-hide" style="width: 14%;">所属</th>
-						<th style="width: 9%;">名前</th>
-						<th style="width: 9.1%;">情報</th>
-						<th style="width: 9%;">状態</th>
-						<th style="width: 14%;">行先</th>
-						<th style="width: 10%;">予定時刻</th>
-						<th>メモ</th>
-						<th style="width: 9.5%;">前回更新</th>
-						<th style="width: 12%;">変更</th>
+						<th class="mobile-hide" style="min-width: 100pt;">所属</th>
+						<th style="min-width: 80pt;">名前</th>
+						<th style="min-width: 80pt;">情報</th>
+						<th style="min-width: 80pt;">状態</th>
+						<th style="min-width: 120pt;">行先</th>
+						<th style="min-width: 80pt;">予定時刻</th>
+						<th style="min-width: 120px;">メモ</th>
+						<th style="min-width: 90pt;">前回更新</th>
+						<th style="width: 12%; min-width: 75pt;">変更</th>
 					</tr>
 				</thead>
                 <% for(var i in usertabledata) { %>
@@ -113,7 +113,7 @@
 
 		$('#btn_add').click(function(){
 			if ($('.add_name').val() == ''){
-				alert('名前は必ず入力してください！');
+				alert('\n名前は必ず入力してください！');
 				return false;
 			} else if ($('#status').val() == ''){
 				$('#time').val('');
