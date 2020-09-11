@@ -22,6 +22,7 @@ header {
 }
 body {
   background: transparent;
+  height: 100%;
 }
 body,
 input,
@@ -55,6 +56,15 @@ button {
   text-align: center;
   height: 100%;
 }
+.login_info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  padding-bottom: 450px;
+  transform: translate(-50%, -50%) ;
+  font: 19px "UD Digi Kyokasho N-R";
+}
 .login {
   height: auto;
   position: absolute;
@@ -70,7 +80,6 @@ button {
 }
 .login .heading {
   text-align: center;
-  margin-top: 2%;
 }
 .login .heading h2 {
   margin-bottom: 0.4em;
@@ -149,10 +158,21 @@ button {
   transform: translateY(-3px);
 }
 
+/* スマホ向け */
+
 @media only screen and (max-width: 1200px) {
   .login {
     width: 90%;
-    font-size: 40px;
+    font-size: 45px;
+  }
+  .login_info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    padding-bottom: 800px;
+    transform: translate(-50%, -50%) ;
+    font: 40px "UD Digi Kyokasho N-R";
   }
   header {
     height: 100px;
@@ -173,25 +193,6 @@ button {
     margin-top: 32.5px;
     letter-spacing: 5px;
     margin-left: 27px;
-  }
-  .login form .input-group span i {
-    font-size: 1.4em;
-    color: rgba(255,255,255,0.2);
-  }
-  .login form input.form-control {
-    display: block;
-    width: auto;
-    height: auto;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    background: none;
-    border-radius: 0px;
-    padding: 10px;
-    font-size: 1.4em;
-    width: 100%;
-    background: transparent;
-    color: #c2b8b1;
   }
 }
 

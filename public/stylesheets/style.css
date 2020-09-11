@@ -182,7 +182,7 @@ header {
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  padding-bottom: 420px;
+  padding-bottom: 450px;
   transform: translate(-50%, -50%) ;
   font: 19px "Lucida Grande", bold,Helvetica, Arial, sans-serif;
 }
@@ -324,7 +324,7 @@ header {
 }
 
 span.login_name {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 
@@ -475,6 +475,7 @@ margin-top:100px;
 
 header {
   height: 100px;
+  width: 100%;
 }
 .logo {
   width: 310px;
@@ -500,6 +501,7 @@ header {
   letter-spacing: 5px;
   margin-left: 27px;
 }
+
 
 #searchbox-input-wrapper {
   text-align: left;
