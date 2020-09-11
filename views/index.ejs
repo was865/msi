@@ -9,18 +9,17 @@
 
 <body>
 	<header>
-		<div class="container">
-			<div class="header">
+			<div class="header-right">
 				<a href="/"><img class="logo" src="https://msi-net.co.jp/main/wp-content/uploads/2020/01/logo.png"></a>
-				<h1 class="index_title"><span>> </span><%= title %></h1>
-				<div id="searchbox-input-wrapper">
+			</div>
+			<div class="header-left">
+				<h1><span>> </span><%= title %></h1>
+			</div>
+			<div id="searchbox-input-wrapper">
 				<form method="POST" action="/">
 					<input id="searchbox" name="find" type="search" autocomplete="off" spellcheck="false" aria-live="polite" autofocus="" placeholder="&#xf002; <%= finding %>">
 				</form>
-				</div>
 			</div>
-			
-		</div>
 	</header>
 
 

@@ -6,15 +6,7 @@
   margin: 0;
   padding: 0;
 }
-header {
-  height: 65px;
-  width: 100%;
-  background-color: rgba(34, 49, 52, 0.9);
-  position :fixed;
-  top: 0;
-  z-index: 10;
-  margin-bottom: 65px;
-}
+
 html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -29,6 +21,13 @@ body,
 input,
 button {
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+.header-left-login{
+  float: left;
+  color: rgb(245, 245, 245);
+  margin-left: 20px;
+  margin-top: -10px;
 }
 .main_login {
   position: relative;
@@ -135,7 +134,7 @@ button {
   transform: translateY(-3px);
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 900px) {
   .login {
     width: 90%;
     font-size: 40px;
@@ -148,17 +147,18 @@ button {
     top: 0;
     z-index: 10;
   }
-  .logo {
-    float: right;
-    width: 300px;
-    margin:2px 20px;
+
+  .header-left-login {
+    float: left;
   }
-  .index_title {
+  .header-left-login h1 {
+    font-family: 'UD Digi Kyokasho N-R';
     color: #f6f6f6ee;
-    font-size: 40px;
+    font-size: 37px;
+    margin-top: 18.5px;
     letter-spacing: 5px;
-    margin: 22px 0 0 30px;
-}
+    margin-left: 20px;
+  }
 }
 /* @media only screen and (max-width: 1100px) {
   .login {

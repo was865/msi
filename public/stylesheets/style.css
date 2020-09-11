@@ -2,633 +2,639 @@
 
 *{
     box-sizing: border-box;
-  }
-
-.index_title {
-    color: #f6f6f6ee;
-    font-size: 30px;
-    letter-spacing: 5px;
-    margin: 12px 0 0 30px;
-}
-
-  h2 {
-    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-  body {
-    width: 100%;
     margin: 0;
-    font-family: "Hiragino Kaku Gothic ProN";
-    height: 100%;
-    background-image: url(https://msi-net.co.jp/main/wp-content/uploads/2020/01/image5.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: #464646;
-  }
-
-@media only screen and (max-width: 767px) {
-  body {
-    background-image: url(https://msi-net.co.jp/main/wp-content/uploads/2020/01/image5.jpg);
-  }
-}
-  
-
-  #btn_post {
-    margin-top: 15px;
-    width: 75%;
-    position: relative;
-    display: inline-block;
-    font-weight: bold;
-    padding: 8px 10px 5px 10px;
-    text-decoration: none;
-    color: #ffffff;
-    background: #e7853e;
-    border-bottom: solid 4px #ad7006;
-    border-radius: 15px 15px 0 0;
-    transition: .4s;
-  }
-    
-  #btn_post:hover {
-    background: #e9df82;
-    border-bottom: solid 4px #d89012;
-    color: #FFF;
-  }
-
-  #btn_post:active {
-    position: relative;
-    top: 4px;
-    border-bottom: none;
-  }
-
-  #scroll-form-delete {
-    height: 392px;
-  }
-
-  .btn-massage {
-    display: inline-block;
-    margin: 220px 0 120px 0;
-    min-width: 200px;
-    text-align: center;
-    background-color: rgb(231, 37, 37);
-    font-size: 20px;
-    color: #FFF;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 16px 10px 40px;
-    position: relative;
-    transition: .9s;
-    border: 1px solid #FFF;
-  }
-  
-  .btn-massage:before {
-    font-family: "FontAwesome";
-    content: "\f235";
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    margin-top: -10px;
-  }
-  
-  .btn-massage span {
-    display: block;
-    position: absolute;
-    background-color: #d9385f;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 34px;
-    font-size: 14px;
-    line-height: 34px;
-    border-radius: 0 0 8px 0;
-    z-index: -1;
-    transition: .5s;
-  }
-  
-  .btn-massage:hover  {
-    border-radius: 8px 0 0;
-  }
-  
-  .btn-massage:hover span {
-    transform: translateY(48px);
-  }
-
-  .login_info {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    padding-bottom: 420px;
-    transform: translate(-50%, -50%) ;
-    font: 19px "Lucida Grande", bold,Helvetica, Arial, sans-serif;
-  }
-
-  #edit_name {
-    font-family: ＭＳ Ｐ明朝 ;
-    font-size:19px;
-    font-weight:bolder;
-    padding:4px;
-    letter-spacing:3px;
-  }
-  .table_edit {
-    margin: 15px auto 30px auto;
-    font-size: 17px;
-    width: 180px;
-  }
-
-  .table_edit select {
-    font-size: 16px;
-    font-weight: 400;
-    font-family: "UD Digi Kyokasho N-R";
-    width: 100%;
-    height:30px; 
-    padding:5px; 
-    position: relative;
-    background: #f8f8f8;
-    border-radius: 6px;
-    cursor: pointer;
-    vertical-align:bottom; 
-    display:inline-block; 
-    border:1px solid #d3d3d3;
-  }
-
-  .table_edit textarea {
-    font-size: 16px;
-    font-weight: 400;
-    font-family: "UD Digi Kyokasho N-R";
-    border-radius: 6px;
-    border: none;
-    width: 100%;
-  }
-
-
-  .table_edit tr th {
-    background-color: rgb(38, 142, 202);
-    float: center;
-    color: #fff;
-    text-align: center;
-    padding:5px 10px;
-    border-radius: 6px;
-    border:1px solid rgb(51, 142, 194);
-  }
-
-
-  .table_index {
-    border-collapse: collapse;
-    border-spacing: 5px;
-    margin-left:auto;
-    margin-right:auto;
-    width: 100%;
-    height: 100%;
-}
-
-  .table_index tr {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #fff;
-    color: #000;
- }
-
-
-  .table_index th,.table_index td{
-    border-bottom: 1px solid #eee;
-  }
-
-  .table_index th {
-    padding: 10px;
-    font-size: 16px;
-    font-weight: 400;
-    font-family: "UD Digi Kyokasho NP-B";
-    width:auto;
-    color:white;
-    font-size: 17px;
-    text-align: center;
-    background-color: rgb(22, 157, 219);
-    border-radius: 33px 33px 0 0;
-  }
-
-  .table_name {
-    font-weight: bolder;
-  }
-
-  .table_index td{
-    font-family: "UD Digi Kyokasho NP-R";
-    font-size: 16px;
-    text-align: center;
-    border-left: 1px solid #c3c3c3;
-    border-bottom: 1px solid #c3c3c3;
-    border-top:none;
-    box-shadow: 0px -3px 8px 1px #eee inset;
-    padding: 0px 10px;
-  }
-  
-  .table_index tbody:hover td {
-    color: transparent;
-    text-shadow: 0 0 3px #aaa;
-    background:#eee
-  }
-  
-  .table_index 
-    tbody:hover tr:hover td{
-      color: #444;
-      text-shadow: 0 1px 0 #fff;
-      background:#fff
-    }
-
-  .text_add {
-    width: 100%;
-    height: 55%;
-    font-family: "UD Digi Kyokasho NP-R";
-    font-size: 16px;
-    text-align: center;
-    border:none;
-    padding: 0;
-  }
-  .select_add {
-    width: 100%;
-    height: 55%;
-    font-family: "UD Digi Kyokasho NP-R";
-    font-size: 16px;
-    text-align: center;
-    border:none;
-    padding: 0 5px;
-  }
-  .memo_add {
-    width: 100%;
-    height: 55%;
-    font-family: "UD Digi Kyokasho NP-R";
-    font-size: 16px;
-    border:none;
     padding: 0;
   }
 
-  .hide {
-    display: none;
-  }
-
-  .error {
-    color:red;
-  }
-
-  span.login_name {
-      font-weight: bold;
-  }
-
-  header {
-    height: 65px;
-    width: 100%;
-    background-color: rgba(34, 49, 52, 0.9);
-    position :fixed;
-    top: 0;
-    z-index: 10;
-  }
-
-  #searchbox-input-wrapper {
-    text-align: center;
-    width: 100%;
-  }
-  #searchbox {
-    top:14px;
-    font-family: ヒラギノ角ゴ Pro W3,FontAwesome;
-    display: inline-block;
-    margin: 0 0 0 0;
-    height: 38px;
-    width: 26%;
-    border-radius: 22px;
-    position: absolute;
-    box-sizing: border-box;
-    font-size: 16px;
-    border: none;
-    outline: none;
-    padding: 0 10px;
-  }
-
-  .logo {
-    float: right;
-    width: 200px;
-    margin: 5px 12px;
-  }
-
-  .index-form {
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%) ;
-    width: 83%;
-    min-height: 400px;
-    margin: 0 auto 0 auto;
+body {
+  width: 100%;
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN";
+  height: 100%;
+  background-image: url(https://msi-net.co.jp/main/wp-content/uploads/2020/01/image5.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
 }
 
-   .main_index {
-    margin-top:110px;
-    position: relative;
-    background-size: cover;
-    color: white;
-    text-align: center;
-    height: 100%;
+/* header部分 */
+
+header {
+  height: 65px;
+  width: 100%;
+  background-color: rgba(34, 49, 52, 0.9);
+  position :fixed;
+  z-index: 10;
+}
+
+.logo {
+  width: 200px;
+  margin: 15px 20px;
+}
+
+.header-right {
+  float: right;
+  height: 65px;
+  background-color: rgba(255, 255, 255, 0);
+  transition:all 0.5s;
+}
+
+.header-right:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.header-left {
+  float: left;
+}
+
+.header-left h1 {
+  font-family: 'UD Digi Kyokasho N-R';
+  color: #f6f6f6ee;
+  font-size: 32px;
+  margin-top: 14px;
+  letter-spacing: 5px;
+  margin-left: 20px;
+}
+
+#searchbox-input-wrapper {
+  text-align: center;
+  width: 100%;
+}
+#searchbox {
+  font-family: ヒラギノ角ゴ Pro W3,FontAwesome;
+  margin-top: 13.5px;
+  margin-left: 250px;
+  height: 38px;
+  width: 28%;
+  border-radius: 22px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+}
+
+#btn_post {
+  margin-top: 15px;
+  width: 75%;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 8px 10px 5px 10px;
+  text-decoration: none;
+  color: #ffffff;
+  background: #e7853e;
+  border-bottom: solid 4px #ad7006;
+  border-radius: 15px 15px 0 0;
+  transition: .4s;
+}
+  
+#btn_post:hover {
+  background: #e9df82;
+  border-bottom: solid 4px #d89012;
+  color: #FFF;
+}
+
+#btn_post:active {
+  position: relative;
+  top: 4px;
+  border-bottom: none;
+}
+
+#scroll-form-delete {
+  height: 392px;
+}
+
+.btn-massage {
+  display: inline-block;
+  margin: 220px 0 120px 0;
+  min-width: 200px;
+  text-align: center;
+  background-color: rgb(231, 37, 37);
+  font-size: 20px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 16px 10px 40px;
+  position: relative;
+  transition: .9s;
+  border: 1px solid #FFF;
+}
+
+.btn-massage:before {
+  font-family: "FontAwesome";
+  content: "\f235";
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  margin-top: -10px;
+}
+
+.btn-massage span {
+  display: block;
+  position: absolute;
+  background-color: #d9385f;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 34px;
+  font-size: 14px;
+  line-height: 34px;
+  border-radius: 0 0 8px 0;
+  z-index: -1;
+  transition: .5s;
+}
+
+.btn-massage:hover  {
+  border-radius: 8px 0 0;
+}
+
+.btn-massage:hover span {
+  transform: translateY(48px);
+}
+
+.index-form {
+  width: 83%;
+  min-height: 400px;
+  margin: 0 auto 0 auto;
+}
+
+.main_index {
+  top:100px;
+  position: relative;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  height: 100%;
+}
+
+.main_edit {
+  background-size: cover;
+  color: white;
+  text-align: center;
+  height: 1100px;
+}
+
+.login_info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  padding-bottom: 420px;
+  transform: translate(-50%, -50%) ;
+  font: 19px "Lucida Grande", bold,Helvetica, Arial, sans-serif;
+}
+
+#edit_name {
+  font-family: ＭＳ Ｐ明朝 ;
+  font-size:19px;
+  font-weight:bolder;
+  padding:4px;
+  letter-spacing:3px;
+}
+.table_edit {
+  margin: 15px auto 30px auto;
+  font-size: 17px;
+  width: 180px;
+}
+.table_edit select {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "UD Digi Kyokasho N-R";
+  width: 100%;
+  height:30px; 
+  padding:5px; 
+  position: relative;
+  background: #f8f8f8;
+  border-radius: 6px;
+  cursor: pointer;
+  vertical-align:bottom; 
+  display:inline-block; 
+  border:1px solid #d3d3d3;
+}
+.table_edit textarea {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "UD Digi Kyokasho N-R";
+  border-radius: 6px;
+  border: none;
+  width: 100%;
+}
+.table_edit tr th {
+  background-color: rgb(38, 142, 202);
+  float: center;
+  color: #fff;
+  text-align: center;
+  padding:5px 10px;
+  border-radius: 6px;
+  border:1px solid rgb(51, 142, 194);
+}
+
+
+.table_index {
+  border-collapse: collapse;
+  border-spacing: 5px;
+  margin-left:auto;
+  margin-right:auto;
+  width: 100%;
+  height: 100%;
+}
+.table_index tr {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #fff;
+  color: #000;
+}
+.table_index th,.table_index td{
+  border-bottom: 1px solid #eee;
+}
+.table_index th {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "UD Digi Kyokasho NP-B";
+  width:auto;
+  color:white;
+  font-size: 17px;
+  text-align: center;
+  background-color: rgb(22, 157, 219);
+  border-radius: 33px 33px 0 0;
+}
+.table_name {
+  font-weight: bolder;
+}
+.table_index td{
+  font-family: "UD Digi Kyokasho NP-R";
+  font-size: 16px;
+  text-align: center;
+  border-left: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
+  border-top:none;
+  box-shadow: 0px -3px 8px 1px #eee inset;
+  padding: 0px 10px;
+}
+.table_index tbody:hover td {
+  color: transparent;
+  text-shadow: 0 0 3px #aaa;
+  background:#eee
+}
+.table_index 
+  tbody:hover tr:hover td{
+    color: #444;
+    text-shadow: 0 1px 0 #fff;
+    background:#fff
   }
 
-  .main_edit {
-    background-size: cover;
-    color: white;
-    text-align: center;
-    height: 1100px;
-  }
+.text_add {
+  width: 100%;
+  height: 55%;
+  font-family: "UD Digi Kyokasho NP-R";
+  font-size: 16px;
+  text-align: center;
+  border:none;
+  padding: 0;
+}
+.select_add {
+  width: 100%;
+  height: 55%;
+  font-family: "UD Digi Kyokasho NP-R";
+  font-size: 16px;
+  text-align: center;
+  border:none;
+  padding: 0 5px;
+}
+.memo_add {
+  width: 100%;
+  height: 55%;
+  font-family: "UD Digi Kyokasho NP-R";
+  font-size: 16px;
+  border:none;
+  padding: 0;
+}
 
-  .editing_name {
-    font-size:15px;
-    float: center;
-    padding-top:130px;
-  }
+.hide {
+  display: none;
+}
 
-  *,
-  *:before,
-  *:after {
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
-  }
-  
-  html {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    height: 100%;
-  }
-  
-  .btn,
-  a.btn,
-  button.btn {
-    opacity: 0.6;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.5;
-    position: relative;
-    display: inline-block;
-    padding: 4px 20px;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-transition: all 0.2s;
-    transition: all 0.2s;
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    letter-spacing: 2px;
-    color: #212529;
-    border-radius: 5px;
-  }
-  
-  /*背景*/
-  .btn-wrap {
-    margin: 10px 0;
-  }
-  
-  a.btn-switch {
-    color: #333;
-    border: 1px solid #ddd;
-    border-radius: 100vh;
-    background: #fbfbfc;
-    background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(#fbfbfc),
-      to(#dcddde)
-    );
-    background: -webkit-linear-gradient(top, #fbfbfc 0%, #dcddde 100%);
-    background: linear-gradient(180deg, #fbfbfc 0%, #dcddde 100%);
-    -webkit-box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2), 3px 3px 5px white,
-      0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1);
-    box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2), 3px 3px 5px white,
-      0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  a.btn-switch span {
-    display: inline-block;
-  
-    -webkit-transition: all 0.1s;
-  
-    transition: all 0.1s;
-  }
-  
-  a.btn-switch:hover {
-    -webkit-box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2), 3px 3px 5px white,
-      0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1),
-      inset 0 3px 3px rgba(0, 0, 0, 0.18);
-    box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2), 3px 3px 5px white,
-      0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1),
-      inset 0 3px 3px rgba(0, 0, 0, 0.18);
-      opacity: 1;
-  }
-  
-  a.btn-switch:hover span {
-    -webkit-transform: scale(0.96);
-    transform: scale(0.96);
-  }
+.error {
+  color:red;
+}
 
-  a.btn-switch:active span {
-    -webkit-transform: scale(0.9);
-    transform: scale(0.9);
-  }
+span.login_name {
+    font-weight: bold;
+}
 
 
-  .backhome {
-    margin-top: 15px;
-    position: relative;
-    display: inline-block;
-    color: rgba(55, 230, 221, 0.877);
-    text-decoration: none;
-  }
-  .backhome:hover {
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .backhome::after {
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: rgb(29, 136, 131);
-    opacity: 0;
-    visibility: hidden;
-    transition: .3s;
-  }
-  .backhome:hover::after {
-    bottom: -4px;
+.editing_name {
+  font-size:15px;
+  float: center;
+  padding-top:130px;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.btn,
+a.btn,
+button.btn {
+  opacity: 0.6;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 4px 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 2px;
+  color: #212529;
+  border-radius: 5px;
+}
+
+/*背景*/
+.btn-wrap {
+  margin: 10px 0;
+}
+
+a.btn-switch {
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 100vh;
+  background: #fbfbfc;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#fbfbfc),
+    to(#dcddde)
+  );
+  background: -webkit-linear-gradient(top, #fbfbfc 0%, #dcddde 100%);
+  background: linear-gradient(180deg, #fbfbfc 0%, #dcddde 100%);
+  -webkit-box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2), 3px 3px 5px white,
+    0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2), 3px 3px 5px white,
+    0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1);
+}
+
+a.btn-switch span {
+  display: inline-block;
+
+  -webkit-transition: all 0.1s;
+
+  transition: all 0.1s;
+}
+
+a.btn-switch:hover {
+  -webkit-box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2), 3px 3px 5px white,
+    0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1),
+    inset 0 3px 3px rgba(0, 0, 0, 0.18);
+  box-shadow: -1px -5px 6px rgba(0, 0, 0, 0.2), 3px 3px 5px white,
+    0 10px 10px rgba(0, 0, 0, 0.1), inset 0 -4px 5px rgba(0, 0, 0, 0.1),
+    inset 0 3px 3px rgba(0, 0, 0, 0.18);
     opacity: 1;
-    visibility: visible;
-  }
-  
+}
+
+a.btn-switch:hover span {
+  -webkit-transform: scale(0.96);
+  transform: scale(0.96);
+}
+
+a.btn-switch:active span {
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+
+.backhome {
+  margin-top: 15px;
+  position: relative;
+  display: inline-block;
+  color: rgba(55, 230, 221, 0.877);
+  text-decoration: none;
+}
+.backhome:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+.backhome::after {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: rgb(29, 136, 131);
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+}
+.backhome:hover::after {
+  bottom: -4px;
+  opacity: 1;
+  visibility: visible;
+}
+
 
 .space {
-  margin-top:100px;
+margin-top:100px;
 }
 
 
 @media only screen and (max-width: 1200px) { 
-  
-  .mobile-hide {
-    display:none;
-  }
 
-  header {
-    height: 100px;
-    width: 100%;
-    background-color: rgba(34, 49, 52, 0.9);
-    position :fixed;
-    top: 0;
-    z-index: 10;
-  }
-  .logo {
-    float: right;
-    width: 300px;
-    margin:2px 20px;
-  }
-  .index_title {
-    color: #f6f6f6ee;
-    font-size: 40px;
-    letter-spacing: 5px;
-    margin: 22px 0 0 30px;
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-  .main_index {
-    margin-top:100px;
-  }
-/*   .main_edit {
-    height:100%;
-  } */
-  
-  .index-form {
-    width: 98%;
-    margin-top:70px;
-  }
-  .table_index th{
-    font-family: "UD Digi Kyokasho NK-B";
-    border-radius: 0;
-    font-size: 23px;
-  }
-  .table_name {
-    font-weight: bolder;
-  }
-  .table_index td {
-    font-family: "UD Digi Kyokasho N-R";
-    font-size: 28px;
-    padding:0 1px;
-    width: 400px;
-  }
-  .table_name {
-    font-weight: bold;
-  }
-  
-  .editing_name {
-    font-size:33px;
-    float: center;
-    padding-top:130px;
-    padding-bottom:8px;
-  }
-   #edit_name {
-    font-family: ＭＳ Ｐ明朝 ;
-    font-size:42px;
-    font-weight:bolder;
-    padding:4px;
-    letter-spacing:5px;
-  }
-  .table_edit {
-    width: 95%;
-    font-size: 40px;
-  }
-  .table_edit th {
-    font-size:40px;
-    width: 100%;
-  }
-  .table_edit select {
-    font-size: 40px;
-    font-weight: 400;
-    font-family: "UD Digi Kyokasho N-R";
-    font-weight: 400;
-    height:80px;
-  }
-  
-  .table_edit textarea{
-    height:200px;
-    font-size:40px;
-    width: 100%;
-  }
-  .backhome {
-    margin:50px;
-    font-size: 40px;
-  }
-  .btn,
-  a.btn,
-  button.btn {
-    font-size: 26px;
-  }
-  .space {
-    margin-top:0;
-  }
-  .login {
-    padding:0px
-  }
-  #searchbox-input-wrapper {
-    text-align: left;
-  }
-  #searchbox {
-    font-family: ヒラギノ角ゴ Pro W3,FontAwesome;
-    display: inline-block;
-    top:110px;
-    height: 50px;
-    width: 95%;
-    margin-left:2.5%;
-    border-radius: 22px;
-    position: absolute;
-    box-sizing: border-box;
-    font-size: 20px;
-    border: none;
-    outline: none;
-    padding: 0 8px;
-  }
-  
-  .btn-massage {
-    display: inline-block;
-    margin: 220px 0 120px 0;
-    min-width: 220px;
-    text-align: center;
-    background-color: rgb(231, 37, 37);
-    font-size: 40px;
-    color: #FFF;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 15px 70px 15px 140px;
-    position: relative;
-    transition: .9s;
-    border: 1px solid #FFF;
-  }
-  .btn-massage:before {
-    font-family: "FontAwesome";
-    content: "\f235";
-    position: absolute;
-    left: 30px;
-    top: 39%;
-    margin-top: -10px;
-  }
-  .btn-massage:hover span {
-    transform: translateY(88px);
-  }
-  .btn-massage span {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    font-size: 25px;
-    line-height: 50px;
-    border-radius: 0 0 8px 0;
-    z-index: -1;
-    transition: .5s;
-  }
+
+.mobile-hide {
+  display:none;
+}
+
+header {
+  height: 80px;
+}
+.logo {
+  width: 250px;
+  margin: 18.125px;
+}
+.header-right {
+  float: right;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0);
+  transition:all 0.5s;
+}
+.header-right:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.header-left {
+  float: left;
+}
+.header-left h1 {
+  font-family: 'UD Digi Kyokasho N-R';
+  color: #f6f6f6ee;
+  font-size: 37px;
+  margin-top: 18.5px;
+  letter-spacing: 5px;
+  margin-left: 20px;
+}
+
+#searchbox-input-wrapper {
+  text-align: left;
+  width: 100%;
+}
+#searchbox {
+  font-family: ヒラギノ角ゴ Pro W3,FontAwesome;
+  display: inline-block;
+  top:90px;
+  height: 55px;
+  width: 95%;
+  margin-top: 10px;
+  margin-left:2.5%;
+  border-radius: 22px;
+  box-sizing: border-box;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  padding: 0 12px;
+}
+
+.main_index {
+  top:155px;
+  position: relative;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  height: 100%;
+}
+.index-form {
+  width: 98%;
+}
+.table_index th{
+  font-family: "UD Digi Kyokasho NK-B";
+  border-radius: 0;
+  font-size: 23px;
+}
+.table_name {
+  font-weight: bolder;
+}
+.table_index td {
+  font-family: "UD Digi Kyokasho N-R";
+  font-size: 28px;
+  padding:0 1px;
+  width: 400px;
+}
+.table_name {
+  font-weight: bold;
+}
+
+.editing_name {
+  font-size:33px;
+  float: center;
+  padding-top:130px;
+  padding-bottom:8px;
+}
+  #edit_name {
+  font-family: ＭＳ Ｐ明朝 ;
+  font-size:42px;
+  font-weight:bolder;
+  padding:4px;
+  letter-spacing:5px;
+}
+.table_edit {
+  width: 95%;
+  font-size: 40px;
+}
+.table_edit th {
+  font-size:40px;
+  width: 100%;
+}
+.table_edit select {
+  font-size: 40px;
+  font-weight: 400;
+  font-family: "UD Digi Kyokasho N-R";
+  font-weight: 400;
+  height:80px;
+}
+
+.table_edit textarea{
+  height:200px;
+  font-size:40px;
+  width: 100%;
+}
+.backhome {
+  margin:50px;
+  font-size: 40px;
+}
+.btn,
+a.btn,
+button.btn {
+  font-size: 26px;
+}
+.space {
+  margin-top:0;
+}
+.login {
+  padding:0px
+}
+
+.btn-massage {
+  display: inline-block;
+  margin: 220px 0 120px 0;
+  min-width: 220px;
+  text-align: center;
+  background-color: rgb(231, 37, 37);
+  font-size: 40px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 15px 70px 15px 140px;
+  position: relative;
+  transition: .9s;
+  border: 1px solid #FFF;
+}
+.btn-massage:before {
+  font-family: "FontAwesome";
+  content: "\f235";
+  position: absolute;
+  left: 30px;
+  top: 39%;
+  margin-top: -10px;
+}
+.btn-massage:hover span {
+  transform: translateY(88px);
+}
+.btn-massage span {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  font-size: 25px;
+  line-height: 50px;
+  border-radius: 0 0 8px 0;
+  z-index: -1;
+  transition: .5s;
+}
 
 }
