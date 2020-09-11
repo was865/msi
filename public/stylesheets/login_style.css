@@ -70,9 +70,10 @@ button {
 }
 .login .heading {
   text-align: center;
-  margin-top: 1%;
+  margin-top: 2%;
 }
 .login .heading h2 {
+  margin-bottom: 0.4em;
   font-size: 3em;
   font-weight: 300;
   color: rgba(255,255,255,0.7);
@@ -93,7 +94,7 @@ button {
   border: none;
 }
 .login form .input-group span i {
-  font-size: 1.5em;
+  font-size: 1.4em;
   color: rgba(255,255,255,0.2);
 }
 .login form input.form-control {
@@ -115,7 +116,7 @@ button {
   border: none;
 }
 .login form button {
-  margin-top: 20px;
+  margin-top: 0.5em;
   background: #27ae60;
   border: none;
   font-size: 1.5em;
@@ -172,6 +173,25 @@ button {
     margin-top: 32.5px;
     letter-spacing: 5px;
     margin-left: 27px;
+  }
+  .login form .input-group span i {
+    font-size: 1.4em;
+    color: rgba(255,255,255,0.2);
+  }
+  .login form input.form-control {
+    display: block;
+    width: auto;
+    height: auto;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: none;
+    border-radius: 0px;
+    padding: 10px;
+    font-size: 1.4em;
+    width: 100%;
+    background: transparent;
+    color: #c2b8b1;
   }
 }
 
