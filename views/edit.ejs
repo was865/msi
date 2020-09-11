@@ -315,7 +315,7 @@
 			// })
 
 			$('#btn_delete').click(function(){
-				if (!confirm('\n"<%= content.name %>"の関連データはすべて削除されます。\n\nよろしいですか？')) {
+				if (!confirm('\n<%= content.department %>〝<%= content.name %>″の関連データはすべて削除されます。\n\nよろしいですか？')) {
 					return false;
 				} else {
 					return true;
@@ -324,21 +324,45 @@
 
 			var deleteBtn = $('#delete_content');    
 				deleteBtn.hide();
-
-			$(window).on('scroll', function () {
-				var doch = $(document).innerHeight(); //ページ全体の高さ
-				var winh = $(window).innerHeight(); //ウィンドウの高さ
-				var bottom = doch - winh; //ページ全体の高さ - ウィンドウの高さ = ページの最下部位置
-				if (bottom <= $(window).scrollTop()) {
+      
+			var ua = navigator.userAgent;
+			if ((ua.indexOf('iPhone') >  0 || ua.indexOf('Android') >  0) && ua.indexOf('Mobile') >  0) {
+				// スマートフォン用処理
+				$('#scroll-form-delete').hide();
+			} 
+			// else if (ua.indexOf('ipad') > 0 || ua.indexOf('macintosh') > 0 || ua.indexOf('Android') >  0) {
+            //   // タブレット用処理(効かない)
+            // $('#scroll-form-delete').hide();
+            // $(window).on('scroll', function () {
+            //     var doch = $(document).innerHeight(); //ページ全体の高さ
+            //     var winh = $(window).innerHeight(); //ウィンドウの高さ
+            //     var bottom = doch - winh; //ページ全体の高さ - ウィンドウの高さ = ページの最下部位置
+            //     if (bottom -200 <= $(window).scrollTop()) {
+            //       console.log(doch);
+            //       console.log(winh);
+            //     //一番下までスクロールした時に実行
+            //       deleteBtn.fadeIn();
+            //     } else {
+            //       deleteBtn.fadeOut();
+            //     }
+            //   });
+            // } 
+			else {
+				// PC用処理
+				$(window).on('scroll', function () {
+					var doch = $(document).innerHeight(); //ページ全体の高さ
+					var winh = $(window).innerHeight(); //ウィンドウの高さ
+					var bottom = doch - winh; //ページ全体の高さ - ウィンドウの高さ = ページの最下部位置
+					if (bottom　<= $(window).scrollTop()) {
 					console.log(doch);
 					console.log(winh);
-				//一番下までスクロールした時に実行
+					//一番下までスクロールした時に実行
 					deleteBtn.fadeIn();
-					
-				} else {
+					} else {
 					deleteBtn.fadeOut();
-				}
-			});
+					}
+				});
+			}
 
 				// var deleteBtn = $('#delete_content');    
 				// deleteBtn.hide();
