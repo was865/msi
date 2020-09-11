@@ -6,13 +6,19 @@
   margin: 0;
   padding: 0;
 }
-
 html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   height: 100%;
+}
+header {
+  height: 65px;
+  width: 100%;
+  background-color: rgba(34, 49, 52, 0.9);
+  position :fixed;
+  z-index: 10;
 }
 body {
   background: transparent;
@@ -23,11 +29,19 @@ button {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.header-left-login{
+.header-left-login {
   float: left;
   color: rgb(245, 245, 245);
   margin-left: 20px;
   margin-top: -10px;
+}
+.header-left-login h1 {
+  font-family: "BIZ UDPゴシック","BIZ UDPGothic"; font-weight: bold;
+  color: #f6f6f6ee;
+  font-size: 30px;
+  letter-spacing: 4px;
+  margin-top: 26px;
+  margin-left: 20px;
 }
 .main_login {
   position: relative;
@@ -160,6 +174,7 @@ button {
     margin-left: 27px;
   }
 }
+
 /* @media only screen and (max-width: 1100px) {
   .login {
     margin-top: 2%;
