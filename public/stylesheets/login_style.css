@@ -161,6 +161,15 @@ button {
 /* スマホ向け */
 
 @media only screen and (max-width: 1200px) {
+  
+  header {
+    height: 100px;
+    width: 100%;
+    background-color: rgba(34, 49, 52, 0.9);
+    position :fixed;
+    top: 0;
+    z-index: 10;
+  }
   .login {
     width: 90%;
     font-size: 45px;
@@ -174,15 +183,6 @@ button {
     transform: translate(-50%, -50%) ;
     font: 40px "UD Digi Kyokasho N-R";
   }
-  header {
-    height: 100px;
-    width: 100%;
-    background-color: rgba(34, 49, 52, 0.9);
-    position :fixed;
-    top: 0;
-    z-index: 10;
-  }
-
   .header-left-login {
     float: left;
   }
@@ -193,6 +193,9 @@ button {
     margin-top: 32.5px;
     letter-spacing: 5px;
     margin-left: 27px;
+  }
+  .login form .input-group span i {
+    font-size: 2.8em;
   }
 }
 

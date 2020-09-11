@@ -497,7 +497,7 @@ header {
   font-family: "游教科書体","YuKyokasho"; font-weight: bold;
   color: #f6f6f6ee;
   font-size: 40px;
-  margin-top: 27px;
+  margin-top: 17.5px;
   letter-spacing: 5px;
   margin-left: 27px;
 }
@@ -597,9 +597,6 @@ button.btn {
 }
 .space {
   margin-top:0;
-}
-.login {
-  padding:0px
 }
 
 .btn-massage {
