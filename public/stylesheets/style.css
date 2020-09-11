@@ -33,16 +33,6 @@
     background-image: url(https://msi-net.co.jp/main/wp-content/uploads/2020/01/image5.jpg);
   }
 }
-
-  p {
-    font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
-    margin: 0px 20px;
-  }
-
-  pre {
-      background-color: #f6f6f6;
-      padding: 10px 20px;
-  }
   
 
   #btn_post {
@@ -70,6 +60,10 @@
     position: relative;
     top: 4px;
     border-bottom: none;
+  }
+
+  #scroll-form-delete {
+    height: 392px;
   }
 
   .btn-massage {
@@ -323,7 +317,7 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%) ;
-    width: 80%;
+    width: 83%;
     min-height: 400px;
     margin: 0 auto 0 auto;
 }
@@ -471,46 +465,11 @@
     visibility: visible;
   }
   
-  /* .backhome:before {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 2px;
-    top:100%;
-    left: 0;
-    border-radius: 3px;
-    background:#67c5ff;
-    transition: .2s;
-  }
-  
-  .backhome:hover:before {
-    top: -webkit-calc(100% - 3px);
-    top: calc(100% - 3px);
-    
-  } */
 
 .space {
   margin-top:100px;
 }
 
-
-/* @media only screen and (max-width: 1200px) {
-
-  .index-form {
-    width: 90%;
-  }
-  .table_index td {
-    margin-top: 1%;
-    width: 550px;
-    font-size: 15px;
-    padding:0 2px;
-  }
-  .table_edit {
-    width: 60%;
-    font-size: larger;
-  }
-
-} */
 
 @media only screen and (max-width: 1200px) { 
   
@@ -601,7 +560,7 @@
     width: 100%;
   }
   .backhome {
-    margin-top:50px;
+    margin:50px;
     font-size: 40px;
   }
   .btn,

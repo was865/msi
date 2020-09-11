@@ -241,7 +241,7 @@
 		</form>
 		<p><a href="/" class="backhome">>> 一覧に戻る</a></p>
 	
-	<form method="POST" action="/edit/<%= content.id %>/delete" name="form_delete" style="height: 392px;">
+	<form method="POST" action="/edit/<%= content.id %>/delete" name="form_delete" id="scroll-form-delete">
 		<input type="hidden" name="id" value="<%= content.id %>">
 		<div id="delete_content">
 			<a href="javascript:form_delete.submit()" class="btn-massage" id="btn_delete">
