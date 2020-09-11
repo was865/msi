@@ -473,15 +473,15 @@ margin-top:100px;
 }
 
 header {
-  height: 80px;
+  height: 100px;
 }
 .logo {
-  width: 250px;
-  margin: 18.125px;
+  width: 310px;
+  margin: 22.875px;
 }
 .header-right {
   float: right;
-  height: 80px;
+  height: 100px;
   background-color: rgba(255, 255, 255, 0);
   transition:all 0.5s;
 }
@@ -494,10 +494,10 @@ header {
 .header-left h1 {
   font-family: 'UD Digi Kyokasho N-R';
   color: #f6f6f6ee;
-  font-size: 37px;
-  margin-top: 18.5px;
+  font-size: 40px;
+  margin-top: 27px;
   letter-spacing: 5px;
-  margin-left: 20px;
+  margin-left: 27px;
 }
 
 #searchbox-input-wrapper {
@@ -521,7 +521,7 @@ header {
 }
 
 .main_index {
-  top:155px;
+  top:175px;
   position: relative;
   background-size: cover;
   color: white;

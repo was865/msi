@@ -134,7 +134,7 @@ button {
   transform: translateY(-3px);
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1200px) {
   .login {
     width: 90%;
     font-size: 40px;
@@ -154,10 +154,10 @@ button {
   .header-left-login h1 {
     font-family: 'UD Digi Kyokasho N-R';
     color: #f6f6f6ee;
-    font-size: 37px;
-    margin-top: 18.5px;
+    font-size: 50px;
+    margin-top: 32.5px;
     letter-spacing: 5px;
-    margin-left: 20px;
+    margin-left: 27px;
   }
 }
 /* @media only screen and (max-width: 1100px) {
