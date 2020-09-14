@@ -221,7 +221,6 @@ router.post('/newuser', (req,res,next) => {
     name: req.body.name,
     password: req.body.password,
   }
-  console.log('新規登録ユーザー' + rec);
 
   new Userdata(rec).save().then((model) => {
     res.redirect('/');
