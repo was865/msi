@@ -217,7 +217,7 @@ router.post('/add', (req,res,next) => {
 router.post('/newuser', (req,res,next) => {
 
   var rec = {
-    department: department,
+    department: req.body.department,
     name: req.body.name,
     password: req.body.password,
   }
