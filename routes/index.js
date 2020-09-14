@@ -228,9 +228,51 @@ router.post('/newuser', (req,res,next) => {
 
 });
 
+router.post('/newkyakusaki', (req,res,next) => {
+
+  console.log(req.body);
+
+  new kyakusakidata().fetchAll().then(function (Data) {
+    Data.forEach(function (model) {
+      console.log(model.attributes);
+    })
+    // for (i in Data) {
+      
+    //   // model.where('id','=','req.body.id+1')
+    //   //   .save()
+    //   console.log('データはここから' + Data[i]);
+    // }
+  })
+  
+
+  var rec = {
+    kyakusaki: req.body.newkyakusaki,
+  }
+  new kyakusakidata(rec).save().then((model) => {
+    res.redirect('/');
+  });
+
+});
+
+router.post('/newshanai', (req,res,next) => {
+
+  var rec = {
+    shanai: req.body.shanai,
+  }
+
+  new shanaidata(rec).save().then((model) => {
+    res.redirect('/');
+  });
+
+});
+
+
+
 router.get('/logout', function(req, res){
   req.session.login = null;
   res.redirect('/login');
 });
+
+
 
 module.exports = router;

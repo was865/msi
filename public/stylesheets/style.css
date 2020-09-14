@@ -65,7 +65,7 @@ header {
   cursor : pointer;
 }
 ul {
-  width: 182px;
+  width: 225px;
   background-color: rgba(52, 77, 82, 0.8);
   display: none;
 }
@@ -140,17 +140,17 @@ li a {
   cursor: pointer;
 }
 
-#signup-form {
+#signup-form, #addkyakusaki-form, #addshanai-form {
   width: 100%;
 }
 
-#signup-form h2 {
+#signup-form h2, #addkyakusaki-form h2, #addshanai-form h2 {
   color: #5f5d60;
   letter-spacing: 1px;
   margin-bottom: 40px;
 }
 
-#signup-form input {
+#signup-form input, #addkyakusaki-form input, #addshanai-form input {
   width: 320px;
   margin-bottom: 20px;
   font-size: 12px;
@@ -159,7 +159,7 @@ li a {
   border-radius: 5px;
 }
 
-#btn_newuser {
+#btn_newuser,  #btn_newkyakusaki, #btn_newshanai {
   display: inline-block;
   padding: 14px 140px;
   background-color: #56bed8;
@@ -170,6 +170,7 @@ li a {
   cursor: pointer;
   text-decoration: none;
 }
+
 
 /* editページ */
 
