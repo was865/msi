@@ -214,4 +214,24 @@ router.post('/add', (req,res,next) => {
 
 });
 
+router.post('/newuser', (req,res,next) => {
+
+  var rec = {
+    department: department,
+    name: req.body.name,
+    password: req.body.password,
+  }
+  console.log('新規登録ユーザー' + rec);
+
+  new Userdata(rec).save().then((model) => {
+    res.redirect('/');
+  });
+
+});
+
+router.get('/logout', function(req, res){
+  req.session.login = null;
+  res.redirect('/login');
+});
+
 module.exports = router;
