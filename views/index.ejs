@@ -15,9 +15,9 @@
 			<div class="header-left">
 						<h1><span><i class="fa fa-bars" aria-hidden="true"></i></span><%= title %></h1>
 						<ul class="downlist">
-							<li><span><i class="fa fa-user-plus" aria-hidden="true"></i></span><a href="#" class="create_user">新規登録</a></li>
-							<li><span><i class="fa fa-building" aria-hidden="true"></i></span><a href="#" class="create_kyakusaki">新規客先追加</a></li>
-							<li><span><i class="fa fa-location-arrow" aria-hidden="true"></i></span><a href="#" class="create_shanai">新規社内追加</a></li>
+							<li><span><i class="fa fa-user-plus" aria-hidden="true"></i></span><a href="#" class="create_user">社員新規登録</a></li>
+							<li><span><i class="fa fa-building" aria-hidden="true"></i></span><a href="#" class="create_kyakusaki">客先管理＆新規</a></li>
+							<li><span><i class="fa fa-location-arrow" aria-hidden="true"></i></span><a href="#" class="create_shanai">社内管理＆新規</a></li>
 							<li><span><i class="fa fa-sign-out" aria-hidden="true"></i></span><a href="/logout" class="logout">ログアウト</a></li>
 						</ul>
 			</div>
@@ -56,9 +56,10 @@
 		  </div>
 		  <div id="addkyakusaki-form">
 			<h2>新規客先を登録</h2>
-			<form name="form_newkyakusaki" method="POST" action="/newkyakusaki">
-				<% for (i in datakyakusaki) {  %><input name="kyakusaki<%= i %>" type="text" value="<%= datakyakusaki[i].attributes.kyakusaki %>"><input type="hidden" name="id" value="<%= i %>"><%  } %>
+			<form id="form_newkyakusaki" name="form_newkyakusaki" method="POST" action="/newkyakusaki">
+				<% var i;for (i in datakyakusaki) {  %><input name="kyakusaki" type="text" value="<%= datakyakusaki[i].attributes.kyakusaki %>"><input type="hidden" name="id" value="<%= datakyakusaki[i].attributes.id %>"><% } %><input name="cnt" value="<%= i %>" type="hidden">
 			  <input id="create_kyakusaki" name="newkyakusaki" class="form-control" type="text" placeholder="新客先を追加">
+			  
 			  <a href="javascript:form_newkyakusaki.submit()" id="btn_newkyakusaki">登録</a>
 			</form>
 		  </div>

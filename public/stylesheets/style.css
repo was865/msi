@@ -65,7 +65,7 @@ header {
   cursor : pointer;
 }
 ul {
-  width: 225px;
+  width: 248px;
   background-color: rgba(52, 77, 82, 0.8);
   display: none;
 }
@@ -125,7 +125,7 @@ li a {
   margin-right: -50%;
   transform: translate(-50%, -50%) ;
   background-color: #e6ecf0;
-  padding: 20px 0 40px;
+  padding: 30px 0 40px;
   border-radius: 10px;
   width: 450px;
   height: auto;
@@ -139,6 +139,9 @@ li a {
   color: rgba(128, 128, 128, 0.46);
   cursor: pointer;
 }
+.fa-times:hover {
+  color: rgba(0, 0, 0, 0.603);
+}
 
 #signup-form, #addkyakusaki-form, #addshanai-form {
   width: 100%;
@@ -147,12 +150,12 @@ li a {
 #signup-form h2, #addkyakusaki-form h2, #addshanai-form h2 {
   color: #5f5d60;
   letter-spacing: 1px;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 }
 
 #signup-form input, #addkyakusaki-form input, #addshanai-form input {
   width: 320px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 12px;
   padding: 12px 12px;
   border: 1px solid #d0d5d8;
@@ -169,6 +172,9 @@ li a {
   margin: 10px auto;
   cursor: pointer;
   text-decoration: none;
+}
+#btn_newuser:hover,  #btn_newkyakusaki:hover, #btn_newshanai:hover {
+  background-color: #33b4d4;
 }
 
 
@@ -353,7 +359,7 @@ li a {
 }
 .table_index th {
   padding: 10px;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 400;
   font-family: "UD Digi Kyokasho NP-B";
   width:auto;
@@ -368,7 +374,7 @@ li a {
 }
 .table_index td{
   font-family: "UD Digi Kyokasho NP-R";
-  font-size: 16px;
+  font-size: 17px;
   text-align: center;
   border-left: 1px solid #c3c3c3;
   border-bottom: 1px solid #c3c3c3;

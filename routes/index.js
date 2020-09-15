@@ -228,30 +228,63 @@ router.post('/newuser', (req,res,next) => {
 
 });
 
+// test SQL
+// var db = new sqlite3.Database('ikisaki.sqlite3')
+// router.post('/newkyakusaki', (req,res,next) => {
+//   db.serialize(()=> {
+//     var cnt = req.body.cnt;
+//     console.log("回数は" + cnt);
+//     for (var i=0; i<=cnt; i++ ) {
+//       var kyakusaki = req.body.kyakusaki[i];
+//       console.log("変更する客先: " + kyakusaki);
+
+//       var id = req.body.id[i];
+//       console.log("変更先ID: " + id);
+
+//       var q = 'UPDATE kyakusaki_list SET kyakusaki = ?  WHERE id = ?';
+//       db.run(q, kyakusaki, id);
+//     }
+//     if (req.body.newkyakusaki == '') {
+//       res.redirect('/');
+//     } else {
+//       var newkyakusaki = req.body.newkyakusaki;
+//       console.log("追加" + newkyakusaki);
+//       db.run('INSERT INTO kyakusaki_list (kyakusaki) values (?)',newkyakusaki);
+//       res.redirect('/');
+//     }
+//   })
+
+// })
+// test over
+
 router.post('/newkyakusaki', (req,res,next) => {
 
   console.log(req.body);
 
-  new kyakusakidata().fetchAll().then(function (Data) {
-    Data.forEach(function (model) {
-      console.log(model.attributes);
-    })
-    // for (i in Data) {
-      
-    //   // model.where('id','=','req.body.id+1')
-    //   //   .save()
-    //   console.log('データはここから' + Data[i]);
-    // }
-  })
-  
+  var cnt = req.body.cnt;
+  console.log("回数は" + cnt);
+    for (var i=0; i<=cnt; i++) {
+      var update = {
+        kyakusaki: req.body.kyakusaki[i]
+      }
+      console.log("更新する客先：" + update);
+      new kyakusakidata({id: req.body.id[i]})
+        .save(update ,{patch: true})
+        .then((result) => {
+          console.log("結果は" + result);
+        });
+    }
 
-  var rec = {
-    kyakusaki: req.body.newkyakusaki,
-  }
-  new kyakusakidata(rec).save().then((model) => {
-    res.redirect('/');
-  });
-
+    if ( ("" + req.body.newkyakusaki).length == 0 ) {
+      res.redirect('/');
+    } else { 
+      var rec = {
+        kyakusaki: req.body.newkyakusaki
+      }
+      new kyakusakidata(rec).save().then((model) => {
+        res.redirect('/');
+      });
+    }
 });
 
 router.post('/newshanai', (req,res,next) => {
