@@ -264,7 +264,7 @@ li a {
 .index-form {
   width: 83%;
   min-height: 400px;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
 }
 
 .main_index {
@@ -614,9 +614,10 @@ header {
   transition:all 0.5s;
 }
 ul {
-  width: 340px;
+  width: 370px;
   background-color: rgba(52, 77, 82, 0.8);
   display: none;
+  z-index:20;
 }
 li {
   font-family: "BIZ UDPゴシック","BIZ UDPGothic";
@@ -630,14 +631,15 @@ li {
 #searchbox-input-wrapper {
   text-align: left;
   width: 100%;
+  z-index: 10;
 }
 #searchbox {
   font-family: ヒラギノ角ゴ Pro W3,FontAwesome;
   display: inline-block;
-  top:90px;
+  margin-top: 10px;
+  left: 0;
   height: 55px;
   width: 95%;
-  margin-top: 10px;
   margin-left:2.5%;
   border-radius: 22px;
   box-sizing: border-box;
@@ -715,8 +717,8 @@ li {
 }
 
 .main_index {
-  top:175px;
-  position: relative;
+  position: absolute;
+  margin-top:75px;
   background-size: cover;
   color: white;
   text-align: center;
