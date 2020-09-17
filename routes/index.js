@@ -181,7 +181,8 @@ router.post('/', (req,res,next) => {
           usertabledata: usertabledata,
           datastatus: datastatus,
           datakyakusaki: datakyakusaki,
-          datashanai: datashanai
+          datashanai: datashanai,
+          login: req.session.login,
       };
       res.render('index', data);
   }).catch((err) => { 
