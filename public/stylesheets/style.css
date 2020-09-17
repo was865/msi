@@ -678,7 +678,7 @@ header {
   transition:all 0.5s;
 }
 ul {
-  width: 370px;
+  width: 340px;
   background-color: rgba(52, 77, 82, 0.8);
   display: none;
   z-index:20;
@@ -702,12 +702,12 @@ li {
   display: inline-block;
   margin-top: 10px;
   left: 0;
-  height: 55px;
+  height: 75px;
   width: 95%;
   margin-left:2.5%;
   border-radius: 22px;
   box-sizing: border-box;
-  font-size: 24px;
+  font-size: 30px;
   border: none;
   outline: none;
   padding: 0 12px;
@@ -747,18 +747,18 @@ li {
   cursor: pointer;
 }
 
-#signup-form, #addkyakusaki-form, #addshanai-form {
+#signup-form, #addkyakusaki-form, #addshanai-form, #userinfo-form {
   width: 100%;
 }
 
-#signup-form h2, #addkyakusaki-form h2, #addshanai-form h2 {
+#signup-form h2, #addkyakusaki-form h2, #addshanai-form h2,#userinfo-form h2 {
   color: #5f5d60;
   letter-spacing: 1px;
   margin-bottom: 50px;
   font-size:40px;
 }
 
-#signup-form input, #addkyakusaki-form input, #addshanai-form input {
+#signup-form input, #addkyakusaki-form input, #addshanai-form input, #userinfo-form input {
   width: 80%;
   margin-bottom: 40px;
   font-size: 35px;
@@ -767,7 +767,7 @@ li {
   border-radius: 5px;
 }
 
-#btn_newuser,  #btn_newkyakusaki, #btn_newshanai {
+#btn_newuser,  #btn_newkyakusaki, #btn_newshanai, #btn_newuserinfo {
   display: inline-block;
   font-size: 35px;
   padding: 14px 140px;
@@ -782,7 +782,7 @@ li {
 
 .main_index {
   position: absolute;
-  margin-top:75px;
+  margin-top:95px;
   background-size: cover;
   color: white;
   text-align: center;
@@ -794,16 +794,17 @@ li {
 .table_index th{
   font-family: "UD Digi Kyokasho NK-B";
   border-radius: 0;
-  font-size: 23px;
+  font-size: 37px;
+  width: 17%;
 }
 .table_name {
   font-weight: bolder;
 }
 .table_index td {
+  height: 130px;
   font-family: "UD Digi Kyokasho N-R";
-  font-size: 28px;
-  padding:0 1px;
-  width: 400px;
+  font-size: 37px;
+  padding:0 5px;
 }
 .text_add,.select_add,.memo_add{
   font-family: "UD Digi Kyokasho N-R";
@@ -852,7 +853,7 @@ li {
 .btn,
 a.btn,
 button.btn {
-  font-size: 26px;
+  font-size: 34px;
 }
 .space {
   margin-top:0;
