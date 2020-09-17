@@ -4,7 +4,31 @@
         <td class="mobile-hide"><%= usertabledata.department %></td>
         <td class="table_name" style="font-family: ＭＳ 明朝;"><%= usertabledata.name %></td>
         <td class="mobile-hide"><%= usertabledata.information %></td>
-        <td><%= usertabledata.status %></td>
+        <% switch (usertabledata.status) {
+            case '在席': %>
+            <td><span class="status_zaiseki"><i class="fa fa-circle-o" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '休暇': %>
+            <td><span class="status_kyuuka"><i class="fa fa-circle-o" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '帰宅': %>
+            <td><span class="status_kitaku"><i class="fa fa-circle-o" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '客先': %>
+            <td><span class="status_kyakusaki"><i class="fa fa-circle-o" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '社内': %>
+            <td><span class="status_shanai"><i class="fa fa-circle-o" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '出張': %>
+            <td><span class="status_shucchou"><i class="fa fa-circle-o" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '研修': %>
+            <td><span class="status_kennshuu"><i class="fa fa-circle-o" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            default: %>
+            <td><span class="status_sonota"><i class="fa fa-circle-o" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; } %>
         <td><%= usertabledata.ikisaki %></td>
         <td><%= usertabledata.time %></td>
         <td><%= usertabledata.memo %></td>

@@ -457,6 +457,40 @@ li a {
     text-shadow: 0 1px 0 #fff;
     background:#fff
   }
+  /* status色分け */
+.status_zaiseki {
+  margin-right: 10px;
+  color: #f9c92e;
+}
+.status_kyuuka {
+  margin-right: 10px;
+  color: #c1151c;
+}
+.status_kitaku {
+  margin-right: 10px;
+  color: #505050;
+}
+.status_kyakusaki {
+  margin-right: 10px;
+  color: #ee4f83;
+}
+.status_shanai {
+  margin-right: 10px;
+  color: #c7eb41;
+}
+.status_shucchou {
+  margin-right: 10px;
+  color: #41b1e1;
+}
+.status_kennshuu {
+  margin-right: 10px;
+  color: #c34bff;
+}
+.status_sonota {
+  margin-right: 10px;
+  color: #ff9f4f;
+}
+
 
 .text_add {
   width: 100%;
