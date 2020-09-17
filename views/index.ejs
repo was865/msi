@@ -447,6 +447,13 @@
 		$('.btn_shanai_delete').on('click', function(){
 			$(this).parent().parent().children('input[name="shanai"]').val('').end().slideUp();
 		});
+    
+    $('.data_item_tr').hover(function(){
+      console.log($(this).children().attr('class')+ " + ");
+      $('.icon').not($(this).children()).css('color', 'white');
+    },function(){
+      // $(this).sibling().children('.icon').css('color', 'black');
+    });
 
 	});
 </script>
