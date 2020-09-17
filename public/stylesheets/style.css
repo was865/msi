@@ -143,33 +143,97 @@ li a {
   color: rgba(0, 0, 0, 0.603);
 }
 
-#signup-form, #addkyakusaki-form, #addshanai-form {
+.btn_kyakusaki_delete, .btn_kyakusaki_minus,.btn_shanai_delete, .btn_shanai_minus {
+  display: inline-block;
+  font-size: 12px;
+  padding: 12px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn_kyakusaki_delete:hover,
+.btn_shanai_delete:hover {
+  background-color: #ff3b3b;
+}
+.btn_kyakusaki_minus:hover, 
+.btn_shanai_minus:hover {
+  background-color: #ff3b3b;
+}
+#btn_kyakusaki_add {
+  display: block;
+  position: relative;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%);
+  width: 36px;
+  height: 36px;
+  font-size: 15px;
+  line-height: 36px;
+  border-radius: 5px;
+  background-color: #40a3ff;
+  color: #ffffff;
+  cursor: pointer;
+}
+#btn_shanai_add {
+  display: block;
+  position: relative;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 5px;
+  width: 36px;
+  height: 36px;
+  font-size: 15px;
+  line-height: 36px;
+  border-radius: 5px;
+  background-color: #40a3ff;
+  color: #ffffff;
+  cursor: pointer;
+}
+#btn_kyakusaki_add:hover,
+#btn_shanai_add:hover {
+  background-color: #0084ff;
+}
+
+#signup-form, #addkyakusaki-form, #addshanai-form, #userinfo-form {
   width: 100%;
 }
 
-#signup-form h2, #addkyakusaki-form h2, #addshanai-form h2 {
+#signup-form h2, #addkyakusaki-form h2, #userinfo-form h2 {
   color: #5f5d60;
   letter-spacing: 1px;
   margin-bottom: 25px;
 }
+#addshanai-form h2 {
+  color: #5f5d60;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
 
-#signup-form input, #addkyakusaki-form input, #addshanai-form input {
+#signup-form input, #addkyakusaki-form input, #userinfo-form input {
   width: 320px;
   margin-bottom: 10px;
-  font-size: 12px;
+  font-size: 14px;
   padding: 12px 12px;
   border: 1px solid #d0d5d8;
   border-radius: 5px;
 }
+#addshanai-form input {
+  width: 320px;
+  margin-bottom: 0px;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #d0d5d8;
+  border-radius: 5px;
+}
 
-#btn_newuser,  #btn_newkyakusaki, #btn_newshanai {
+#btn_newuser,  #btn_newkyakusaki, #btn_newshanai, #btn_newuserinfo {
   display: inline-block;
   padding: 14px 140px;
   background-color: #56bed8;
   border: none;
   border-radius: 3px;
   color: white;
-  margin: 10px auto;
+  margin: 20px auto;
   cursor: pointer;
   text-decoration: none;
 }

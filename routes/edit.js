@@ -151,7 +151,7 @@ router.post('/:id', function(req, res, next) {
 });
 
 router.post('/:id/delete', function(req,res,next) {
-  new Userdata().where('id','=',req.body.id)
+  new Userdata().where('id','=', req.body.id)
     .fetch()
     .then((record)=>{
       record.destroy();

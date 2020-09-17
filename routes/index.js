@@ -110,6 +110,7 @@ router.get('/', function(req, res, next) {
         var data = {
             title: '行先情報一覧',
             finding : '名前または部署名などを入力',
+            login: req.session.login,
             usertabledata: usertabledata,
             datastatus: datastatus,
             datakyakusaki: datakyakusaki,
@@ -216,9 +217,15 @@ router.post('/add', (req,res,next) => {
 
 router.post('/newuser', (req,res,next) => {
 
+  if (req.session.login == null) {
+    res.redirect('/login');
+    return;
+  }
+
   var rec = {
     department: req.body.department,
     name: req.body.name,
+    information: req.body.information,
     password: req.body.password,
   }
 
@@ -229,72 +236,193 @@ router.post('/newuser', (req,res,next) => {
 });
 
 // test SQL
-// var db = new sqlite3.Database('ikisaki.sqlite3')
-// router.post('/newkyakusaki', (req,res,next) => {
-//   db.serialize(()=> {
-//     var cnt = req.body.cnt;
-//     console.log("回数は" + cnt);
-//     for (var i=0; i<=cnt; i++ ) {
-//       var kyakusaki = req.body.kyakusaki[i];
-//       console.log("変更する客先: " + kyakusaki);
-
-//       var id = req.body.id[i];
-//       console.log("変更先ID: " + id);
-
-//       var q = 'UPDATE kyakusaki_list SET kyakusaki = ?  WHERE id = ?';
-//       db.run(q, kyakusaki, id);
-//     }
-//     if (req.body.newkyakusaki == '') {
-//       res.redirect('/');
-//     } else {
-//       var newkyakusaki = req.body.newkyakusaki;
-//       console.log("追加" + newkyakusaki);
-//       db.run('INSERT INTO kyakusaki_list (kyakusaki) values (?)',newkyakusaki);
-//       res.redirect('/');
-//     }
-//   })
-
-// })
-// test over
-
+var db = new sqlite3.Database('ikisaki.sqlite3')
+//客先変更
 router.post('/newkyakusaki', (req,res,next) => {
 
-  console.log(req.body);
-
-  var cnt = req.body.cnt;
-  console.log("回数は" + cnt);
-    for (var i=0; i<=cnt; i++) {
-      var update = {
-        kyakusaki: req.body.kyakusaki[i]
-      }
-      console.log("更新する客先：" + update);
-      new kyakusakidata({id: req.body.id[i]})
-        .save(update ,{patch: true})
-        .then((result) => {
-          console.log("結果は" + result);
-        });
-    }
-
-    if ( ("" + req.body.newkyakusaki).length == 0 ) {
-      res.redirect('/');
-    } else { 
-      var rec = {
-        kyakusaki: req.body.newkyakusaki
-      }
-      new kyakusakidata(rec).save().then((model) => {
-        res.redirect('/');
-      });
-    }
-});
-
-router.post('/newshanai', (req,res,next) => {
-
-  var rec = {
-    shanai: req.body.shanai,
+  if (req.session.login == null) {
+    res.redirect('/login');
+    return;
   }
 
-  new shanaidata(rec).save().then((model) => {
-    res.redirect('/');
+  console.log(req.body);
+  db.serialize(()=> {
+    var cnt = req.body.cnt;
+    var cnt_new = req.body.cnt_new;
+    console.log("更新回数は：「" + cnt + "+1」");
+
+    for (var i=0; i<=cnt; i++ ) {
+      var kyakusaki = req.body.kyakusaki[i];
+      var id = req.body.id[i];
+      console.log("変更先ID: 「" + id + "」、変更後：「" + kyakusaki + "」");
+
+      if (kyakusaki.length == 0) {
+        db.run('DELETE FROM kyakusaki_list WHERE id = ' + id);
+        console.log("インデックス「" + i + "」の項目削除実行しました。");
+      } else {
+        var q = 'UPDATE kyakusaki_list SET kyakusaki = ?  WHERE id = ?';
+        db.run(q, kyakusaki, id);
+        console.log("インデックス:「" + i + "」の項目を更新しました。");
+      }
+    }
+    // 客先新規
+    console.log("新項目数は：「" + cnt_new + "」");
+    console.log("req.body.newkyakusaki.length: " + req.body.newkyakusaki.length);
+    if (req.body.newkyakusaki.length == 0) {
+      res.redirect('/');
+      console.log("追加項目無し、リダイレクト。");
+      return false;
+    }
+    if (Array.isArray(req.body.newkyakusaki)) {
+      for (var n=0; n<cnt_new; n++) {
+        var newkyakusaki = req.body.newkyakusaki[n];
+        console.log("req.body.newkyakusaki[" + n + "]：" + req.body.newkyakusaki[n]);
+        if (newkyakusaki.length == 0) {
+          console.log("該当項目は空。");
+        } else {
+          db.run('INSERT INTO kyakusaki_list (kyakusaki) values (?)',newkyakusaki);
+          console.log("追加した項目：" + newkyakusaki);
+        }
+      }
+      console.log("配列追加完了したのでリダイレクト。");
+      res.redirect('/');
+      return false;
+    } else {
+      var newkyakusaki = req.body.newkyakusaki;
+      db.run('INSERT INTO kyakusaki_list (kyakusaki) values (?)',newkyakusaki);
+      console.log("単項目：「" + newkyakusaki + "」の追加完了したのでリダイレクト。");
+      res.redirect('/');
+      return false;
+    }
+  })
+  
+})
+
+//社内ポジション変更
+router.post('/newshanai', (req,res,next) => {
+
+  if (req.session.login == null) {
+    res.redirect('/login');
+    return;
+  }
+  console.log(req.body);
+  db.serialize(()=> {
+    var cnt_shanai = req.body.cnt_shanai;
+    var cnt_new_shanai = req.body.cnt_new_shanai;
+    console.log("更新回数は：「" + cnt_shanai + "+1」");
+
+    for (var i=0; i<=cnt_shanai; i++ ) {
+      var shanai = req.body.shanai[i];
+      var id = req.body.id[i];
+      console.log("変更先ID: 「" + id + "」、変更後：「" + shanai + "」");
+
+      if (shanai.length == 0) {
+        db.run('DELETE FROM shanai_list WHERE id = ' + id);
+        console.log("インデックス「" + i + "」の項目削除実行しました。");
+      } else {
+        var q = 'UPDATE shanai_list SET shanai = ?  WHERE id = ?';
+        db.run(q, shanai, id);
+        console.log("インデックス:「" + i + "」の項目を更新しました。");
+      }
+    }
+    // 社内ポジション新規
+    console.log("新項目数は：「" + cnt_new_shanai + "」");
+    console.log("req.body.newshanai.length: " + req.body.newshanai.length);
+    if (req.body.newshanai.length == 0) {
+      console.log("追加項目無し、リダイレクトする。");
+      res.redirect('/');
+      return false;
+    }
+    if (Array.isArray(req.body.newshanai)) {
+      for (var n=0; n<cnt_new_shanai; n++) {
+        var newshanai = req.body.newshanai[n];
+        console.log("req.body.newshanai[" + n + "]：" + req.body.newshanai[n]);
+        if (newshanai.length == 0) {
+          console.log("該当項目は空。");
+        } else {
+          db.run('INSERT INTO shanai_list (shanai) values (?)',newshanai);
+          console.log("追加した項目：" + newshanai);
+        }
+      }
+      console.log("配列追加完了したのでリダイレクト。");
+      res.redirect('/');
+      return false;
+    } else {
+      var newshanai = req.body.newshanai;
+      db.run('INSERT INTO shanai_list (shanai) values (?)',newshanai);
+      console.log("単項目：「" + newshanai + "」の追加完了したのでリダイレクト。");
+      res.redirect('/');
+      return false;
+    }
+  })
+  
+})
+// test over
+
+//BUGあり　不採用
+// router.post('/newkyakusaki', (req,res,next) => {
+
+//   console.log(req.body);
+
+//   var cnt = req.body.cnt;
+//   console.log("インデックスは" + cnt);
+//   for (var i=0; i<=cnt; i++) {
+//     if (("" + req.body.kyakusaki[i]).length == 0) {
+//       new kyakusakidata().where('id','=', req.body.id[i])
+//       .fetch()
+//       .then((record)=>{
+//         record.destroy();
+//         console.log(i + "の項目削除実行しました。");
+//         res.datakyakusaki = getKyakusaki();
+//       });
+//     } else {
+//       var update = {
+//         kyakusaki: req.body.kyakusaki[i]
+//       }
+//       new kyakusakidata({id: req.body.id[i]})
+//         .save(update ,{patch: true})
+//         .then((result) => {
+//           console.log(i + "の項目を更新しました。");
+          
+//       });
+//     }
+//   }
+  
+//   if ( ("" + req.body.newkyakusaki).length == 0 ) {
+//     res.redirect('/');
+//     console.log("追加項目は空なのでリダイレクトしました。");
+//   } else { 
+//     var rec = {
+//       kyakusaki: req.body.newkyakusaki
+//     }
+//     new kyakusakidata(rec).save().then((model) => {
+//       res.redirect('/');
+//       console.log("追加項目を追加し、リダイレクトしました。");
+//     });
+//   }
+    
+// });
+
+router.post('/newuserinfo', (req,res,next) => {
+
+  if (req.session.login == null) {
+    res.redirect('/login');
+    return;
+  }
+  console.log(req.body);
+
+  var rec = {
+    name: req.body.userinfo_name,
+    department:  req.body.userinfo_department,
+    information: req.body.userinfo_information,
+    password: req.body.userinfo_newpassword
+  }
+  new Userdata({id: req.session.login.id})
+    .save(rec ,{patch: true})
+    .then((result) => {
+      console.log(req.session.login.name + "の基本情報を更新しました：" + req.body.userinfo_name + "; " + req.body.userinfo_department + "; " + req.body.userinfo_information + "; " + req.body.userinfo_newpassword + "; result.attributes.name：" + result.attributes.name);
+      res.redirect('/logout');
+      console.log("更新完了；ログアウト。");
   });
 
 });
