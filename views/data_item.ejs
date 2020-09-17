@@ -1,10 +1,34 @@
 <% if (usertabledata != null) { %>
 
-    <tr>
+    <tr class="data_item_tr">
         <td class="mobile-hide"><%= usertabledata.department %></td>
         <td class="table_name" style="font-family: ＭＳ 明朝;"><%= usertabledata.name %></td>
         <td class="mobile-hide"><%= usertabledata.information %></td>
-        <td><%= usertabledata.status %></td>
+        <% switch (usertabledata.status) {
+            case '在席': %>
+            <td><span class="status_zaiseki icon"><i class="fa fa-laptop" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '休暇': %>
+            <td><span class="status_kyuuka icon"><i class="fa fa-bed" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '帰宅': %>
+            <td><span class="status_kitaku icon"><i class="fa fa-home" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '客先': %>
+            <td><span class="status_kyakusaki icon"><i class="fa fa-building-o" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '社内': %>
+            <td><span class="status_shanai icon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '出張': %>
+            <td><span class="status_shucchou icon"><i class="fa fa-suitcase" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            case '研修': %>
+            <td><span class="status_kennshuu icon"><i class="fa fa-leanpub" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; 
+            default: %>
+            <td><span class="status_sonota icon"><i class="fa fa-smile-o" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <% ;break; } %>
         <td><%= usertabledata.ikisaki %></td>
         <td><%= usertabledata.time %></td>
         <td><%= usertabledata.memo %></td>
