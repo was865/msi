@@ -719,9 +719,10 @@ ul {
   z-index:20;
 }
 li {
-  font-family: "BIZ UDPゴシック","BIZ UDPGothic";
+  font-family: ヒラギノ角ゴ Pro W3;
   color: #f6f6f6ee;
   font-size: 38px;
+  font-weight: bolder;
   line-height: 100px;
   letter-spacing: 5px;
   text-align: center;

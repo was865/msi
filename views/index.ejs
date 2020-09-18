@@ -62,7 +62,7 @@
 			<form id="form_newkyakusaki" name="form_newkyakusaki" method="POST" action="/newkyakusaki">
 				<% var i;for (i in datakyakusaki) {  %>
 					<div>
-						<input name="kyakusaki" type="text" value="<%= datakyakusaki[i].attributes.kyakusaki %>"><span><i class="fa fa-trash-o btn_kyakusaki_delete" aria-hidden="true"></i></span>
+						<input name="kyakusaki" type="text" value="<%= datakyakusaki[i].attributes.kyakusaki %>"><span><i class="far fa-trash-alt btn_kyakusaki_delete"></i></span>
 						<input type="hidden" name="id" value="<%= datakyakusaki[i].attributes.id %>">
 					</div>
 				<% } %>
@@ -93,7 +93,7 @@
 			<form id="form_newshanai" name="form_newshanai" method="POST" action="/newshanai">
 				<% var n;for (n in datashanai) {  %>
 					<div>
-						<input name="shanai" type="text" value="<%= datashanai[n].attributes.shanai %>"><span><i class="fa fa-trash-o btn_shanai_delete" aria-hidden="true"></i></span>
+						<input name="shanai" type="text" value="<%= datashanai[n].attributes.shanai %>"><span><i class="far fa-trash-alt btn_shanai_delete"></i></span>
 						<input type="hidden" name="id" value="<%= datashanai[n].attributes.id %>">
 					</div>
 				<% } %>
