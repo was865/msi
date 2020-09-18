@@ -4,7 +4,8 @@
 		<meta charset="utf-8">
 		<title><%= title %></title>
 		<link rel="stylesheet" href="/stylesheets/style.css" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	</head>
 
 <body>
@@ -19,7 +20,7 @@
 							<li id="create_kyakusaki" class="mobile-hide"><span><i class="fa fa-building" aria-hidden="true"></i></span><a href="#">客先管理＆新規</a></li>
 							<li id="create_shanai" class="mobile-hide"><span><i class="fa fa-location-arrow" aria-hidden="true"></i></span><a href="#">社内管理＆新規</a></li>
 							<li id="change_userinfo"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><a href="#">基本情報変更</a></li>
-							<li id="logout"><span><i class="fa fa-sign-out" aria-hidden="true"></i></span><a href="/logout">ログアウト</a></li>
+							<li id="logout"><span><i class="fas fa-sign-out-alt"></i></span><a href="/logout">ログアウト</a></li>
 						</ul>
 			</div>
 			<div id="searchbox-input-wrapper">
@@ -447,13 +448,14 @@
 		$('.btn_shanai_delete').on('click', function(){
 			$(this).parent().parent().children('input[name="shanai"]').val('').end().slideUp();
 		});
-    
-    $('.data_item_tr').hover(function(){
-      console.log($(this).children().attr('class')+ " + ");
-      $('.icon').not($(this).children()).css('color', 'white');
-    },function(){
-      // $(this).sibling().children('.icon').css('color', 'black');
-    });
+	
+		//tr td hover　色変化
+		$('.table_index tbody tr').hover(function(){
+		console.log("$('.table_index tbody tr').children().children().attr('class'):  " + $('.table_index tbody tr').children().children().attr('class'));
+		$('.icon').not($(this).children().children()).stop().hide();
+		},function(){
+			$('.icon').not($(this).children().children()).stop().show();
+		});
 
 	});
 </script>
