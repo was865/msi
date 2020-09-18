@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="/stylesheets/style.css" />
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" />
 	</head>
 
 <body>
@@ -17,8 +18,8 @@
 						<h1><span><i class="fa fa-bars" aria-hidden="true"></i></span><%= title %></h1>
 						<ul class="downlist">
 							<li id="create_user"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span><a href="#">社員新規登録</a></li>
-							<li id="create_kyakusaki" class="mobile-hide"><span><i class="fa fa-building" aria-hidden="true"></i></span><a href="#">客先管理＆新規</a></li>
-							<li id="create_shanai" class="mobile-hide"><span><i class="fa fa-location-arrow" aria-hidden="true"></i></span><a href="#">社内管理＆新規</a></li>
+							<li id="create_kyakusaki" class="mobile-hide"><span><i class="fas fa-handshake"></i></span><a href="#">客先管理＆新規</a></li>
+							<li id="create_shanai" class="mobile-hide"><span><i class="fa fa-building" aria-hidden="true"></i></span><a href="#">社内管理＆新規</a></li>
 							<li id="change_userinfo"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><a href="#">基本情報変更</a></li>
 							<li id="logout"><span><i class="fas fa-sign-out-alt"></i></span><a href="/logout">ログアウト</a></li>
 						</ul>
@@ -68,12 +69,17 @@
 				<% } %>
 				<input name="cnt" value="<%= i %>" type="hidden">
 
+				<!-- クローン用区域 -->
 				<div id="clonearea_newkyakusaki">
-					<div class="clone_newkyakusaki" id="clone_newkyakusaki">
-						<input name="newkyakusaki" class="form-control input_newkyakusaki" type="text" placeholder="新客先を追加"><span><i class="fa fa-minus btn_kyakusaki_minus" aria-hidden="true"></i></span>
-					</div>
-					<input id="cnt_new" type="hidden" name="cnt_new" value="1">
+					
 				</div>
+				<!-- クローン用区域 ここまで　-->
+
+				<!-- クローン要素 -->
+				<div class="clone_newkyakusaki hide" id="clone_newkyakusaki">
+					<input class="form-control input_newkyakusaki" type="text" placeholder="新客先を追加"><span><i class="fa fa-minus btn_kyakusaki_minus" aria-hidden="true"></i></span>
+				</div>
+				<!-- クローン要素 ここまで-->
 
 				<span id="btn_kyakusaki_add">+</span>
 			  
@@ -99,12 +105,17 @@
 				<% } %>
 				<input name="cnt_shanai" value="<%= n %>" type="hidden">
 
+				<!-- クローン用区域 -->
 				<div id="clonearea_newshanai">
-					<div class="clone_newshanai" id="clone_newshanai">
-						<input name="newshanai" class="form-control input_newshanai" type="text" placeholder="新社内ポジションを追加"><span><i class="fa fa-minus btn_shanai_minus" aria-hidden="true"></i></span>
-					</div>
-					<input id="cnt_new_shanai" type="hidden" name="cnt_new_shanai" value="1">
+					
 				</div>
+				<!-- クローン用区域 ここまで　-->
+
+				<!-- クローン要素 -->
+				<div class="clone_newshanai hide" id="clone_newshanai">
+					<input class="form-control input_newshanai" type="text" placeholder="新社内ポジションを追加"><span><i class="fa fa-minus btn_shanai_minus" aria-hidden="true"></i></span>
+				</div>
+				<!-- クローン要素 ここまで-->
 
 				<span id="btn_shanai_add">+</span>
 
@@ -377,71 +388,70 @@
 
 		//客先追加INPUTBOXをclone
 		var minCount = 1;
-		var maxCount = 6;
+		var maxCount = 7;
 
-		var cnt_new = 1;
 		$('#btn_kyakusaki_add').on('click', function(){
 			var inputCount = $('div.clone_newkyakusaki').length;
 			if (inputCount < maxCount){
 				$('div#clone_newkyakusaki')
 				.clone(true)
 				.removeAttr('id')
+				.removeClass('hide')
+				.children('input').attr('name','newkyakusaki')
+				.end()
 				.appendTo('#clonearea_newkyakusaki')
 			}
-			cnt_new ++;
-			$('#cnt_new').val(cnt_new);
-			console.log("$('#cnt_new').val(cnt_new): " + $('#cnt_new').val());
-		})
+		});
+		$('#btn_kyakusaki_add').hover(function(){
+			$(this).animate({fontSize: '25px'},0);
+		},function(){
+			$(this).animate({fontSize: '15px'},100);
+		});
 
 		$('.btn_kyakusaki_minus').on('click', function(){
-			if ($(this).parent().parent().attr('id') != undefined ) {
-				alert('削除できません！');
-				return false;
-			} else {
-				var inputCount = $('div.clone_newkyakusaki').length;
-				if (inputCount > minCount){
-					$(this).parent('span').parent('div').remove();
-					cnt_new --;
-					$('#cnt_new').val(cnt_new);
-					console.log("$('#cnt_new').val(cnt_new): " + $('#cnt_new').val());
-				}
+
+			var inputCount = $('div.clone_newkyakusaki').length;
+			if (inputCount > minCount){
+				$(this).parent('span').parent('div').remove();
 			}
+			
 		});
 
 		$('.btn_kyakusaki_delete').on('click', function(){
 			$(this).parent().parent().children('input[name="kyakusaki"]').val('').end().slideUp();
 		});
+		$('.btn_kyakusaki_delete').hover(function(){
+			$(this).animate({fontSize: '15px'},0);
+		},function(){
+			$(this).animate({fontSize: '15px'},100);
+		});
 
 		//社内追加INPUTBOXをclone
 		var minCount_shanai = 1;
-		var maxCount_shanai = 3;
+		var maxCount_shanai = 5;
 
-		var cnt_new_shanai = 1;
 		$('#btn_shanai_add').on('click', function(){
 			var inputCount = $('div.clone_newshanai').length;
-			if (inputCount < maxCount_shanai){
+			if (inputCount <= maxCount_shanai){
 				$('div#clone_newshanai')
 				.clone(true)
 				.removeAttr('id')
+				.removeClass('hide')
+				.children('input').attr('name','newshanai')
+				.end()
 				.appendTo('#clonearea_newshanai')
 			}
-			cnt_new_shanai ++;
-			$('#cnt_new_shanai').val(cnt_new_shanai);
-			console.log("$('#cnt_new_shanai').val(cnt_new_shanai): " + $('#cnt_new_shanai').val());
-		})
+		});
+		$('#btn_shanai_add').hover(function(){
+			$(this).animate({fontSize: '25px'},0);
+		},function(){
+			$(this).animate({fontSize: '15px'},100);
+		});
 
 		$('.btn_shanai_minus').on('click', function(){
-			if ($(this).parent().parent().attr('id') != undefined ) {
-				alert('削除できません！');
-				return false;
-			} else {
-				var inputCount = $('div.clone_newshanai').length;
-				if (inputCount > minCount_shanai){
-					$(this).parent('span').parent('div').remove();
-					cnt_new_shanai --;
-					$('#cnt_new_shanai').val(cnt_new_shanai);
-					console.log("$('#cnt_new_shanai').val(cnt_new_shanai): " + $('#cnt_new_shanai').val());
-				}
+			var inputCount = $('div.clone_newshanai').length;
+			if (inputCount > minCount_shanai){
+				$(this).parent('span').parent('div').remove();
 			}
 		});
 

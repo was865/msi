@@ -249,8 +249,7 @@ router.post('/newkyakusaki', (req,res,next) => {
   console.log(req.body);
   db.serialize(()=> {
     var cnt = req.body.cnt;
-    var cnt_new = req.body.cnt_new;
-    console.log("更新回数は：「" + cnt + "+1」");
+    console.log("更新回数は：「 " + cnt + "+1 」回");
 
     for (var i=0; i<=cnt; i++ ) {
       var kyakusaki = req.body.kyakusaki[i];
@@ -267,19 +266,19 @@ router.post('/newkyakusaki', (req,res,next) => {
       }
     }
     // 客先新規
-    console.log("新項目数は：「" + cnt_new + "」");
-    console.log("req.body.newkyakusaki.length: " + req.body.newkyakusaki.length);
-    if (req.body.newkyakusaki.length == 0) {
+    if (req.body.newkyakusaki == undefined || req.body.newkyakusaki.length == 0) {
       res.redirect('/');
       console.log("追加項目無し、リダイレクト。");
       return false;
     }
+
+    console.log("新項目数は：「" + req.body.newkyakusaki.length + "」");
     if (Array.isArray(req.body.newkyakusaki)) {
-      for (var n=0; n<cnt_new; n++) {
+      for (var n=0; n<req.body.newkyakusaki.length; n++) {
         var newkyakusaki = req.body.newkyakusaki[n];
         console.log("req.body.newkyakusaki[" + n + "]：" + req.body.newkyakusaki[n]);
         if (newkyakusaki.length == 0) {
-          console.log("該当項目は空。");
+          console.log("該当項目は空であるため、追加しません。");
         } else {
           db.run('INSERT INTO kyakusaki_list (kyakusaki) values (?)',newkyakusaki);
           console.log("追加した項目：" + newkyakusaki);
@@ -309,7 +308,6 @@ router.post('/newshanai', (req,res,next) => {
   console.log(req.body);
   db.serialize(()=> {
     var cnt_shanai = req.body.cnt_shanai;
-    var cnt_new_shanai = req.body.cnt_new_shanai;
     console.log("更新回数は：「" + cnt_shanai + "+1」");
 
     for (var i=0; i<=cnt_shanai; i++ ) {
@@ -327,19 +325,18 @@ router.post('/newshanai', (req,res,next) => {
       }
     }
     // 社内ポジション新規
-    console.log("新項目数は：「" + cnt_new_shanai + "」");
-    console.log("req.body.newshanai.length: " + req.body.newshanai.length);
-    if (req.body.newshanai.length == 0) {
+    if (req.body.newshanai == undefined || req.body.newshanai.length == 0) {
       console.log("追加項目無し、リダイレクトする。");
       res.redirect('/');
       return false;
     }
+    console.log("新項目数は：「" + req.body.newshanai.length + "」");
     if (Array.isArray(req.body.newshanai)) {
-      for (var n=0; n<cnt_new_shanai; n++) {
+      for (var n=0; n<req.body.newshanai.length; n++) {
         var newshanai = req.body.newshanai[n];
         console.log("req.body.newshanai[" + n + "]：" + req.body.newshanai[n]);
         if (newshanai.length == 0) {
-          console.log("該当項目は空。");
+          console.log("該当項目は空であるため、追加しません。");
         } else {
           db.run('INSERT INTO shanai_list (shanai) values (?)',newshanai);
           console.log("追加した項目：" + newshanai);

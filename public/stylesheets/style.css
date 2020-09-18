@@ -146,7 +146,7 @@ li a {
 
 .btn_kyakusaki_delete, .btn_kyakusaki_minus,.btn_shanai_delete, .btn_shanai_minus {
   display: inline-block;
-  font-size: 12px;
+  font-size: 15px;
   padding: 12px 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -213,7 +213,7 @@ li a {
 #signup-form input, #addkyakusaki-form input, #userinfo-form input {
   width: 320px;
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 15px;
   padding: 12px 12px;
   border: 1px solid #d0d5d8;
   border-radius: 5px;
@@ -259,10 +259,12 @@ li a {
   border-radius: 15px 15px 0 0;
   transition: .4s;
 }
-  
+#btn_post i{
+  margin-right: 10px;
+}
 #btn_post:hover {
-  background: #e9df82;
-  border-bottom: solid 4px #d89012;
+  background: #43c76a;
+  border-bottom: solid 4px #08990f;
   color: #FFF;
 }
 
@@ -286,20 +288,23 @@ li a {
   color: #FFF;
   text-decoration: none;
   font-weight: bold;
-  padding: 10px 16px 10px 40px;
+  padding: 10px;
   position: relative;
   transition: .9s;
   border: 1px solid #FFF;
 }
+.btn-massage i{
+  margin-right: 15px;
+}
 
-.btn-massage:before {
+/* .btn-massage:before {
   font-family: "FontAwesome";
   content: "\f235";
   position: absolute;
   left: 20px;
   top: 50%;
   margin-top: -10px;
-}
+} */
 
 .btn-massage span {
   display: block;
@@ -464,7 +469,7 @@ li a {
 }
 .status_kyuuka {
   margin-right: 10px;
-  color: #d3151b;
+  color: #c00f15;
 }
 .status_kitaku {
   margin-right: 10px;
@@ -631,6 +636,7 @@ a.btn-switch:active span {
 
 
 .backhome {
+  font-size: 19px;
   margin-top: 15px;
   position: relative;
   display: inline-block;
@@ -750,6 +756,10 @@ li {
 }
 
 /*モーダル*/
+.hide {
+  display: none;
+}
+
 .signup-modal-wrapper {
   position: fixed;
   top: 0;
