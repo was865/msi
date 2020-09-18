@@ -65,6 +65,7 @@ header {
   cursor : pointer;
 }
 ul {
+  position: fixed;
   width: 248px;
   background-color: rgba(52, 77, 82, 0.8);
   display: none;
@@ -711,7 +712,8 @@ header {
   transition:all 0.5s;
 }
 ul {
-  width: 340px;
+  position: fixed;
+  width: 100vw;
   background-color: rgba(52, 77, 82, 0.8);
   display: none;
   z-index:20;
@@ -719,10 +721,10 @@ ul {
 li {
   font-family: "BIZ UDPゴシック","BIZ UDPGothic";
   color: #f6f6f6ee;
-  font-size: 30px;
-  line-height: 66px;
-  letter-spacing: 3px;
-  text-align: left;
+  font-size: 38px;
+  line-height: 100px;
+  letter-spacing: 5px;
+  text-align: center;
 }
 
 #searchbox-input-wrapper {
