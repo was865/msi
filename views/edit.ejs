@@ -16,13 +16,13 @@
 		<div class="header-left">
 			<h1><span><i class="fa fa-bars" aria-hidden="true"></i></span><%- subtitle %></h1>
 			<ul class="downlist">
-				<li><span><i class="fa fa-user-plus" aria-hidden="true"></i></span><a href="#" class="create_user">新規登録</a></li>
-				<li><span><i class="fas fa-sign-out-alt"></i></span><a href="/logout" class="logout">ログアウト</a></li>
+				<li class="create_user"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span><a href="#">社員新規登録</a></li>
+				<li class="logout"><span><i class="fas fa-sign-out-alt"></i></span><a href="/logout">ログアウト</a></li>
 			</ul>
     	</div>
 	</header>
 
-	<!-- モーダル部分 -->
+	<!-- モーダル部分　社員新規登録 -->
 	<div class="signup-modal-wrapper" id="signup-modal">
 		<div class="modal">
 		  <div id="close-modal">
@@ -32,7 +32,8 @@
 			<h2>名前で新規登録</h2>
 			<form name="form_newuser" method="POST" action="/newuser">
 			  <input id="create_department" name="department" class="form-control" type="text" placeholder="部署名">
-			  <input inputmode="create_name" name="name" class="form-control" type="text" placeholder="名前">
+			  <input id="create_name" name="name" class="form-control" type="text" placeholder="名前">
+			  <input id="create_information" name="information" class="form-control" type="text" placeholder="内線番号（省略可）">
 			  <input id="create_password" name="password" class="form-control" type="password" placeholder="パスワード">
 			  <input id="tmp_password" class="form-control" type="password" placeholder="パスワードを確認">
 			  <a href="javascript:form_newuser.submit()" id="btn_newuser">新規登録</a>
@@ -40,7 +41,7 @@
 		  </div>
 		</div>
 	</div>
-	 <!-- モーダルここまで -->
+	<!-- モーダルここまで　社員新規登録 -->
 
 	<div role="main" class="main_edit">
 		<form name="form_edit" method="POST" action="/edit/<%= content.id %>">

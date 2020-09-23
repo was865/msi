@@ -40,7 +40,7 @@ header {
   transition:all 0.5s;
 }
 .header-right:hover {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .header-left {
@@ -247,7 +247,7 @@ li a {
 
 #btn_post {
   margin-top: 15px;
-  width: 75%;
+  width: 78%;
   position: relative;
   display: inline-block;
   font-weight: bold;
