@@ -942,5 +942,34 @@ button.btn {
   z-index: -1;
   transition: .5s;
 }
+#btn_post {
+  margin-top: 15px;
+  width: 60%;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 20px 10px 20px 10px;
+  text-decoration: none;
+  color: #ffffff;
+  background: #e7853e;
+  border-bottom: solid 4px #ad7006;
+  border-radius: 15px 15px 0 0;
+  transition: .4s;
+}
+#btn_post i{
+  margin-right: 20px;
+}
+#btn_post:hover {
+  background: #43c76a;
+  border-bottom: solid 4px #08990f;
+  color: #FFF;
+}
+
+#btn_post:active {
+  position: relative;
+  top: 4px;
+  border-bottom: none;
+}
+
 
 }
