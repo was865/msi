@@ -153,7 +153,7 @@
 			<table class="table_edit">
 				<p class="editing_name"><span>ログイン中のユーザー：<span><%= login.name %><i class="fas fa-user-shield admin_only" style="margin-left: 5px;"></i></span></span><br><%- greeting %></p>
 				<tr><th>名前</th></tr>
-				<tr><td id="edit_name"><input type="hidden" name="name" id="name" value="<%= content.name %>" ><%= content.name %></td></tr>
+				<tr><td id="edit_name"><input type="hidden" name="name" id="name" value="<%= content.name %>"><%= content.name %></td></tr>
 				<tr><th>情報</th></tr>
 				<tr><td><input type="hidden" name="information" id="information" value="<%= content.information %>" >
 					<%= content.information %></td></tr>
@@ -363,6 +363,16 @@
 				</td></tr>
 				<tr><th>メモ</th></tr>
 				<tr><td><textarea name="memo"><%= content.memo %></textarea></td></tr>
+				<tr class="admin_only"><th>管理者権限
+					<% if (content.admin == 1) { %>
+						<i class="fas fa-toggle-on"></i>
+					<% } else { %>
+						<i class="fas fa-toggle-off"></i>
+					<% } %>
+				</th></tr>
+				
+				<input type="hidden" name="admin" id="admin" value="<%= content.admin %>">
+
 				<tr><td>
 					<a href="javascript:form_edit.submit()" id="btn_post" class="faa-parent animated-hover"><i class="fas fa-sync-alt faa-spin"></i>更新</a>
 				</td></tr>

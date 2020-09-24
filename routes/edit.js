@@ -96,7 +96,7 @@ router.get('/:id', function(req, res, next) {
         subtitle: '編集...',
         login: req.session.login,
         greeting:'前回のアップデート: ' + dstr,
-        content: collection.attributes ,
+        content: collection.attributes,
         datastatus: datastatus,
         datakyakusaki: datakyakusaki,
         datashanai: datashanai

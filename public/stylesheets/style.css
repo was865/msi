@@ -307,8 +307,8 @@ li a {
   margin-right: 10px;
 }
 #btn_post:hover {
-  background: #43c76a;
-  border-bottom: solid 4px #08990f;
+  background: #39a85a;
+  border-bottom: solid 4px #088d0e;
   color: #FFF;
 }
 
@@ -696,6 +696,7 @@ a.btn-switch:active span {
   -webkit-transform: scale(0.9);
   transform: scale(0.9);
 }
+
 
 
 .backhome {
