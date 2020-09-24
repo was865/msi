@@ -2,49 +2,53 @@
 
     <tr class="data_item_tr">
         <td class="mobile-hide"><%= usertabledata.department %></td>
-        <td class="table_name" style="font-family: ＭＳ 明朝;"><%= usertabledata.name %></td>
+        <td class="table_name" style="font-family: ＭＳ 明朝;"><%= usertabledata.name %>
+            <% if (usertabledata.email != null){ %>
+                <span class="mailto"><a href="mailto:<%= usertabledata.email %>"><i class="far fa-envelope"></i></a></span><p class="tooltip">送信先：<br><%= usertabledata.email %></p>
+            <% } %>
+        </td>
         <td class="mobile-hide"><%= usertabledata.information %></td>
         <% switch (usertabledata.status) {
             case '在席': %>
-            <td><span class="status_zaiseki icon faa-parent animated-hover"><i class="fa fa-laptop faa-float" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+            <td class="find-status"><span class="status_zaiseki icon faa-parent animated-hover"><i class="fa fa-laptop faa-float" aria-hidden="true"></i></span><%= usertabledata.status %></td>
             <% ;break; 
             case '休暇': %>
-            <td><span class="status_kyuuka icon faa-parent animated-hover"><i class="fa fa-bed faa-flash" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+             <td class="find-status"><span class="status_kyuuka icon faa-parent animated-hover"><i class="fa fa-bed faa-flash" aria-hidden="true"></i></span><%= usertabledata.status %></td>
             <% ;break; 
             case '帰宅': %>
-            <td><span class="status_kitaku icon faa-parent animated-hover"><i class="fas fa-home faa-falling"></i></i></span><%= usertabledata.status %></td>
+             <td class="find-status"><span class="status_kitaku icon faa-parent animated-hover"><i class="fas fa-home faa-falling"></i></i></span><%= usertabledata.status %></td>
             <% ;break; 
             case '客先': %>
-            <td><span class="status_kyakusaki icon faa-parent animated-hover"><i class="fas fa-handshake faa-tada"></i></span><%= usertabledata.status %></td>
+             <td class="find-status"><span class="status_kyakusaki icon faa-parent animated-hover"><i class="fas fa-handshake faa-tada"></i></span><%= usertabledata.status %></td>
             <% ;break; 
             case '社内': 
                 if (usertabledata.ikisaki == "応接室１" || usertabledata.ikisaki == "応接室２" || usertabledata.ikisaki == "応接室２" || usertabledata.ikisaki == "営業ＭＴＧ") { %>
-                    <td><span class="status_shanai icon faa-parent animated-hover"><i class="fa fa-users faa-tada" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+                     <td class="find-status"><span class="status_shanai icon faa-parent animated-hover"><i class="fa fa-users faa-tada" aria-hidden="true"></i></span><%= usertabledata.status %></td>
                 <% } else if (usertabledata.ikisaki == "サーバ室") { %>
-                    <td><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-server faa-wrench"></i></span><%= usertabledata.status %></td>
+                     <td class="find-status"><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-server faa-wrench"></i></span><%= usertabledata.status %></td>
                 <% } else if (usertabledata.ikisaki == "検証室") { %>
-                    <td><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-wrench faa-wrench"></i></span><%= usertabledata.status %></td>
+                     <td class="find-status"><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-wrench faa-wrench"></i></span><%= usertabledata.status %></td>
                 <% } else if (usertabledata.ikisaki == "食堂") { %>
-                    <td><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-utensils faa-shake"></i></span><%= usertabledata.status %></td>
+                     <td class="find-status"><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-utensils faa-shake"></i></span><%= usertabledata.status %></td>
                 <% } else if (usertabledata.ikisaki == "喫煙室") { %>
-                    <td><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-smoking faa-float"></i></i></span><%= usertabledata.status %></td>
+                     <td class="find-status"><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-smoking faa-float"></i></i></span><%= usertabledata.status %></td>
                 <% } else if (usertabledata.ikisaki == "リラクゼーション") { %>
-                    <td><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-couch faa-float"></i></span><%= usertabledata.status %></td>
+                     <td class="find-status"><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-couch faa-float"></i></span><%= usertabledata.status %></td>
                 <% } else if (usertabledata.ikisaki == "社長室") { %>
-                    <td><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-user-secret faa-spin"></i></span><%= usertabledata.status %></td>
+                     <td class="find-status"><span class="status_shanai icon faa-parent animated-hover"><i class="fas fa-user-secret faa-spin"></i></span><%= usertabledata.status %></td>
                 <% } else if (usertabledata.ikisaki == "その他") { %>
-                    <td><span class="status_shanai icon faa-parent animated-hover"><i class="fa fa-building" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+                     <td class="find-status"><span class="status_shanai icon faa-parent animated-hover"><i class="fa fa-building" aria-hidden="true"></i></span><%= usertabledata.status %></td>
                 <% } else { %>
-                    <td><span class="status_shanai icon faa-parent animated-hover"><i class="fa fa-television faa-horizontal" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+                     <td class="find-status"><span class="status_shanai icon faa-parent animated-hover"><i class="fa fa-television faa-horizontal" aria-hidden="true"></i></span><%= usertabledata.status %></td>
             <% };break; 
             case '出張': %>
-            <td><span class="status_shucchou icon faa-parent animated-hover"><i class="fa fa-suitcase faa-passing" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+             <td class="find-status"><span class="status_shucchou icon faa-parent animated-hover"><i class="fa fa-suitcase faa-passing" aria-hidden="true"></i></span><%= usertabledata.status %></td>
             <% ;break; 
             case '研修': %>
-            <td><span class="status_kennshuu icon faa-parent animated-hover"><i class="fab fa-leanpub faa-shake"></i></span><%= usertabledata.status %></td>
+             <td class="find-status"><span class="status_kennshuu icon faa-parent animated-hover"><i class="fab fa-leanpub faa-shake"></i></span><%= usertabledata.status %></td>
             <% ;break; 
             default: %>
-            <td><span class="status_sonota icon faa-parent animated-hover"><i class="fa fa-smile-o faa-spin" aria-hidden="true"></i></span><%= usertabledata.status %></td>
+             <td class="find-status"><span class="status_sonota icon faa-parent animated-hover"><i class="fa fa-smile-o faa-spin" aria-hidden="true"></i></span><%= usertabledata.status %></td>
             <% ;break; } %>
         <td><%= usertabledata.ikisaki %></td>
         <td><%= usertabledata.time %></td>

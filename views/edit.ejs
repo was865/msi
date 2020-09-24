@@ -16,37 +16,142 @@
 		<div class="header-left">
 			<h1><span><i class="fa fa-bars" aria-hidden="true"></i></span><%- subtitle %></h1>
 			<ul class="downlist">
-				<li class="create_user"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span><a href="#">社員新規登録</a></li>
-				<li class="logout"><span><i class="fas fa-sign-out-alt"></i></span><a href="/logout">ログアウト</a></li>
+				<li id="create_user" class="admin_only"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span><a href="#">社員新規登録</a></li>
+				<li id="create_kyakusaki" class="admin_only mobile-hide"><span><i class="fas fa-handshake"></i></span><a href="#">客先管理＆新規</a></li>
+				<li id="create_shanai" class="admin_only mobile-hide"><span><i class="fa fa-building" aria-hidden="true"></i></span><a href="#">社内管理＆新規</a></li>
+				<li id="change_userinfo"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><a href="#">基本情報変更</a></li>
+				<li id="logout"><span><i class="fas fa-sign-out-alt"></i></span><a href="/logout">ログアウト</a></li>
 			</ul>
-    	</div>
+</div>
 	</header>
 
-	<!-- モーダル部分　社員新規登録 -->
-	<div class="signup-modal-wrapper" id="signup-modal">
+		<!-- モーダル部分　社員新規登録 -->
+	<div class="signup-modal-wrapper admin_only" id="signup-modal">
 		<div class="modal">
 		  <div id="close-modal">
 			<i class="fa fa-2x fa-times"></i>
 		  </div>
-		  <div id="signup-form">
-			<h2>名前で新規登録</h2>
+		  <div id="adduser-form">
+			<h2>社員新規登録</h2>
 			<form name="form_newuser" method="POST" action="/newuser">
-			  <input id="create_department" name="department" class="form-control" type="text" placeholder="部署名">
-			  <input id="create_name" name="name" class="form-control" type="text" placeholder="名前">
-			  <input id="create_information" name="information" class="form-control" type="text" placeholder="内線番号（省略可）">
-			  <input id="create_password" name="password" class="form-control" type="password" placeholder="パスワード">
-			  <input id="tmp_password" class="form-control" type="password" placeholder="パスワードを確認">
-			  <a href="javascript:form_newuser.submit()" id="btn_newuser">新規登録</a>
+				<input id="create_department" name="department" class="form-control" type="text" placeholder="部署名">
+				<div class="div_create_name">
+					<input id="create_name" name="name" class="form-control" type="text" placeholder="名前"><a id="newadmin_check_btn"><i class="fas fa-user"></i></a>
+				</div>
+				<input type="hidden" id="newadmin_check_body" name="newadmin_check_body" value="0">
+
+				<input id="create_information" name="information" class="form-control" type="text" placeholder="内線番号（省略可）">
+				<input id="create_email" name="email" class="form-control" type="text" placeholder="メールアドレス（省略可）">
+				<input id="create_password" name="password" class="form-control" type="password" placeholder="パスワード">
+				<input id="tmp_password" class="form-control" type="password" placeholder="パスワードを確認">
+				<a href="javascript:form_newuser.submit()" id="btn_newuser">新規登録</a>
 			</form>
 		  </div>
 		</div>
 	</div>
 	<!-- モーダルここまで　社員新規登録 -->
+		
+		<!-- モーダル部分 客先管理-->
+		<div class="signup-modal-wrapper admin_only" id="addkyakusaki-modal">
+			<div class="modal">
+			  <div id="close-modal2">
+				<i class="fa fa-2x fa-times"></i>
+			  </div>
+			  <div id="addkyakusaki-form">
+				<h2>客先管理＆新規登録</h2>
+				<form id="form_newkyakusaki" name="form_newkyakusaki" method="POST" action="/newkyakusaki">
+					<% var i;for (i in datakyakusaki) {  %>
+						<div>
+							<input name="kyakusaki" type="text" value="<%= datakyakusaki[i].attributes.kyakusaki %>"><span><i class="far fa-trash-alt btn_kyakusaki_delete"></i></span>
+							<input type="hidden" name="id" value="<%= datakyakusaki[i].attributes.id %>">
+						</div>
+					<% } %>
+					<input name="cnt" value="<%= i %>" type="hidden">
+	
+					<!-- クローン用区域 -->
+					<div id="clonearea_newkyakusaki">
+						
+					</div>
+					<!-- クローン用区域 ここまで　-->
+	
+					<!-- クローン要素 -->
+					<div class="clone_newkyakusaki hide" id="clone_newkyakusaki">
+						<input class="form-control input_newkyakusaki" type="text" placeholder="新客先を追加"><span><i class="fa fa-minus btn_kyakusaki_minus" aria-hidden="true"></i></span>
+					</div>
+					<!-- クローン要素 ここまで-->
+	
+					<span id="btn_kyakusaki_add">+</span>
+				  
+				  <a href="javascript:form_newkyakusaki.submit()" id="btn_newkyakusaki">登録</a>
+				</form>
+			  </div>
+			</div>
+		</div>
+		<!-- モーダルここまで　客先管理 -->
+	
+		<div class="signup-modal-wrapper admin_only" id="addshanai-modal">
+			<div class="modal">
+			  <div id="close-modal3">
+				<i class="fa fa-2x fa-times"></i>
+			  </div>
+			  <div id="addshanai-form">
+				<h2>社内所在地管理＆新規登録</h2>
+				<form id="form_newshanai" name="form_newshanai" method="POST" action="/newshanai">
+					<% var n;for (n in datashanai) {  %>
+						<div>
+							<input name="shanai" type="text" value="<%= datashanai[n].attributes.shanai %>"><span><i class="far fa-trash-alt btn_shanai_delete"></i></span>
+							<input type="hidden" name="id" value="<%= datashanai[n].attributes.id %>">
+						</div>
+					<% } %>
+					<input name="cnt_shanai" value="<%= n %>" type="hidden">
+	
+					<!-- クローン用区域 -->
+					<div id="clonearea_newshanai">
+						
+					</div>
+					<!-- クローン用区域 ここまで　-->
+	
+					<!-- クローン要素 -->
+					<div class="clone_newshanai hide" id="clone_newshanai">
+						<input class="form-control input_newshanai" type="text" placeholder="新社内ポジションを追加"><span><i class="fa fa-minus btn_shanai_minus" aria-hidden="true"></i></span>
+					</div>
+					<!-- クローン要素 ここまで-->
+	
+					<span id="btn_shanai_add">+</span>
+	
+				  <a href="javascript:form_newshanai.submit()" id="btn_newshanai">登録</a>
+				</form>
+			  </div>
+			</div>
+		</div>
+		<!-- モーダルここまで -->
+	
+		<!-- モーダル部分　社員情報管理 -->
+	<div class="signup-modal-wrapper" id="userinfo-modal">
+		<div class="modal">
+		  <div id="close-modal4">
+			<i class="fa fa-2x fa-times"></i>
+		  </div>
+		  <div id="userinfo-form">
+			<h2>基本情報変更</h2>
+			<form name="form_newuserinfo" method="POST" action="/newuserinfo">
+			  <input id="userinfo_name" name="userinfo_name" class="form-control" type="text" placeholder="名前" value="<%= login.name %>">
+			  <input id="userinfo_department" name="userinfo_department" class="form-control" type="text" placeholder="部署名" value="<%= login.department %>">
+			  <input id="userinfo_information" name="userinfo_information" class="form-control" type="text" placeholder="内線番号（省略可）" value="<%= login.information %>">
+			  <input id="userinfo_email" name="userinfo_email" class="form-control" type="text" placeholder="メールアドレス（省略可）" value="<%= login.email %>">
+			  <input id="userinfo_newpassword" name="userinfo_newpassword" class="form-control" type="password" placeholder="新しいパスワードを入力">
+			  <input id="userinfo_newpassword_tmp" class="form-control" type="password" placeholder="新しいパスワードを確認入力">
+			  <a href="javascript:form_newuserinfo.submit()" id="btn_newuserinfo">変更</a>
+			</form>
+		  </div>
+		</div>
+	</div>
+	<!-- モーダルここまで　社員情報管理 -->
 
 	<div role="main" class="main_edit">
 		<form name="form_edit" method="POST" action="/edit/<%= content.id %>">
 			<table class="table_edit">
-				<p class="editing_name"><span>ログイン中のユーザー：<span class="loginName"><%= login.name %></span></span><br><%- greeting %></p>
+				<p class="editing_name"><span>ログイン中のユーザー：<span><%= login.name %><i class="fas fa-user-shield admin_only" style="margin-left: 5px;"></i></span></span><br><%- greeting %></p>
 				<tr><th>名前</th></tr>
 				<tr><td id="edit_name"><input type="hidden" name="name" id="name" value="<%= content.name %>" ><%= content.name %></td></tr>
 				<tr><th>情報</th></tr>
@@ -267,7 +372,7 @@
 		</form>
 		<p><a href="/" class="backhome faa-parent animated-hover"><i class="fas fa-angle-double-right faa-passing"></i> 一覧に戻る</a></p>
 	
-	<form method="POST" action="/edit/<%= content.id %>/delete" name="form_delete" id="scroll-form-delete">
+	<form method="POST" action="/edit/<%= content.id %>/delete" name="form_delete" id="scroll-form-delete" class="admin_only">
 		<input type="hidden" name="id" value="<%= content.id %>">
 		<div id="delete_content">
 			<a href="javascript:form_delete.submit()" class="btn-massage faa-parent animated-hover" id="btn_delete"><i class="fas fa-user-times faa-flash"></i>
@@ -280,6 +385,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
 		$(function() {
+
+		console.log('管理者権限: <%= login.admin %>');
+		if ('<%= login.admin %>' != 1){
+			$('.admin_only').remove();
+			$('.main_edit').height('100%');
+		}else {
+			$('body').css('background-image','url(https://recruit.msi-net.co.jp/main/wp-content/uploads/2019/12/mainvisual-002.jpg)');
+		}
 
 			if ($('#status').val() == '' || $('#status').val() == '在席' || $('#status').val() == '帰宅') {
 				$('.table_ikisaki').addClass('hide');
@@ -390,25 +503,210 @@
 				});
 			}
 
-			// 新規登録モーダル
-			$('.create_user').click(function() {
-				$('#signup-modal').fadeIn();
-			});
-
-			$('#close-modal').click(function() {
-				$('#signup-modal').fadeOut();
-			});
-
-
-			$('.header-left h1 span').click(function(){
-			if ($('ul').hasClass('open')) {
-				$(this).html('<i class="fa fa-bars" aria-hidden="true"></i>');
-				$('ul').slideUp().removeClass('open');
-			} else {
-				$('ul').slideDown().addClass('open');
-				$(this).html('<i class="fa fa-chevron-down" aria-hidden="true"></i>');
+		// 新規登録モーダル
+		$('#create_user').click(function() {
+			$('#signup-modal').fadeIn();
+		});
+		$('#close-modal').click(function() {
+			$('#signup-modal').fadeOut();
+		});
+		// admin判定
+		$('#newadmin_check_btn').click(function(){
+			if ($(this).hasClass('Isadmin')){
+				$(this).removeClass('Isadmin').children('i').attr('class','fas fa-user');
+				$('#adduser-form h2').text('社員新規登録');
+				$('#create_name').attr('placeholder','名前');
+				$('#btn_newuser').css({
+					'background-color': '#56bed8'
+				});
 				
+				$('#newadmin_check_body').val('0');
+				console.log('新規管理者判定: ' + $('#newadmin_check_body').val());
+			} else {
+				$(this).addClass('Isadmin').children('i').attr('class','fas fa-user-shield');
+				$('#adduser-form h2').text('管理者新規登録');
+				$('#create_name').attr('placeholder','名前 (admin)')
+				$('#btn_newuser').css({
+					'background-color': '#ff9f4f'
+				});
+
+				$('#newadmin_check_body').val('1');
+				console.log('新規管理者判定: ' + $('#newadmin_check_body').val());
 			}
+		});
+
+		$('#newadmin_check_btn i').hover(function(){
+			if ($('#newadmin_check_btn').hasClass('Isadmin')){
+				$(this).css('color', '#e7853e');
+			}else {
+				$(this).css('color', '#33b4d4');
+			}
+		},function(){
+			if ($('#newadmin_check_btn').hasClass('Isadmin')){
+				$(this).css('color', '#ff9f4f');
+			}else {
+				$(this).css('color', '');
+			}
+		});
+
+
+		$('#btn_newuser').hover(function(){
+			if ($('#newadmin_check_btn').hasClass('Isadmin')){
+				$(this).css('background-color', '#e7853e');
+			}else {
+				$(this).css('background-color', '#33b4d4');
+			}
+		},function(){
+			if ($('#newadmin_check_btn').hasClass('Isadmin')){
+				$(this).css('background-color', '#ff9f4f');
+			}else {
+				$(this).css('background-color', '');
+			}
+		});
+
+
+		// 新規客先登録モーダル
+		$('#create_kyakusaki').click(function() {
+			$('#addkyakusaki-modal').fadeIn();
+		});
+		$('#close-modal2').click(function() {
+			$('#addkyakusaki-modal').fadeOut();
+		});
+
+		// 新規社内登録モーダル
+		$('#create_shanai').click(function() {
+			$('#addshanai-modal').fadeIn();
+		});
+		$('#close-modal3').click(function(){
+			$('#addshanai-modal').fadeOut();
+		});
+
+
+		// 基本情報変更モーダル
+		$('#change_userinfo').click(function() {
+			$('#userinfo-modal').fadeIn();
+		});
+		$('#close-modal4').click(function(){
+			$('#userinfo-modal').fadeOut();
+		});
+
+
+		// 社員新規入力passwordチェック
+		$('#btn_newuser').click(function(){
+			if ($('#create_name').val() == '' || $('#create_department').val() == '' || $('#create_password').val() == '' || $('#tmp_password').val() == '') {
+				alert('\n名前、所属、パスワードは必ず入力してください！');
+				return false;
+			} else if ($('#create_password').val() != $('#tmp_password').val()) {
+				$('#create_password').val('');
+				$('#tmp_password').val('');
+				$('#create_password').attr('placeholder','入力が一致しません。');
+				$('#tmp_password').attr('placeholder','パスワードを確認してください。');
+				return false;
+			} else {
+				return true;
+			}
+		});
+
+		// 基本情報変更passwordチェック
+		$('#btn_newuserinfo').click(function(){
+			if ($('#userinfo_name').val() == '' || $('#userinfo_department').val() == '' || $('#userinfo_newpassword').val() == '' || $('#userinfo_newpassword_tmp').val() == '') {
+				alert('\n名前、所属、パスワードは必ず入力してください！');
+				return false;
+			} else if ($('#userinfo_newpassword').val() != $('#userinfo_newpassword_tmp').val()) {
+				$('#userinfo_newpassword').val('');
+				$('#userinfo_newpassword_tmp').val('');
+				$('#userinfo_newpassword').attr('placeholder','入力が一致しません。');
+				$('#userinfo_newpassword_tmp').attr('placeholder','パスワードを確認してください。');
+				return false;
+			} else {
+				alert('\n変更できました！\n\nログインし直してください。')
+				return true;
+			}
+		});
+
+		//客先追加INPUTBOXをclone
+		var minCount = 1;
+		var maxCount = 7;
+
+		$('#btn_kyakusaki_add').on('click', function(){
+			var inputCount = $('div.clone_newkyakusaki').length;
+			if (inputCount < maxCount){
+				$('div#clone_newkyakusaki')
+				.clone(true)
+				.removeAttr('id')
+				.removeClass('hide')
+				.children('input').attr('name','newkyakusaki')
+				.end()
+				.appendTo('#clonearea_newkyakusaki')
+			}
+		});
+		$('#btn_kyakusaki_add').hover(function(){
+			$(this).animate({fontSize: '25px'},0);
+		},function(){
+			$(this).animate({fontSize: '15px'},100);
+		});
+
+		$('.btn_kyakusaki_minus').on('click', function(){
+
+			var inputCount = $('div.clone_newkyakusaki').length;
+			if (inputCount > minCount){
+				$(this).parent('span').parent('div').remove();
+			}
+			
+		});
+
+		$('.btn_kyakusaki_delete').on('click', function(){
+			$(this).parent().parent().children('input[name="kyakusaki"]').val('').end().slideUp();
+		});
+		$('.btn_kyakusaki_delete').hover(function(){
+			$(this).animate({fontSize: '15px'},0);
+		},function(){
+			$(this).animate({fontSize: '15px'},100);
+		});
+
+		//社内追加INPUTBOXをclone
+		var minCount_shanai = 1;
+		var maxCount_shanai = 5;
+
+		$('#btn_shanai_add').on('click', function(){
+			var inputCount = $('div.clone_newshanai').length;
+			if (inputCount <= maxCount_shanai){
+				$('div#clone_newshanai')
+				.clone(true)
+				.removeAttr('id')
+				.removeClass('hide')
+				.children('input').attr('name','newshanai')
+				.end()
+				.appendTo('#clonearea_newshanai')
+			}
+		});
+		$('#btn_shanai_add').hover(function(){
+			$(this).animate({fontSize: '25px'},0);
+		},function(){
+			$(this).animate({fontSize: '15px'},100);
+		});
+
+		$('.btn_shanai_minus').on('click', function(){
+			var inputCount = $('div.clone_newshanai').length;
+			if (inputCount > minCount_shanai){
+				$(this).parent('span').parent('div').remove();
+			}
+		});
+
+		$('.btn_shanai_delete').on('click', function(){
+			$(this).parent().parent().children('input[name="shanai"]').val('').end().slideUp();
+		});
+
+
+		$('.header-left h1 span').click(function(){
+		if ($('ul').hasClass('open')) {
+			$(this).html('<i class="fa fa-bars" aria-hidden="true"></i>');
+			$('ul').slideUp().removeClass('open');
+		} else {
+			$('ul').slideDown().addClass('open');
+			$(this).html('<i class="fa fa-chevron-down" aria-hidden="true"></i>');
+			
+		}
 		});
 
 		//新規入力チェック

@@ -17,11 +17,11 @@
 			<div class="header-left">
 						<h1><span><i class="fa fa-bars" aria-hidden="true"></i></span><%= title %></h1>
 						<ul class="downlist">
-							<li id="create_user"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span><a href="#">社員新規登録</a></li>
-							<li id="create_kyakusaki" class="mobile-hide"><span><i class="fas fa-handshake"></i></span><a href="#">客先管理＆新規</a></li>
-							<li id="create_shanai" class="mobile-hide"><span><i class="fa fa-building" aria-hidden="true"></i></span><a href="#">社内管理＆新規</a></li>
-							<li id="change_userinfo"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><a href="#">基本情報変更</a></li>
-							<li id="logout"><span><i class="fas fa-sign-out-alt"></i></span><a href="/logout">ログアウト</a></li>
+							<li id="create_user" class="admin_only"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>社員新規登録</li>
+							<li id="create_kyakusaki" class="admin_only mobile-hide"><span><i class="fas fa-handshake"></i></span>客先管理＆新規</li>
+							<li id="create_shanai" class="admin_only mobile-hide"><span><i class="fa fa-building" aria-hidden="true"></i></span>社内管理＆新規</li>
+							<li id="change_userinfo"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>基本情報変更</li>
+							<li id="logout"><span><i class="fas fa-sign-out-alt"></i></span>ログアウト</li>
 						</ul>
 			</div>
 			<div id="searchbox-input-wrapper">
@@ -31,29 +31,46 @@
 			</div>
 	</header>
 
+	<div class="color_example">
+		<p>在席<i class="fas fa-circle" style="color: #f9c92e;"></i></p>
+		<p>休暇<i class="fas fa-circle" style="color: #c00f15;;"></i></p>
+		<p>帰宅<i class="fas fa-circle" style="color: #505050;"></i></p>
+		<p>客先<i class="fas fa-circle" style="color: #ee4f83;"></i></p>
+		<p>社内<i class="fas fa-circle" style="color: #3ad413;"></i></p>
+		<p>出張<i class="fas fa-circle" style="color: #41b1e1;"></i></p>
+		<p>研修<i class="fas fa-circle" style="color: #c34bff;"></i></p>
+		<p>その他<i class="fas fa-circle" style="color: #ff9f4f;"></i></p>
+	</div>
+
+
 	<!-- モーダル部分　社員新規登録 -->
-	<div class="signup-modal-wrapper" id="signup-modal">
+	<div class="signup-modal-wrapper admin_only" id="signup-modal">
 		<div class="modal">
 		  <div id="close-modal">
 			<i class="fa fa-2x fa-times"></i>
 		  </div>
-		  <div id="signup-form">
-			<h2>名前で新規登録</h2>
+		  <div id="adduser-form">
+			<h2>社員新規登録</h2>
 			<form name="form_newuser" method="POST" action="/newuser">
-			  <input id="create_department" name="department" class="form-control" type="text" placeholder="部署名">
-			  <input id="create_name" name="name" class="form-control" type="text" placeholder="名前">
-			  <input id="create_information" name="information" class="form-control" type="text" placeholder="内線番号（省略可）">
-			  <input id="create_password" name="password" class="form-control" type="password" placeholder="パスワード">
-			  <input id="tmp_password" class="form-control" type="password" placeholder="パスワードを確認">
-			  <a href="javascript:form_newuser.submit()" id="btn_newuser">新規登録</a>
+				<input id="create_department" name="department" class="form-control" type="text" placeholder="部署名">
+				<div class="div_create_name">
+					<input id="create_name" name="name" class="form-control" type="text" placeholder="名前"><a id="newadmin_check_btn"><i class="fas fa-user"></i></a>
+				</div>
+				<input type="hidden" id="newadmin_check_body" name="newadmin_check_body" value="0">
+
+				<input id="create_information" name="information" class="form-control" type="text" placeholder="内線番号（省略可）">
+				<input id="create_email" name="email" class="form-control" type="text" placeholder="メールアドレス（省略可）">
+				<input id="create_password" name="password" class="form-control" type="password" placeholder="パスワード">
+				<input id="tmp_password" class="form-control" type="password" placeholder="パスワードを確認">
+				<a href="javascript:form_newuser.submit()" id="btn_newuser">新規登録</a>
 			</form>
 		  </div>
 		</div>
 	</div>
 	<!-- モーダルここまで　社員新規登録 -->
 	
-	<!-- モーダル部分 -->
-	<div class="signup-modal-wrapper" id="addkyakusaki-modal">
+	<!-- モーダル部分 客先管理-->
+	<div class="signup-modal-wrapper admin_only" id="addkyakusaki-modal">
 		<div class="modal">
 		  <div id="close-modal2">
 			<i class="fa fa-2x fa-times"></i>
@@ -88,8 +105,9 @@
 		  </div>
 		</div>
 	</div>
+	<!-- モーダルここまで　客先管理 -->
 
-	<div class="signup-modal-wrapper" id="addshanai-modal">
+	<div class="signup-modal-wrapper admin_only" id="addshanai-modal">
 		<div class="modal">
 		  <div id="close-modal3">
 			<i class="fa fa-2x fa-times"></i>
@@ -138,6 +156,7 @@
 			  <input id="userinfo_name" name="userinfo_name" class="form-control" type="text" placeholder="名前" value="<%= login.name %>">
 			  <input id="userinfo_department" name="userinfo_department" class="form-control" type="text" placeholder="部署名" value="<%= login.department %>">
 			  <input id="userinfo_information" name="userinfo_information" class="form-control" type="text" placeholder="内線番号（省略可）" value="<%= login.information %>">
+			  <input id="userinfo_email" name="userinfo_email" class="form-control" type="text" placeholder="メールアドレス（省略可）" value="<%= login.email %>">
 			  <input id="userinfo_newpassword" name="userinfo_newpassword" class="form-control" type="password" placeholder="新しいパスワードを入力">
 			  <input id="userinfo_newpassword_tmp" class="form-control" type="password" placeholder="新しいパスワードを確認入力">
 			  <a href="javascript:form_newuserinfo.submit()" id="btn_newuserinfo">変更</a>
@@ -168,7 +187,7 @@
                 <% for(var i in usertabledata) { %>
                     <%- include('data_item', {usertabledata:usertabledata[i]}) %>
 				<% } %>
-				<tr class="mobile-hide tr_add">
+				<tr class="mobile-hide tr_add admin_only">
 					<td><input type="text" class="text_add" name="department" placeholder="部署"></td>
 					<td><input type="text" class="text_add add_name" name="name" placeholder="名前"></td>
 					<td><input type="text" class="text_add" name="information" placeholder="内線"></td>
@@ -224,10 +243,18 @@
         </form></p>
 	</div>
 </div>
-  
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	$(function() {
+
+		console.log('管理者権限: <%= login.admin %>');
+		if ('<%= login.admin %>' != 1){
+			$('.admin_only').remove();
+		} else {
+			$('body').css('background-image','url(https://recruit.msi-net.co.jp/main/wp-content/uploads/2019/12/mainvisual-002.jpg)');
+			$('.color_example').css('background-color', 'rgba(83, 85, 85, 0.486)');
+		}
 
 		var ua = navigator.userAgent;
 			if ((ua.indexOf('iPhone') >  0 || ua.indexOf('Android') >  0) && ua.indexOf('Mobile') >  0) {
@@ -272,7 +299,7 @@
 				return false;
 			} else if ($('#status').val() == ''){
 				$('#time').val('');
-				alert('パスワードは"1"として設定されています。');
+				alert('\nパスワードは＂1＂;\n管理者権限は＂無＂；\nとして設定されています。');
 				return true;
 			}
 		});
@@ -316,12 +343,101 @@
 
 		});
 
+		//カラー例アニメーション
+		// $('.color_example').click(function(){
+		// 	$(this).css('padding','15px').children('.color_example p').animate({
+		// 		'font-size':'21px',
+		// 		'padding':'5px'
+		// 		},100,"linear");
+		// 	},function(){
+		// 		$('.color_example p').animate({
+		// 		'font-size':'18px',
+		// 		'padding':'3px'
+		// 		},100,"linear")
+		// 	})
+		$('.color_example p').hover(function(){
+			var color = $(this).children('i').attr('style');
+			$(this).attr('style', color).children('i').attr('class','fas fa-arrow-circle-right');
+		},function(){
+			$(this).attr('style', '').children('i').attr('class','fas fa-circle');
+		})
+
+
+		$('.color_example p').click(function(){
+
+			var text = $(this).text();
+			console.log(text);
+			$('.find-status').each(function(){
+				console.log($(this).text());
+				if ($(this).text() != text){
+				$(this).parent('tr').hide();
+				}else{
+					$(this).parent('tr').show();
+				}
+			});
+			$(this).addClass('clicked');
+			
+		})
+
 		// 新規登録モーダル
 		$('#create_user').click(function() {
 			$('#signup-modal').fadeIn();
 		});
 		$('#close-modal').click(function() {
 			$('#signup-modal').fadeOut();
+		});
+		// admin判定
+		$('#newadmin_check_btn').click(function(){
+			if ($(this).hasClass('Isadmin')){
+				$(this).removeClass('Isadmin').children('i').attr('class','fas fa-user');
+				$('#adduser-form h2').text('社員新規登録');
+				$('#create_name').attr('placeholder','名前');
+				$('#btn_newuser').css({
+					'background-color': '#56bed8'
+				});
+				
+				$('#newadmin_check_body').val('0');
+				console.log('新規管理者判定: ' + $('#newadmin_check_body').val());
+			} else {
+				$(this).addClass('Isadmin').children('i').attr('class','fas fa-user-shield');
+				$('#adduser-form h2').text('管理者新規登録');
+				$('#create_name').attr('placeholder','名前 (admin)')
+				$('#btn_newuser').css({
+					'background-color': '#ff9f4f'
+				});
+
+				$('#newadmin_check_body').val('1');
+				console.log('新規管理者判定: ' + $('#newadmin_check_body').val());
+			}
+		});
+
+		$('#newadmin_check_btn i').hover(function(){
+			if ($('#newadmin_check_btn').hasClass('Isadmin')){
+				$(this).css('color', '#e7853e');
+			}else {
+				$(this).css('color', '#33b4d4');
+			}
+		},function(){
+			if ($('#newadmin_check_btn').hasClass('Isadmin')){
+				$(this).css('color', '#ff9f4f');
+			}else {
+				$(this).css('color', '');
+			}
+		});
+
+
+		$('#btn_newuser').hover(function(){
+			if ($('#newadmin_check_btn').hasClass('Isadmin')){
+				$(this).css('background-color', '#e7853e');
+			}else {
+				$(this).css('background-color', '#33b4d4');
+			}
+		},function(){
+			if ($('#newadmin_check_btn').hasClass('Isadmin')){
+				$(this).css('background-color', '#ff9f4f');
+			}else {
+				$(this).css('background-color', '');
+			}
 		});
 
 
@@ -348,6 +464,11 @@
 		});
 		$('#close-modal4').click(function(){
 			$('#userinfo-modal').fadeOut();
+		});
+
+		//logout
+		$('#logout').click(function(){
+			window.location.href = '/logout';
 		});
 
 
@@ -461,11 +582,23 @@
 	
 		//tr td hover　色変化
 		$('.table_index tbody tr').hover(function(){
-		console.log("$('.table_index tbody tr').children().children().attr('class'):  " + $('.table_index tbody tr').children().children().attr('class'));
 		$('.icon').not($(this).children().children()).stop().hide();
 		},function(){
 			$('.icon').not($(this).children().children()).stop().show();
 		});
+
+		$('.mailto').hide();
+		$('.tooltip').hide();
+		$('.table_name').hover(function(){
+			$(this).children('.mailto').show();
+		},function(){
+			$(this).children('.mailto').hide();
+		})
+		$('.mailto').hover(function(){
+			$(this).parent('td').children('p').fadeIn(100);
+		},function(){
+			$(this).parent('td').children('p').fadeOut(100);
+		})
 
 	});
 </script>

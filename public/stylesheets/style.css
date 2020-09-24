@@ -24,7 +24,7 @@ body {
 header {
   height: 65px;
   width: 100%;
-  background-color: rgba(34, 49, 52, 0.9);
+  background-color: rgba(34, 40, 52, 0.9);
   position :fixed;
   z-index: 10;
 }
@@ -107,6 +107,28 @@ li a {
   padding: 0 10px;
 }
 
+.color_example {
+  position: fixed;
+  top:85px;
+  right:30px;
+  padding: 10px;
+  border-radius: 22px;
+  background-color: rgba(253, 253, 253, 0.281);
+  z-index: 50;
+}
+.color_example p {
+  font-size: 18px;
+  display: block;
+  font-family: "UD Digi Kyokasho N-R";
+  padding: 3px;
+  text-align: right;
+  color:#e9eaeb;
+  cursor: pointer;
+}
+.color_example i {
+  margin-left: 10px;
+}
+
 /*モーダル*/
 .signup-modal-wrapper {
   position: fixed;
@@ -143,6 +165,27 @@ li a {
 .fa-times:hover {
   color: rgba(0, 0, 0, 0.603);
 }
+
+.div_create_name{
+  position: relative;
+  display: inline-block;
+}
+
+#newadmin_check_btn {
+  position: absolute;
+  right: 0px;
+  cursor: pointer;	
+}
+#newadmin_check_btn i {
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 43.24px;
+  color: rgb(150, 150, 150);
+  transition: .5s;
+}
+/* #newadmin_check_btn i:hover {
+  color: #bd16cc;
+} */
 
 .btn_kyakusaki_delete, .btn_kyakusaki_minus,.btn_shanai_delete, .btn_shanai_minus {
   display: inline-block;
@@ -195,11 +238,11 @@ li a {
   background-color: #0084ff;
 }
 
-#signup-form, #addkyakusaki-form, #addshanai-form, #userinfo-form {
+#adduser-form, #addkyakusaki-form, #addshanai-form, #userinfo-form {
   width: 100%;
 }
 
-#signup-form h2, #addkyakusaki-form h2, #userinfo-form h2 {
+#adduser-form h2, #addkyakusaki-form h2, #userinfo-form h2 {
   color: #5f5d60;
   letter-spacing: 1px;
   margin-bottom: 25px;
@@ -210,7 +253,7 @@ li a {
   margin-bottom: 15px;
 }
 
-#signup-form input, #addkyakusaki-form input, #userinfo-form input {
+#adduser-form input, #addkyakusaki-form input, #userinfo-form input {
   width: 320px;
   margin-bottom: 10px;
   font-size: 15px;
@@ -237,9 +280,10 @@ li a {
   margin: 20px auto;
   cursor: pointer;
   text-decoration: none;
+  transition: .3s;
 }
-#btn_newuser:hover,  #btn_newkyakusaki:hover, #btn_newshanai:hover {
-  background-color: #33b4d4;
+#btn_newkyakusaki:hover, #btn_newshanai:hover {
+  background-color: #35abc9;
 }
 
 
@@ -332,9 +376,11 @@ li a {
 /* forms */
 
 .index-form {
-  width: 83%;
+  position: relative;
+  width: 85%;
+  left:50%;
+  transform: translate(-53%);
   min-height: 400px;
-  margin: 0 auto;
 }
 
 .main_index {
@@ -451,7 +497,24 @@ li a {
   border-top:none;
   box-shadow: 0px -3px 8px 1px #eee inset;
   padding: 0px 10px;
+  position:relative;
 }
+.tooltip {
+  width: 250px;
+  padding: 12px 8px;
+  height: 52.73px;
+  font-size: 15px;
+  background-color:rgba(83, 85, 85, 0.486);
+  color:#fff;
+  position: absolute;
+  left: -25px;
+  top: 52.73px;
+  border-radius: 20px;
+  z-index: 1;
+  text-shadow: 0 1px 0 #000;
+}
+
+
 .table_index tbody:hover td {
   color: transparent;
   text-shadow: 0 0 3px #aaa;
@@ -754,6 +817,9 @@ li {
   outline: none;
   padding: 0 12px;
 }
+.color_example {
+  display: none;
+}
 
 /*モーダル*/
 .hide {
@@ -793,18 +859,18 @@ li {
   cursor: pointer;
 }
 
-#signup-form, #addkyakusaki-form, #addshanai-form, #userinfo-form {
+#adduser-form, #addkyakusaki-form, #addshanai-form, #userinfo-form {
   width: 100%;
 }
 
-#signup-form h2, #addkyakusaki-form h2, #addshanai-form h2,#userinfo-form h2 {
+#adduser-form h2, #addkyakusaki-form h2, #addshanai-form h2,#userinfo-form h2 {
   color: #5f5d60;
   letter-spacing: 1px;
   margin-bottom: 50px;
   font-size:40px;
 }
 
-#signup-form input, #addkyakusaki-form input, #addshanai-form input, #userinfo-form input {
+#adduser-form input, #addkyakusaki-form input, #addshanai-form input, #userinfo-form input {
   width: 80%;
   margin-bottom: 40px;
   font-size: 35px;

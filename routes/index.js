@@ -96,13 +96,14 @@ router.get('/', function(req, res, next) {
 
             usertabledata.push({
                 id: element.attributes.id,
-                name : element.attributes.name,
-                information : element.attributes.information,
+                name: element.attributes.name,
+                information: element.attributes.information,
                 department: element.attributes.department,
-                status : element.attributes.status,
-                ikisaki : element.attributes.ikisaki,
-                time : element.attributes.time,
-                memo : element.attributes.memo,
+                status: element.attributes.status,
+                ikisaki: element.attributes.ikisaki,
+                time: element.attributes.time,
+                memo: element.attributes.memo,
+                email: element.attributes.email,
                 updateTime : dstr
             });  
         });
@@ -170,6 +171,7 @@ router.post('/', (req,res,next) => {
                 ikisaki : element.attributes.ikisaki,
                 time : element.attributes.time,
                 memo : element.attributes.memo,
+                email: element.attributes.email,
                 updateTime : dstr
             });  
 
@@ -200,6 +202,7 @@ router.post('/add', (req,res,next) => {
 
   var rec = {
     department: req.body.department,
+    admin: 0,
     name: req.body.name,
     password: 1,
     information: req.body.information,
@@ -225,9 +228,11 @@ router.post('/newuser', (req,res,next) => {
 
   var rec = {
     department: req.body.department,
+    admin: req.body.newadmin_check_body,
     name: req.body.name,
     information: req.body.information,
-    password: req.body.password,
+    email: req.body.email,
+    password: req.body.password
   }
 
   new Userdata(rec).save().then((model) => {
@@ -413,6 +418,7 @@ router.post('/newuserinfo', (req,res,next) => {
     name: req.body.userinfo_name,
     department:  req.body.userinfo_department,
     information: req.body.userinfo_information,
+    email: req.body.userinfo_email,
     password: req.body.userinfo_newpassword
   }
   new Userdata({id: req.session.login.id})
