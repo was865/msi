@@ -260,6 +260,7 @@
 			if ((ua.indexOf('iPhone') >  0 || ua.indexOf('Android') >  0) && ua.indexOf('Mobile') >  0) {
 				// スマートフォン用処理
 				$('.mobile-hide').hide();
+				$('.admin_only').remove();
 				$('.header-left h1 span').click(function(){
 					if ($('ul').hasClass('open')) {
 						$(this).html('<i class="fa fa-bars" aria-hidden="true"></i>');
