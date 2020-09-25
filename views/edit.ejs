@@ -378,8 +378,12 @@
 		</form>
 		<p><a href="/" class="backhome faa-parent animated-hover"><i class="fas fa-angle-double-right faa-passing"></i> 一覧に戻る</a></p>
 
-		
-	
+		<% if (login.admin == 1){ %>
+			<p></p>
+		<% } else { %>
+			<p class="space"><br></p>
+		<% } %>
+
 	<form method="POST" action="/edit/<%= content.id %>/delete" name="form_delete" id="scroll-form-delete" class="admin_only">
 		<input type="hidden" name="id" value="<%= content.id %>">
 		<div id="delete_content">

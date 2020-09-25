@@ -64,13 +64,13 @@ header {
   background-color: rgba(255, 255, 255, 0.5);
   cursor : pointer;
 }
-ul {
+.downlist {
   position: fixed;
   width: 248px;
   background-color: rgba(52, 77, 82, 0.8);
   display: none;
 }
-li{
+.downlist > li {
   font-family: "BIZ UDPゴシック","BIZ UDPGothic";
   color: #f6f6f6ee;
   font-size: 20px;
@@ -78,12 +78,12 @@ li{
   letter-spacing: 3px;
   text-align: left;
 }
-li:hover {
+.downlist > li:hover {
   background-color: rgba(255, 255, 255, 0.5);
   cursor : pointer;
 }
 
-li a {
+.downlist > li a {
   color: #f6f6f6ee;
   text-decoration: none;
 }
@@ -822,14 +822,14 @@ header {
   margin-right: 10px;
   transition:all 0.5s;
 }
-ul {
+.downlist {
   position: fixed;
   width: 100vw;
   background-color: rgba(52, 77, 82, 0.8);
   display: none;
   z-index:20;
 }
-li {
+.downlist > li {
   font-family: ヒラギノ角ゴ Pro W3;
   color: #f6f6f6ee;
   font-size: 38px;
