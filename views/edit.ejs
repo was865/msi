@@ -363,16 +363,12 @@
 				</td></tr>
 				<tr><th>メモ</th></tr>
 				<tr><td><textarea name="memo"><%= content.memo %></textarea></td></tr>
-				<tr class="admin_only"><th>管理者権限
-					<% if (content.admin == 1) { %>
-						<i class="fas fa-toggle-on"></i>
-					<% } else { %>
-						<i class="fas fa-toggle-off"></i>
-					<% } %>
+				<tr class="admin_only"><th>
+					管理者権限
+					<input type="checkbox" class="c-switch-check" id="check">
+					<label class="c-switch-label" for="check"></label>
+					<input type="hidden" name="admin" id="admin" value="<%= content.admin %>">
 				</th></tr>
-				
-				<input type="hidden" name="admin" id="admin" value="<%= content.admin %>">
-
 				<tr><td>
 					<a href="javascript:form_edit.submit()" id="btn_post" class="faa-parent animated-hover"><i class="fas fa-sync-alt faa-spin"></i>更新</a>
 				</td></tr>
@@ -381,6 +377,8 @@
 			</table>
 		</form>
 		<p><a href="/" class="backhome faa-parent animated-hover"><i class="fas fa-angle-double-right faa-passing"></i> 一覧に戻る</a></p>
+
+		
 	
 	<form method="POST" action="/edit/<%= content.id %>/delete" name="form_delete" id="scroll-form-delete" class="admin_only">
 		<input type="hidden" name="id" value="<%= content.id %>">
@@ -396,13 +394,70 @@
 	<script>
 		$(function() {
 
-		console.log('管理者権限: <%= login.admin %>');
-		if ('<%= login.admin %>' != 1){
-			$('.admin_only').remove();
-			$('.main_edit').height('100%');
-		}else {
-			$('body').css('background-image','url(https://recruit.msi-net.co.jp/main/wp-content/uploads/2019/12/mainvisual-002.jpg)');
-		}
+			console.log('使用中ユーザー管理者権限: <%= login.admin %>');
+			if ('<%= login.admin %>' != 1){
+				$('.admin_only').remove();
+				$('.main_edit').height('100%');
+			}else {
+				$('body').css('background-image','url(https://recruit.msi-net.co.jp/main/wp-content/uploads/2019/12/mainvisual-002.jpg)');
+			}
+
+			//管理者権限BOXチェック
+			console.log('編集するユーザー管理者権限: <%= content.admin %>');
+			if ('<%= content.admin %>' == 1){
+				$('#check').prop('checked', true);
+			} else {
+				$('#check').prop('checked', false);
+			}
+
+
+			$('#btn_post').click(function(){
+				if ($('#check').prop('checked') == true){
+					$('#admin').val('1');
+				} else if ($('#check').prop('checked') == false) {
+					$('#admin').val('0');
+				}
+				console.log("$('#admin').val()は：" + $('#admin').val());
+
+				if ($('#admin').val() != '<%= content.admin %>'){
+					if ($('#admin').val() == 1){
+						if ('<%= content.name %>' == '<%= login.name %>'){
+							if(!confirm('\n管理者権限を回収します。\nよろしいですか？')){
+								$('#check').prop('checked', false);
+								return false;
+							} else {
+								return true;
+							}
+						} else {
+							if(!confirm('\n<%= content.department %>＂<%= content.name %>＂に管理者権限を付与します。\n\nよろしいですか？')){
+								$('#check').prop('checked', false);
+								return false;
+							} else {
+								return true;
+							}
+						}
+					} else {
+						if ('<%= content.name %>' == '<%= login.name %>'){
+							if(!confirm('\nあなたは管理者権限を失います。\nよろしいですか？\n\n※管理者権限はログアウトするまで有効です。')){
+								$('#check').prop('checked', true);
+								return false;
+							} else {
+								return true;
+							}
+						} else {
+							if(!confirm('\n<%= content.department %>＂<%= content.name %>＂は管理者権限を失います。\nよろしいですか？')){
+								$('#check').prop('checked', true);
+								return false;
+							} else {
+								return true;
+							}
+						}
+					}
+				}
+
+				return true;
+			});
+			
 
 			if ($('#status').val() == '' || $('#status').val() == '在席' || $('#status').val() == '帰宅') {
 				$('.table_ikisaki').addClass('hide');
@@ -734,6 +789,8 @@
 				return true;
 			}
 		});
+
+		
 
 				// var deleteBtn = $('#delete_content');    
 				// deleteBtn.hide();

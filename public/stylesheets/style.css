@@ -110,14 +110,20 @@ li a {
 .color_example {
   position: fixed;
   top:85px;
-  right:30px;
+  right:20px;
   padding: 10px;
   border-radius: 22px;
   background-color: rgba(253, 253, 253, 0.281);
   z-index: 50;
+  font-size: 17px;
+  transition: .4s;
 }
+.color_example:hover {
+  font-size: 22px;
+  padding: 12px;
+}
+
 .color_example p {
-  font-size: 18px;
   display: block;
   font-family: "UD Digi Kyokasho N-R";
   padding: 3px;
@@ -183,9 +189,7 @@ li a {
   color: rgb(150, 150, 150);
   transition: .5s;
 }
-/* #newadmin_check_btn i:hover {
-  color: #bd16cc;
-} */
+
 
 .btn_kyakusaki_delete, .btn_kyakusaki_minus,.btn_shanai_delete, .btn_shanai_minus {
   display: inline-block;
@@ -381,6 +385,7 @@ li a {
   left:50%;
   transform: translate(-53%);
   min-height: 400px;
+  transition: .4s;
 }
 
 .main_index {
@@ -454,6 +459,7 @@ li a {
   border-radius: 6px;
   border:1px solid rgb(51, 142, 194);
 }
+
 
 
 .table_index {
@@ -697,6 +703,41 @@ a.btn-switch:active span {
   transform: scale(0.9);
 }
 
+/* 管理者権限switch */
+.c-switch-check {
+  display: none;
+}
+.c-switch-label {
+  position: relative;
+  display: inline-block;
+  top: 4.8px;
+  width: 43px;
+  height: 23px;
+  margin-left: 8px;
+  border-radius: calc(23px / 2);
+  background: #cccccc;
+  transition: background 200ms;
+  cursor: pointer;
+}
+.c-switch-label::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  display: block;
+  width: calc(23px - 4px);
+  height: calc(23px - 4px);
+  border-radius: calc((23px - 4px) / 2);
+  background: #ffffff;
+  transform: translateX(0);
+  transition: transform 200ms;
+}
+.c-switch-check:checked + .c-switch-label {
+  background: #59da48;
+}
+.c-switch-check:checked + .c-switch-label::before {
+  transform: translateX(calc((43px - 4px) - (23px - 4px)));
+}
 
 
 .backhome {
@@ -902,7 +943,10 @@ li {
   height: 100%;
 }
 .index-form {
+  position: relative;
   width: 98%;
+  left:50%;
+  transform: translate(-50%);
 }
 .table_index th{
   font-family: "UD Digi Kyokasho NK-B";

@@ -123,15 +123,18 @@ router.post('/:id', function(req, res, next) {
     req.body.time = '／' ;
   }
 
+  console.log('管理者権限' + req.body.admin);
+
   var rec = {
     name: req.body.name,
     information: req.body.information,
     status: req.body.status,
     ikisaki: req.body.ikisaki,
     time: req.body.time,
-    memo: req.body.memo
+    memo: req.body.memo,
+    admin: req.body.admin
   }
-  console.log('更新レコード' + rec);
+ 
  
   new Userdata({id:req.body.id}).save(rec).then((model) => {
     var d2 = new Date(model.attributes.updated_at);
