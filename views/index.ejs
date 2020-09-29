@@ -594,9 +594,11 @@
 			$(this).children('.mailto').hide();
 		})
 		$('.mailto').hover(function(){
-			$(this).parent('td').children('p').fadeIn(100);
+			$(this).children().children('i').attr('class','fas fa-envelope');
+			$(this).parent('td').children('p').fadeIn(200);
 		},function(){
-			$(this).parent('td').children('p').fadeOut(100);
+			$(this).children().children('i').attr('class','far fa-envelope');
+			$(this).parent('td').children('p').fadeOut(200);
 		})
 
 	});
