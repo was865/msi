@@ -383,7 +383,7 @@ header {
   position: relative;
   width: 85%;
   left:50%;
-  transform: translate(-54%);
+  transform: translate(-53.7%);
   min-height: 400px;
   transition: .4s;
 }
