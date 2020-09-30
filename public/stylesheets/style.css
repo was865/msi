@@ -109,13 +109,13 @@ header {
 
 .color_example {
   position: fixed;
-  top:87px;
-  right:22px;
+  top:100px;
+  right:35px;
   padding: 10px;
   border-radius: 22px;
   background-color: rgba(253, 253, 253, 0.281);
   z-index: 50;
-  font-size: 17px;
+  font-size: 19px;
   transition: .15s;
 }
 .color_example:hover {
