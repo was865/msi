@@ -265,13 +265,20 @@
 					if ($('ul').hasClass('open')) {
 						$(this).html('<i class="fa fa-bars" aria-hidden="true"></i>');
 						$('ul').slideUp().removeClass('open');
-						// $('#searchbox').slideDown();
 					} else {
 						$('ul').slideDown().addClass('open');
 						$(this).html('<i class="fa fa-chevron-down" aria-hidden="true"></i>');
-						// $('#searchbox').slideUp();
 					}
 				});
+        $(window).scroll(function () {
+        if ($(this).scrollTop() > 150) {
+          $('#searchbox').slideUp();
+          $('header').css('background-color','rgba(34, 40, 52, 0.7)');
+        } else {
+          $('header').css('background-color','rgba(34, 40, 52, 0.9)');
+          $('#searchbox').slideDown();
+        }
+    });
 			}
 			else {
 				// PC用処理
