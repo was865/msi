@@ -431,7 +431,31 @@ router.post('/newuserinfo', (req,res,next) => {
 
 });
 
+//まとめ編集
+router.post('/editing', (req,res,next) => {
+  if (req.session.login == null) {
+    res.redirect('/login');
+    return;
+  }
+  console.log(req.body);
 
+  for (var i=0; i<req.body.editing_id.length; i++ ){
+    var rec = {
+      // name: req.body.editing_name[i],
+      status: req.body.status,
+      ikisaki: req.body.ikisaki,
+      time: req.body.time,
+      memo: req.body.memo
+    }
+    new Userdata({id: req.body.editing_id[i]})
+    .save(rec ,{patch: true})
+    .then((result) => {
+      console.log('更新しました：' + result.attributes.name[i] + '; ' + result.attributes.status + '; ' + result.attributes.ikisaki + '; ' + result.attributes.time + '; ' + result.attributes.memo);
+    });
+  }
+  res.redirect('/');
+  
+});
 
 router.get('/logout', function(req, res){
   req.session.login = null;

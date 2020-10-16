@@ -107,6 +107,25 @@ header {
   padding: 0 10px;
 }
 
+#edit-group {
+  position: fixed;
+  top:379px;
+  right:35px;
+  width: 112px;
+  padding: 12px;
+  border-radius: 22px;
+  background-color: #169ddb;
+  color:#e9eaeb;
+  font-family: "UD Digi Kyokasho N-R";
+  z-index: 50;
+  font-size: 17px;
+  transition: .15s;
+  cursor: pointer;
+}
+#edit-group:hover {
+  opacity: 0.8;
+}
+
 .color_example {
   position: fixed;
   top:100px;
@@ -242,11 +261,11 @@ header {
   background-color: #0084ff;
 }
 
-#adduser-form, #addkyakusaki-form, #addshanai-form, #userinfo-form {
+#adduser-form, #addkyakusaki-form, #addshanai-form, #userinfo-form, #editing-form {
   width: 100%;
 }
 
-#adduser-form h2, #addkyakusaki-form h2, #userinfo-form h2 {
+#adduser-form h2, #addkyakusaki-form h2, #userinfo-form h2,#editing-form h2 {
   color: #5f5d60;
   letter-spacing: 1px;
   margin-bottom: 25px;
@@ -257,7 +276,8 @@ header {
   margin-bottom: 15px;
 }
 
-#adduser-form input, #addkyakusaki-form input, #userinfo-form input {
+#adduser-form input, #addkyakusaki-form input, #userinfo-form input, 
+#editing-form input, #editing-form select, #editing-form textarea {
   width: 320px;
   margin-bottom: 10px;
   font-size: 15px;
@@ -274,7 +294,7 @@ header {
   border-radius: 5px;
 }
 
-#btn_newuser,  #btn_newkyakusaki, #btn_newshanai, #btn_newuserinfo {
+#btn_newuser,  #btn_newkyakusaki, #btn_newshanai, #btn_newuserinfo, #btn_editing {
   display: inline-block;
   padding: 14px 140px;
   background-color: #56bed8;
@@ -286,7 +306,7 @@ header {
   text-decoration: none;
   transition: .3s;
 }
-#btn_newkyakusaki:hover, #btn_newshanai:hover {
+#btn_newkyakusaki:hover, #btn_newshanai:hover, #btn_editing:hover {
   background-color: #35abc9;
 }
 

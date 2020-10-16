@@ -2,9 +2,9 @@
 
     <tr class="data_item_tr">
         <td class="mobile-hide"><%= usertabledata.department %></td>
-        <td class="table_name" style="font-family: ＭＳ 明朝;"><%= usertabledata.name %>
+        <td class="table_name" style="font-family: ＭＳ 明朝;"><span class="name"><%= usertabledata.name %></span>
             <% if (usertabledata.email != ''){ %>
-                <span class="mailto"><a href="mailto:<%= usertabledata.email %>"><i class="far fa-envelope"></i></a></span><p class="tooltip">送信先：<br><%= usertabledata.email %></p>
+                <span class="mailto"><a href="mailto:<%= usertabledata.email %>"><i class="far fa-envelope"></i></a></span><p class="tooltip">送信先：<br><%= usertabledata.email %></p><span style="display: none;" class="id"><%= usertabledata.id %></span>
             <% } %>
         </td>
         <td class="mobile-hide"><%= usertabledata.information %></td>
@@ -50,9 +50,9 @@
             default: %>
              <td class="find-status"><span class="status_sonota icon faa-parent animated-hover"><i class="fa fa-smile-o faa-spin" aria-hidden="true"></i></span><%= usertabledata.status %></td>
             <% ;break; } %>
-        <td><%= usertabledata.ikisaki %></td>
-        <td><%= usertabledata.time %></td>
-        <td><%= usertabledata.memo %></td>
+        <td class="table_ikisaki"><%= usertabledata.ikisaki %></td>
+        <td class="table_time"><%= usertabledata.time %></td>
+        <td class="table_memo"><%= usertabledata.memo %></td>
         <td class="mobile-hide"><%= usertabledata.updateTime %></td>
         <td>
             <div class="btn-wrap">

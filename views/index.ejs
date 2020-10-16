@@ -42,6 +42,10 @@
 		<p>その他<i class="fas fa-circle" style="color: #ff9f4f;"></i></p>
 	</div>
 
+	<div id="edit-group">
+		<p>まとめ編集</p>
+	</div>
+
 
 	<!-- モーダル部分　社員新規登録 -->
 	<div class="signup-modal-wrapper admin_only" id="signup-modal">
@@ -165,6 +169,62 @@
 		</div>
 	</div>
 	<!-- モーダルここまで　社員情報管理 -->
+
+	<!-- モーダル部分　まとめ編集 -->
+	<div class="signup-modal-wrapper" id="editing-modal">
+		<div class="modal">
+		  <div id="close-modal5">
+			<i class="fa fa-2x fa-times"></i>
+		  </div>
+		  <div id="editing-form">
+			<h2>まとめて編集</h2>
+			<form name="form_editing" method="POST" action="/editing">
+			  <input id="edting_name" class="form-control" type="text" placeholder="名前" value="">
+			  <select name="status" id="status-edit">
+				<% datastatus.forEach ( (element)=> {  %>
+					<option value="<%= element.attributes.status %>"><%= element.attributes.status %></option>
+				<% }); %>
+			  </select>
+			  <select name="ikisaki" id="ikisaki-edit"></select>
+			  <select name="time" id="time-edit">
+				<option value="~ 8:30">~ 8:30</option>
+				<option value="~ 9:00">~ 9:00</option>
+				<option value="~ 9:30">~ 9:30</option>
+				<option value="~ 10:00">~ 10:00</option>
+				<option value="~ 10:30">~ 10:30</option>
+				<option value="~ 11:00">~ 11:00</option>
+				<option value="~ 11:30">~ 11:30</option>
+				<option value="~ 12:00">~ 12:00</option>
+				<option value="~ 12:30">~ 12:30</option>
+				<option value="~ 13:00">~ 13:00</option>
+				<option value="~ 13:30">~ 13:30</option>
+				<option value="~ 14:00">~ 14:00</option>
+				<option value="~ 14:30">~ 14:30</option>
+				<option value="~ 15:00">~ 15:00</option>
+				<option value="~ 15:30">~ 15:30</option>
+				<option value="~ 16:00">~ 16:00</option>
+				<option value="~ 16:30">~ 16:30</option>
+				<option value="~ 17:00">~ 17:00</option>
+				<option value="~ 17:30">~ 17:30</option>
+				<option value="~ 18:00">~ 18:00</option>
+				<option value="~ 18:30">~ 18:30</option>
+				<option value="~ 19:00">~ 19:00</option>
+				<option value="~ 19:30">~ 19:30</option>
+				<option value="~ 20:00">~ 20:00</option>
+				<option value="~ 20:30">~ 20:30</option>
+				<option value="~ 21:00">~ 21:00</option>
+				<option value="~ 21:30">~ 21:30</option>
+				<option value="~ 22:00">~ 22:00</option>
+				<option value="22:00 ~">22:00 ~</option>
+				<option value="不帰">不帰</option>
+			</select>
+			<textarea type="text" class="memo_add" name="memo" placeholder="メモ"></textarea>
+			  <a href="javascript:form_editing.submit()" id="btn_editing">更新</a>
+			</form>
+		  </div>
+		</div>
+	</div>
+	<!-- モーダルここまで　まとめ編集 -->
 
 
 <div class="main_index">
@@ -344,14 +404,60 @@
 
 		});
 
+		// まとめ編集用
+
+		if ($('#ikisaki-edit').val() == '') {
+			$('#ikisaki-edit').hide();
+		}
+		if ($('#time-edit').val() == '') {
+			$('#time-edit').hide();
+		}
+
+		$('#status-edit').change(function() {
+
+			var val = $(this).val();
+
+			switch (val) {
+				case '休暇':
+					var selectContent_kyuuka = '<option value="全休">全休</option>' +
+							'<option value="ＡＭ半休">ＡＭ半休</option>' + 
+							'<option value="ＰＭ半休">ＰＭ半休</option>';
+					$('#ikisaki-edit').html(selectContent_kyuuka);
+					$('#ikisaki-edit').show();
+					$('#time-edit').val('').hide();
+					break;
+				case '客先':
+					var selectContent_kyakusaki = '<% datakyakusaki.forEach ( (element)=> { %><option value="<%= element.attributes.kyakusaki %>"><%= element.attributes.kyakusaki %></option><%  }) %>';
+					$('#ikisaki-edit').html(selectContent_kyakusaki);
+					$('#ikisaki-edit').show();
+					$('#time-edit').show();
+					break;
+				case '社内':
+					var selectContent_shanai = '<% datashanai.forEach ( (element)=> { %><option value="<%= element.attributes.shanai %>"><%= element.attributes.shanai %></option><%  }) %>';
+					$('#ikisaki-edit').html(selectContent_shanai);
+					$('#ikisaki-edit').show();
+					$('#time-edit').show();
+					break;
+				case '':
+				case '在席':
+				case '帰宅':
+					$('#ikisaki-edit').val('').hide();
+					$('#time-edit').val('').hide();
+					break;
+				default:
+					$('#ikisaki-edit').val('').hide();
+					$('#time-edit').show();
+					break;
+			}
+
+		});		
+
 		$('.color_example').hover(function(){
-			$('.index-form').animate({
-				marginLeft:'-15.93px'
-			},0);
+			$('.index-form').animate({marginLeft:'-15.93px'},0);
+			$('#edit-group').animate({marginTop:'48px'},0);
 		},function(){
-			$('.index-form').animate({
-				marginLeft:'0px'
-			},0);
+			$('.index-form').animate({marginLeft:'0px'},0);
+			$('#edit-group').animate({marginTop:'0px'},0);
 		})
 
 		$('.color_example p').hover(function(){
@@ -369,8 +475,8 @@
 			$('.find-status').each(function(){
 				console.log($(this).text());
 				if ($(this).text() != text){
-				$(this).parent('tr').hide();
-				}else{
+					$(this).parent('tr').hide();
+				} else {
 					$(this).parent('tr').show();
 				}
 			});
@@ -465,11 +571,85 @@
 			$('#userinfo-modal').fadeOut();
 		});
 
+		// まとめ変更モーダル
+
+		//まとめ編集用
+		$('#edit-group').hide();
+		$('.table_name').click(function(){
+
+			var val = $(this).parent().children('.find-status').text();
+
+			switch (val) {
+				case '休暇':
+					var selectContent_kyuuka = '<option value="全休">全休</option>' +
+							'<option value="ＡＭ半休">ＡＭ半休</option>' + 
+							'<option value="ＰＭ半休">ＰＭ半休</option>';
+					$('#ikisaki-edit').html(selectContent_kyuuka);
+					$('#ikisaki-edit').show();
+					$('#time-edit').val('').hide();
+					break;
+				case '客先':
+					var selectContent_kyakusaki = '<% datakyakusaki.forEach ( (element)=> { %><option value="<%= element.attributes.kyakusaki %>"><%= element.attributes.kyakusaki %></option><%  }) %>';
+					$('#ikisaki-edit').html(selectContent_kyakusaki);
+					$('#ikisaki-edit').show();
+					$('#time-edit').show();
+					break;
+				case '社内':
+					var selectContent_shanai = '<% datashanai.forEach ( (element)=> { %><option value="<%= element.attributes.shanai %>"><%= element.attributes.shanai %></option><%  }) %>';
+					$('#ikisaki-edit').html(selectContent_shanai);
+					$('#ikisaki-edit').show();
+					$('#time-edit').show();
+					break;
+				case '':
+				case '在席':
+				case '帰宅':
+					$('#ikisaki-edit').val('').hide();
+					$('#time-edit').val('').hide();
+					break;
+				default:
+					$('#ikisaki-edit').val('').hide();
+					$('#time-edit').show();
+					break;
+			}
+	
+
+			if ($(this).hasClass('editing-group')){
+				$(this).css({'background-color':'','color':''}).removeClass('editing-group');
+			} else {
+				$(this).css({'background-color':'#169ddb','color':'white'}).addClass('editing-group');
+				$('#status-edit').val($(this).parent().children('.find-status').text());
+				$('#ikisaki-edit').val($(this).parent().children('.table_ikisaki').text());
+				$('#time-edit').val($(this).parent().children('.table_time').text());
+				$('#memo_add').val($(this).parent().children('.table_memo').text());
+			}
+			if ($('.editing-group').length){
+				$('#edit-group').show();
+				$('.color_example').css('pointer-events','none');
+			} else {
+				$('#edit-group').hide();
+				$('.color_example').css('pointer-events','');
+			}
+		});
+
+		$('#edit-group').click(function() {
+			$('#editing-modal').fadeIn();
+			var editingNames = '';
+			$('.editing-group').each(function(){
+				$('#editing-form form').append('<input name="editing_name" type="hidden" value="' + $(this).children('.name').text() + '">' +
+					'<input name="editing_id" type="hidden" value="' + $(this).children('.id').text() + '">');
+				editingNames = editingNames + $(this).children('.name').text() + "，";
+			})
+			console.log(editingNames);
+			$('#edting_name').val(editingNames.slice(0,-1));
+		});
+		$('#close-modal5').click(function(){
+			$('#editing-modal').fadeOut();
+		});　
+
 		//logout
 		$('#logout').click(function(){
 			window.location.href = '/logout';
 		});
-
 
 
 
@@ -601,6 +781,8 @@
 			$(this).parent('td').children('p').fadeOut(200);
 		})
 
+
+		
 	});
 </script>
 </body>
