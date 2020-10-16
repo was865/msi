@@ -440,8 +440,15 @@ router.post('/editing', (req,res,next) => {
   console.log(req.body);
 
   for (var i=0; i<req.body.editing_id.length; i++ ){
+
+    if (req.body.ikisaki == undefined || req.body.ikisaki.length == 0){
+      req.body.ikisaki = '／';
+    }
+    if (req.body.time == undefined || req.body.time.length == 0){
+      req.body.time = '／';
+    }
+
     var rec = {
-      // name: req.body.editing_name[i],
       status: req.body.status,
       ikisaki: req.body.ikisaki,
       time: req.body.time,
@@ -450,7 +457,7 @@ router.post('/editing', (req,res,next) => {
     new Userdata({id: req.body.editing_id[i]})
     .save(rec ,{patch: true})
     .then((result) => {
-      console.log('更新しました：' + result.attributes.name[i] + '; ' + result.attributes.status + '; ' + result.attributes.ikisaki + '; ' + result.attributes.time + '; ' + result.attributes.memo);
+      console.log('更新しました。');
     });
   }
   res.redirect('/');

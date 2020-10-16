@@ -620,7 +620,7 @@
 				$('#status-edit').val($(this).parent().children('.find-status').text());
 				$('#ikisaki-edit').val($(this).parent().children('.table_ikisaki').text());
 				$('#time-edit').val($(this).parent().children('.table_time').text());
-				$('#memo_add').val($(this).parent().children('.table_memo').text());
+				$('.memo_add').val($(this).parent().children('.table_memo').text());
 			}
 			if ($('.editing-group').length){
 				$('#edit-group').show();
@@ -631,12 +631,12 @@
 			}
 		});
 
-		$('#edit-group').click(function() {
+		$('#edit-group').click(function(){
 			$('#editing-modal').fadeIn();
 			var editingNames = '';
 			$('.editing-group').each(function(){
-				$('#editing-form form').append('<input name="editing_name" type="hidden" value="' + $(this).children('.name').text() + '">' +
-					'<input name="editing_id" type="hidden" value="' + $(this).children('.id').text() + '">');
+				$('#editing-form form').append('<div class="append_area"><input name="editing_name" type="hidden" value="' + $(this).children('.name').text() + '">' +
+					'<input name="editing_id" type="hidden" value="' + $(this).children('.id').text() + '"></div>');
 				editingNames = editingNames + $(this).children('.name').text() + "，";
 			})
 			console.log(editingNames);
@@ -644,6 +644,7 @@
 		});
 		$('#close-modal5').click(function(){
 			$('#editing-modal').fadeOut();
+			$('.append_area').remove();
 		});　
 
 		//logout
