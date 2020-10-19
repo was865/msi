@@ -179,7 +179,7 @@
 		  <div id="editing-form">
 			<h2>まとめて編集</h2>
 			<form name="form_editing" method="POST" action="/editing">
-			  <input id="edting_name" class="form-control" type="text" placeholder="名前" value="">
+			  <input id="edting_name" class="form-control" type="text" placeholder="名前" value="" disabled>
 			  <select name="status" id="status-edit">
 				<% datastatus.forEach ( (element)=> {  %>
 					<option value="<%= element.attributes.status %>"><%= element.attributes.status %></option>
