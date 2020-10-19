@@ -468,17 +468,20 @@
 
 			})
 
-			// $('.backhome').hover(function() {
-			// 	$(this).animate({'font-size':'120%'},70);
-			// },function() {
-			// 	$(this).animate({'font-size':'100%'},50);
-			// })
 
 			$('#btn_delete').click(function(){
-				if (!confirm('\n<%= content.department %>〝<%= content.name %>″の関連データはすべて削除されます。\n\nよろしいですか？')) {
-					return false;
+				if ('<%= content.name %>' == '<%= login.name %>'){
+					if (!confirm('\nあなたの関連データはすべて削除されます。\nよろしいですか？\n\n※アカウント削除後、ログアウトするまで操作可能です。')) {
+						return false;
+					} else {
+						return true;
+					}
 				} else {
-					return true;
+					if (!confirm('\n<%= content.department %>〝<%= content.name %>″の関連データはすべて削除されます。\n\nよろしいですか？')) {
+						return false;
+					} else {
+						return true;
+					}
 				}
 			});
 
