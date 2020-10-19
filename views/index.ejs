@@ -360,6 +360,14 @@
 						// $('#searchbox').slideUp();
 					}
 				});
+				//スクロールが100に達したらボタン表示
+				$(window).scroll(function() {
+					if ($(this).scrollTop() > 116){
+						$('#searchbox').slideUp();
+					} else {
+						$('#searchbox').slideDown();
+					}
+				});
 			}
 			else {
 				// PC用処理
@@ -605,6 +613,12 @@
 
 		//まとめ編集用
 		$('#edit-group').hide();
+		$('.table_name').hover(function(){
+			$(this).css('border','2px solid #169ddb2c');
+		},function(){
+			$(this).css('border','');
+		});
+
 		$('.table_name').click(function(){
 
 			var val = $(this).parent().children('.find-status').text();
@@ -655,6 +669,7 @@
 			if ($('.editing-group').length){
 				$('#edit-group').show();
 				$('.color_example').css('pointer-events','none');
+				$('.mailto').hide();
 			} else {
 				$('#edit-group').hide();
 				$('.color_example').css('pointer-events','');
@@ -850,15 +865,6 @@
 				$(this).parent('td').children('p').fadeOut(200);
 			})
 		}
-
-		//スクロールが100に達したらボタン表示
-		$(window).scroll(function() {
-			if ($(this).scrollTop() > 116){
-				$('#searchbox').slideUp();
-			} else {
-				$('#searchbox').slideDown();
-			}
-		});
 		
 	});
 </script>

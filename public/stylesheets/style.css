@@ -505,6 +505,10 @@ header {
 .table_name {
   font-weight: bolder;
 }
+.table_name:hover {
+  cursor: pointer;
+}
+
 .table_index td{
   font-family: "UD Digi Kyokasho NP-R";
   font-size: 17px;
