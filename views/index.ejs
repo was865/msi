@@ -43,9 +43,15 @@
 	</div>
 
 	<div id="edit-group">
-		<p>まとめ編集</p>
+		<p></p>
 	</div>
 
+	<div id="contact_wrap">
+		<form method="POST" action="/contact">
+			<div class="contact_icon"><i class="fas fa-feather-alt"></i></div>
+			<div class="kakomi-smart2"><span class="title-smart2">連絡事項</span><textarea class="contact_text">実装待ちです。</textarea></div>
+		</form>
+	</div>
 
 	<!-- モーダル部分　社員新規登録 -->
 	<div class="signup-modal-wrapper admin_only" id="signup-modal">
@@ -177,7 +183,7 @@
 			<i class="fa fa-2x fa-times"></i>
 		  </div>
 		  <div id="editing-form">
-			<h2>まとめて編集</h2>
+			<h2></h2>
 			<form name="form_editing" method="POST" action="/editing">
 			  <input id="edting_name" class="form-control" type="text" placeholder="名前" value="" disabled>
 			  <select name="status" id="status-edit">
@@ -305,7 +311,7 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css">
 <script>
 	$(function() {
@@ -666,10 +672,19 @@
 				$('#time-edit').val($(this).parent().children('.table_time').text());
 				$('.memo_add_edit').val($(this).parent().children('.table_memo').text());
 			}
+			console.log($('.editing-group').length);
 			if ($('.editing-group').length){
+				if ($('.editing-group').length == 1){
+					$('#edit-group').show();
+					$('#edit-group p').text('クイック編集');
+					$('.color_example').css('pointer-events','none');
+					$('.mailto').hide();
+				} else {
 				$('#edit-group').show();
+				$('#edit-group p').text('まとめて編集');
 				$('.color_example').css('pointer-events','none');
 				$('.mailto').hide();
+				}
 			} else {
 				$('#edit-group').hide();
 				$('.color_example').css('pointer-events','');
@@ -865,6 +880,17 @@
 				$(this).parent('td').children('p').fadeOut(200);
 			})
 		}
+
+		$('.contact_icon').click(function(){
+			if ($('.kakomi-smart2').hasClass('open')){
+				$('.kakomi-smart2').fadeOut(420).removeClass('open');
+				$(this).animate({color: '#169ddb'},420);
+			} else {
+				$('.kakomi-smart2').fadeIn(420).addClass('open');
+				$(this).animate({color: '#907b6e'},420);
+			}
+
+		})
 		
 	});
 </script>
