@@ -493,6 +493,7 @@
 				// スマートフォン用処理
 				$('#scroll-form-delete').hide();
 				$('.admin_only').remove();
+
 			} 
 			// else if (ua.indexOf('ipad') > 0 || ua.indexOf('macintosh') > 0 || ua.indexOf('Android') >  0) {
             //   // タブレット用処理(効かない)
@@ -513,7 +514,7 @@
             // } 
 			else {
 				// PC用処理
-				$(window).on('scroll', function () {
+				$(window).on('scroll', function() {
 					var doch = $(document).innerHeight(); //ページ全体の高さ
 					var winh = $(window).innerHeight(); //ウィンドウの高さ
 					var bottom = doch - winh; //ページ全体の高さ - ウィンドウの高さ = ページの最下部位置
@@ -525,6 +526,7 @@
 					} else {
 					deleteBtn.fadeOut();
 					}
+
 				});
 
 				$('#btn_post').click(function(){

@@ -1100,13 +1100,14 @@ button.btn {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%) ;
-  width: 288px;
+  width: 290px;
   padding: 25px;
   border-radius: 50px;
   border: 5px solid #a6cde4;
   background-color: #169ddb;
   color:#e9eaeb;
   font-family: "UD Digi Kyokasho N-R";
+  font-weight: bolder;
   z-index: 50;
   font-size: 45px;
 }

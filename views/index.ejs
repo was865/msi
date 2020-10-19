@@ -851,7 +851,14 @@
 			})
 		}
 
-
+		//スクロールが100に達したらボタン表示
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 116){
+				$('#searchbox').slideUp();
+			} else {
+				$('#searchbox').slideDown();
+			}
+		});
 		
 	});
 </script>
