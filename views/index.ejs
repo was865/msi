@@ -218,7 +218,7 @@
 				<option value="22:00 ~">22:00 ~</option>
 				<option value="不帰">不帰</option>
 			</select>
-			<textarea type="text" class="memo_add" name="memo" placeholder="メモ"></textarea>
+			<textarea type="text" class="memo_add_edit" name="memo" placeholder="メモ"></textarea>
 			  <a href="javascript:form_editing.submit()" id="btn_editing">更新</a>
 			</form>
 		  </div>
@@ -305,7 +305,35 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css">
 <script>
+	$(function() {
+		$("#sortableArea").sortable();
+	});
+	//スマホhover無効処理
+	var touch = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+	
+	if(touch) {
+	  try {
+		for (var si in document.styleSheets) {
+		  var styleSheet = document.styleSheets[si];
+		  if (!styleSheet.rules) continue;
+	
+		  for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
+			if (!styleSheet.rules[ri].selectorText) continue;
+	
+			if (styleSheet.rules[ri].selectorText.match(':hover')) {
+			  styleSheet.deleteRule(ri);
+			}
+		  }
+		}
+	  } catch (ex) {}
+	}
+</script>
+
+<script>
+	
 	$(function() {
 
 		console.log('管理者権限: <%= login.admin %>');
@@ -548,6 +576,7 @@
 
 		// 新規客先登録モーダル
 		$('#create_kyakusaki').click(function() {
+			$('#form_newkyakusaki').children().children('input[name="kyakusaki"]').parent().show();
 			$('#addkyakusaki-modal').fadeIn();
 		});
 		$('#close-modal2').click(function() {
@@ -556,6 +585,7 @@
 
 		// 新規社内登録モーダル
 		$('#create_shanai').click(function() {
+			$('#form_newshanai').children().children('input[name="shanai"]').parent().show();
 			$('#addshanai-modal').fadeIn();
 		});
 		$('#close-modal3').click(function(){
@@ -620,7 +650,7 @@
 				$('#status-edit').val($(this).parent().children('.find-status').text());
 				$('#ikisaki-edit').val($(this).parent().children('.table_ikisaki').text());
 				$('#time-edit').val($(this).parent().children('.table_time').text());
-				$('.memo_add').val($(this).parent().children('.table_memo').text());
+				$('.memo_add_edit').val($(this).parent().children('.table_memo').text());
 			}
 			if ($('.editing-group').length){
 				$('#edit-group').show();
@@ -719,13 +749,31 @@
 		});
 
 		$('.btn_kyakusaki_delete').on('click', function(){
-			$(this).parent().parent().children('input[name="kyakusaki"]').val('').end().slideUp();
+			$(this).parent().parent().children('input[name="kyakusaki"]').end().slideUp();
 		});
 		$('.btn_kyakusaki_delete').hover(function(){
 			$(this).animate({fontSize: '15px'},0);
 		},function(){
 			$(this).animate({fontSize: '15px'},100);
 		});
+
+		$('#btn_newkyakusaki').on('click', function(){
+			var data = '';
+			$('#form_newkyakusaki').children().children('input[name="kyakusaki"]').parent().each(function(){
+				if ($(this).is(':hidden')){
+					data += $(this).children('input[name="kyakusaki"]').val() + '，';
+					$(this).children('input[name="kyakusaki"]').val('');
+				}
+			})
+			if (data != ''){
+				if(!confirm('\n"' + data.slice(0,-1) + '"は削除されます。\nよろしいですか？')){
+					window.location.href = '/';
+					return false;
+				} else {
+					return true;
+				}
+			}
+		})
 
 		//社内追加INPUTBOXをclone
 		var minCount_shanai = 1;
@@ -757,8 +805,25 @@
 		});
 
 		$('.btn_shanai_delete').on('click', function(){
-			$(this).parent().parent().children('input[name="shanai"]').val('').end().slideUp();
+			$(this).parent().parent().children('input[name="shanai"]').end().slideUp();
 		});
+		$('#btn_newshanai').on('click', function(){
+			var data = '';
+			$('#form_newshanai').children().children('input[name="shanai"]').parent().each(function(){
+				if ($(this).is(':hidden')){
+					data += $(this).children('input[name="shanai"]').val() + '，';
+					$(this).children('input[name="shanai"]').val('');
+				}
+			})
+			if (data != ''){
+				if(!confirm('\n"' + data.slice(0,-1) + '"は削除されます。\nよろしいですか？')){
+					window.location.href = '/';
+					return false;
+				} else {
+					return true;
+				}
+			}
+		})
 	
 		//tr td hover　色変化
 		$('.table_index tbody tr').hover(function(){
@@ -769,18 +834,22 @@
 
 		$('.mailto').hide();
 		$('.tooltip').hide();
-		$('.table_name').hover(function(){
-			$(this).children('.mailto').show();
-		},function(){
-			$(this).children('.mailto').hide();
-		})
-		$('.mailto').hover(function(){
-			$(this).children().children('i').attr('class','fas fa-envelope');
-			$(this).parent('td').children('p').fadeIn(200);
-		},function(){
-			$(this).children().children('i').attr('class','far fa-envelope');
-			$(this).parent('td').children('p').fadeOut(200);
-		})
+		if ((ua.indexOf('iPhone') >  0 || ua.indexOf('Android') >  0) && ua.indexOf('Mobile') >  0) {
+			console.log('スマホにmailto無効化');
+		} else {
+			$('.table_name').hover(function(){
+				$(this).children('.mailto').show();
+			},function(){
+				$(this).children('.mailto').hide();
+			})
+			$('.mailto').hover(function(){
+				$(this).children().children('i').attr('class','fas fa-envelope');
+				$(this).parent('td').children('p').fadeIn(200);
+			},function(){
+				$(this).children().children('i').attr('class','far fa-envelope');
+				$(this).parent('td').children('p').fadeOut(200);
+			})
+		}
 
 
 		

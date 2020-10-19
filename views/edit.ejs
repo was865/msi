@@ -370,7 +370,7 @@
 					<input type="hidden" name="admin" id="admin" value="<%= content.admin %>">
 				</th></tr>
 				<tr><td>
-					<a href="javascript:form_edit.submit()" id="btn_post" class="faa-parent animated-hover"><i class="fas fa-sync-alt faa-spin"></i>更新</a>
+					<a href="javascript:form_edit.submit()" id="btn_post" class="faa-parent animated-hover"><i class="fas fa-pencil-alt"></i>更新</a>
 				</td></tr>
 
 				<input type="hidden" name="id" value="<%= content.id %>">
@@ -635,6 +635,7 @@
 
 		// 新規客先登録モーダル
 		$('#create_kyakusaki').click(function() {
+			$('#form_newkyakusaki').children().children('input[name="kyakusaki"]').parent().show();
 			$('#addkyakusaki-modal').fadeIn();
 		});
 		$('#close-modal2').click(function() {
@@ -643,6 +644,7 @@
 
 		// 新規社内登録モーダル
 		$('#create_shanai').click(function() {
+			$('#form_newshanai').children().children('input[name="shanai"]').parent().show();
 			$('#addshanai-modal').fadeIn();
 		});
 		$('#close-modal3').click(function(){
@@ -724,13 +726,31 @@
 		});
 
 		$('.btn_kyakusaki_delete').on('click', function(){
-			$(this).parent().parent().children('input[name="kyakusaki"]').val('').end().slideUp();
+			$(this).parent().parent().children('input[name="kyakusaki"]').end().slideUp();
 		});
 		$('.btn_kyakusaki_delete').hover(function(){
 			$(this).animate({fontSize: '15px'},0);
 		},function(){
 			$(this).animate({fontSize: '15px'},100);
 		});
+
+		$('#btn_newkyakusaki').on('click', function(){
+			var data = '';
+			$('#form_newkyakusaki').children().children('input[name="kyakusaki"]').parent().each(function(){
+				if ($(this).is(':hidden')){
+					data += $(this).children('input[name="kyakusaki"]').val() + '，';
+					$(this).children('input[name="kyakusaki"]').val('');
+				}
+			})
+			if (data != ''){
+				if(!confirm('\n"' + data.slice(0,-1) + '"は削除されます。\nよろしいですか？')){
+					window.location.href = '/';
+					return false;
+				} else {
+					return true;
+				}
+			}
+		})
 
 		//社内追加INPUTBOXをclone
 		var minCount_shanai = 1;
@@ -762,8 +782,25 @@
 		});
 
 		$('.btn_shanai_delete').on('click', function(){
-			$(this).parent().parent().children('input[name="shanai"]').val('').end().slideUp();
+			$(this).parent().parent().children('input[name="shanai"]').end().slideUp();
 		});
+		$('#btn_newshanai').on('click', function(){
+			var data = '';
+			$('#form_newshanai').children().children('input[name="shanai"]').parent().each(function(){
+				if ($(this).is(':hidden')){
+					data += $(this).children('input[name="shanai"]').val() + '，';
+					$(this).children('input[name="shanai"]').val('');
+				}
+			})
+			if (data != ''){
+				if(!confirm('\n"' + data.slice(0,-1) + '"は削除されます。\nよろしいですか？')){
+					window.location.href = '/';
+					return false;
+				} else {
+					return true;
+				}
+			}
+		})
 
 
 		$('.header-left h1 span').click(function(){

@@ -365,15 +365,6 @@ header {
   margin-right: 15px;
 }
 
-/* .btn-massage:before {
-  font-family: "FontAwesome";
-  content: "\f235";
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  margin-top: -10px;
-} */
-
 .btn-massage span {
   display: block;
   position: absolute;
@@ -921,18 +912,19 @@ header {
   cursor: pointer;
 }
 
-#adduser-form, #addkyakusaki-form, #addshanai-form, #userinfo-form {
+#adduser-form, #addkyakusaki-form, #addshanai-form, #userinfo-form, #editing-form {
   width: 100%;
 }
 
-#adduser-form h2, #addkyakusaki-form h2, #addshanai-form h2,#userinfo-form h2 {
+#adduser-form h2, #addkyakusaki-form h2, #addshanai-form h2, #userinfo-form h2, #editing-form h2 {
   color: #5f5d60;
   letter-spacing: 1px;
   margin-bottom: 50px;
   font-size:40px;
 }
 
-#adduser-form input, #addkyakusaki-form input, #addshanai-form input, #userinfo-form input {
+#adduser-form input, #addkyakusaki-form input, #addshanai-form input, #userinfo-form input, 
+#editing-form input, #editing-form select, #editing-form textarea {
   width: 80%;
   margin-bottom: 40px;
   font-size: 35px;
@@ -941,7 +933,7 @@ header {
   border-radius: 5px;
 }
 
-#btn_newuser,  #btn_newkyakusaki, #btn_newshanai, #btn_newuserinfo {
+#btn_newuser,  #btn_newkyakusaki, #btn_newshanai, #btn_newuserinfo, #btn_editing {
   display: inline-block;
   font-size: 35px;
   padding: 14px 140px;
@@ -995,7 +987,7 @@ header {
   padding-top:130px;
   padding-bottom:8px;
 }
-  #edit_name {
+#edit_name {
   font-family: ＭＳ Ｐ明朝 ;
   font-size:42px;
   font-weight:bolder;
@@ -1102,5 +1094,21 @@ button.btn {
   border-bottom: none;
 }
 
+#edit-group {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%) ;
+  width: 288px;
+  padding: 25px;
+  border-radius: 50px;
+  border: 5px solid #a6cde4;
+  background-color: #169ddb;
+  color:#e9eaeb;
+  font-family: "UD Digi Kyokasho N-R";
+  z-index: 50;
+  font-size: 45px;
+}
 
 }
