@@ -677,11 +677,13 @@
 				if ($('.editing-group').length == 1){
 					$('#edit-group').show();
 					$('#edit-group p').text('クイック編集');
+					$('#editing-form h2').text('クイック編集');
 					$('.color_example').css('pointer-events','none');
 					$('.mailto').hide();
 				} else {
 				$('#edit-group').show();
 				$('#edit-group p').text('まとめて編集');
+				$('#editing-form h2').text('まとめて編集');
 				$('.color_example').css('pointer-events','none');
 				$('.mailto').hide();
 				}

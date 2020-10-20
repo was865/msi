@@ -1160,8 +1160,8 @@ button.btn {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%) ;
-  width: 290px;
-  padding: 25px;
+  width: 350px;
+  height: 115px;
   border-radius: 50px;
   border: 5px solid #a6cde4;
   background-color: #169ddb;
@@ -1172,6 +1172,9 @@ button.btn {
   font-size: 45px;
 }
 
+#edit-group p {
+  line-height: 115px;
+}
 /* 連絡事項 */
 /* スマート　囲み枠　2 */
 .kakomi-smart2 {
@@ -1218,13 +1221,13 @@ button.btn {
  .contact_icon {
   position: fixed;
   bottom: 32px;
-  right: 5.5%;
+  right: 5.8%;
   z-index: 60;
-  font-size: 70px;
+  font-size: 80px;
   color: #4edfe9;
  }
  .contact_icon:hover {
-  opacity: 0.7;
+  opacity: 1;
   cursor: pointer;
  }
 
