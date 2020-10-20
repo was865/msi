@@ -32,6 +32,10 @@ var shanaidata = Bookshelf.Model.extend({
   tableName: 'shanai_list',
 });
 
+var contactdata = Bookshelf.Model.extend({
+  tableName: 'contact',
+});
+
 var datastatus;
 function getStatus(){
   new statusdata().fetchAll().then((collection) => {
@@ -69,6 +73,19 @@ function getShanai(){
 
 }
 
+var datacontact;
+function getMsg(){
+
+  new contactdata().where('id','=', 1)
+    .fetch()
+    .then((record) => {
+      datacontact = record.attributes.msg;
+    });
+
+  return datacontact;
+
+}
+
 router.get('/', function(req, res, next) {
 
   if (req.session.login == null) {
@@ -79,6 +96,7 @@ router.get('/', function(req, res, next) {
   getStatus();
   getKyakusaki();
   getShanai();
+  getMsg();
 
     var usertabledata = new Array();
 
@@ -115,7 +133,8 @@ router.get('/', function(req, res, next) {
             usertabledata: usertabledata,
             datastatus: datastatus,
             datakyakusaki: datakyakusaki,
-            datashanai: datashanai
+            datashanai: datashanai,
+            msg: datacontact
         };
         res.render('index', data);
     }).catch((err) => { 
@@ -138,6 +157,7 @@ router.post('/', (req,res,next) => {
   getStatus();
   getKyakusaki();
   getShanai();
+  getMsg();
 
   var usertabledata = new Array();
 
@@ -185,6 +205,7 @@ router.post('/', (req,res,next) => {
           datakyakusaki: datakyakusaki,
           datashanai: datashanai,
           login: req.session.login,
+          msg:datacontact
       };
       res.render('index', data);
   }).catch((err) => { 
@@ -469,6 +490,23 @@ router.get('/logout', function(req, res){
   res.redirect('/login');
 });
 
+router.post('/contact', (req,res,next) => {
+  if (req.session.login == null) {
+    res.redirect('/login');
+    return;
+  }
 
+  console.log("req.body = " + req.body.msg);
+  var rec = {
+    msg: req.body.msg,
+  }
+  new contactdata({id: 1})
+  .save(rec ,{patch: true})
+  .then((result) => {
+    console.log('更新しました。');
+  });
+  
+  res.redirect('/');
+  });
 
 module.exports = router;

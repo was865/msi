@@ -787,6 +787,7 @@ a.btn-switch:active span {
   visibility: visible;
 }
 
+/* 連絡事項 */
 /* スマート　囲み枠　2 */
 .kakomi-smart2 {
   display: none;
@@ -820,8 +821,8 @@ a.btn-switch:active span {
  .contact_text {
    background-color: #ede4cd;
    border: none;
-   width:238px;
-   height: 202px;
+   width:90%;
+   height: 90%;
    padding: 10px;
    font-size: 19px;
    font-family: "UD Digi Kyokasho NP-R";
@@ -833,10 +834,10 @@ a.btn-switch:active span {
   right: 2.5%;
   z-index: 60;
   font-size:30px;
-  color: #169ddb;
+  color: #4edfe9;
  }
  .contact_icon:hover {
-  opacity: 0.8;
+  opacity: 0.7;
   cursor: pointer;
  }
 
@@ -1170,5 +1171,61 @@ button.btn {
   z-index: 50;
   font-size: 45px;
 }
+
+/* 連絡事項 */
+/* スマート　囲み枠　2 */
+.kakomi-smart2 {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 3.8%;
+  width: 65%; /* ボックス幅 */
+  margin: 2em auto;
+  padding: 3em 1em .8em;
+  height: 800px;
+  z-index: 50;
+  border-style: solid;
+  border-width: 10px 0 0 0;
+  border-color: #907b6e; /* 枠の色 */
+  background-color: #ede4cd; /* 背景色 */
+  color: #666; /* テキスト色 */
+  box-shadow: 0 0 3px #999; /* 影の色 */
+ }
+ .title-smart2 {
+  position: absolute;
+  top: 2.5%;
+  left: 4%;
+  background-color: #ede4cd; /* タイトル背景色 */
+  color: #907b6e; /* タイトル色 */
+  font-size: 2.5em;
+  font-weight: bold;
+  border-style: none none double;
+  border-color: #907b6e; /*タイトル下線 */
+  border-width: 6px;
+ }
+ .contact_text {
+   background-color: #ede4cd;
+   border: none;
+   margin-top: 10%;
+   margin-left: 3%;
+   width: 90%;
+   height: 75%;
+   padding: 10px;
+   font-size: 2.4em;
+   font-family: "UD Digi Kyokasho NP-R";
+ }
+
+ .contact_icon {
+  position: fixed;
+  bottom: 32px;
+  right: 5.5%;
+  z-index: 60;
+  font-size: 70px;
+  color: #4edfe9;
+ }
+ .contact_icon:hover {
+  opacity: 0.7;
+  cursor: pointer;
+ }
 
 }

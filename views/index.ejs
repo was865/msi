@@ -47,9 +47,9 @@
 	</div>
 
 	<div id="contact_wrap">
-		<form method="POST" action="/contact">
+		<form method="POST" action="/contact" id="form_contact">
 			<div class="contact_icon"><i class="fas fa-feather-alt"></i></div>
-			<div class="kakomi-smart2"><span class="title-smart2">連絡事項</span><textarea class="contact_text">実装待ちです。</textarea></div>
+			<div class="kakomi-smart2"><span class="title-smart2">連絡事項</span><textarea class="contact_text" id="contact_text" name="msg"><%= msg %></textarea></div>
 		</form>
 	</div>
 
@@ -881,16 +881,47 @@
 			})
 		}
 
-		$('.contact_icon').click(function(){
-			if ($('.kakomi-smart2').hasClass('open')){
-				$('.kakomi-smart2').fadeOut(420).removeClass('open');
-				$(this).animate({color: '#169ddb'},420);
-			} else {
-				$('.kakomi-smart2').fadeIn(420).addClass('open');
-				$(this).animate({color: '#907b6e'},420);
-			}
 
-		})
+		//連絡事項
+		if ($("#contact_text").val().length > 0){
+			$('.contact_icon').click(function(){
+				if ($('.kakomi-smart2').hasClass('open')){
+					$('.kakomi-smart2').fadeOut(420).removeClass('open');
+					$(this).animate({color: '#4edfe9'},420);
+				} else {
+					$('.kakomi-smart2').fadeIn(420).addClass('open');
+					$(this).animate({color: '#907b6e'},420);
+				}
+			});
+		} else {
+			$('.contact_icon').css('color','#308f96');
+			$('.contact_icon').click(function(){
+				if ($('.kakomi-smart2').hasClass('open')){
+					$('.kakomi-smart2').fadeOut(420).removeClass('open');
+					$(this).animate({color: '#308f96'},420);
+				} else {
+					$('.kakomi-smart2').fadeIn(420).addClass('open');
+					$(this).animate({color: '#907b6e'},420);
+				}
+			});
+		}
+
+		
+		var $form = $("#form_contact");
+		var $ta = $("#contact_text");
+
+		$(document).on("keypress", "#contact_text", function(e) {
+		  if (e.keyCode == 13) { // Enterが押された
+		    if (e.shiftKey) { // Shiftキーも押された
+		      $.noop();
+		    } else if ($ta.val().replace(/\s/g, "").length >= 0) {
+		      e.preventDefault();
+		      $form.submit();
+		    }
+		  } else {
+		    $.noop();
+		  }
+		});
 		
 	});
 </script>
