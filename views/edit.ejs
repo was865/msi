@@ -159,6 +159,7 @@
 					<%= content.information %></td></tr>
 				<tr><th>状態</th></tr>
 				<tr><td><select name="status" id="status" >
+					<option value=""></option>
 					<% datastatus.forEach ( (element)=> { %>
 						<option value="<%= element.attributes.status %>" 
 							<% if (content.status == element.attributes.status){ %>

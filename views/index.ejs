@@ -20,6 +20,7 @@
 							<li id="create_user" class="admin_only"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span>社員新規登録</li>
 							<li id="create_kyakusaki" class="admin_only mobile-hide"><span><i class="fas fa-handshake"></i></span>客先管理＆新規</li>
 							<li id="create_shanai" class="admin_only mobile-hide"><span><i class="fa fa-building" aria-hidden="true"></i></span>社内管理＆新規</li>
+							<li id="create_department" class="admin_only mobile-hide"><span><i class="fas fa-users" aria-hidden="true"></i></span>部署管理＆新規</li>
 							<li id="change_userinfo"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>基本情報変更</li>
 							<li id="logout"><span><i class="fas fa-sign-out-alt"></i></span>ログアウト</li>
 						</ul>
@@ -62,7 +63,12 @@
 		  <div id="adduser-form">
 			<h2>社員新規登録</h2>
 			<form name="form_newuser" method="POST" action="/newuser">
-				<input id="create_department" name="department" class="form-control" type="text" placeholder="部署名">
+				<select name="department" class="form-control placeholder_select" id="create_department">
+					<option value='' disabled selected style='display:none;'>部署名</option>
+					<% datadepartment.forEach ( (element)=> {  %>
+						<option value="<%= element.attributes.department %>"><%= element.attributes.department %></option>
+					<% }); %>
+				</select>
 				<div class="div_create_name">
 					<input id="create_name" name="name" class="form-control" type="text" placeholder="名前"><a id="newadmin_check_btn"><i class="fas fa-user"></i></a>
 				</div>
@@ -153,6 +159,44 @@
 		</div>
 	</div>
 	<!-- モーダルここまで -->
+
+	<!-- モーダル部分 部署管理-->
+	<div class="signup-modal-wrapper admin_only" id="adddepartment-modal">
+		<div class="modal">
+		  <div id="close-modal5">
+			<i class="fa fa-2x fa-times"></i>
+		  </div>
+		  <div id="adddepartment-form">
+			<h2>部署管理＆新規登録</h2>
+			<form id="form_newdepartment" name="form_newdepartment" method="POST" action="/newdepartment">
+				<% var i;for (i in datadepartment) {  %>
+					<div>
+						<input name="department" type="text" value="<%= datadepartment[i].attributes.department %>"><span><i class="far fa-trash-alt btn_department_delete"></i></span>
+						<input type="hidden" name="id" value="<%= datadepartment[i].attributes.id %>">
+					</div>
+				<% } %>
+				<input name="cnt" value="<%= i %>" type="hidden">
+
+				<!-- クローン用区域 -->
+				<div id="clonearea_newdepartment">
+					
+				</div>
+				<!-- クローン用区域 ここまで　-->
+
+				<!-- クローン要素 -->
+				<div class="clone_newdepartment hide" id="clone_newdepartment">
+					<input class="form-control input_newdepartment" type="text" placeholder="新部署を追加"><span><i class="fa fa-minus btn_department_minus" aria-hidden="true"></i></span>
+				</div>
+				<!-- クローン要素 ここまで-->
+
+				<span id="btn_department_add">+</span>
+			  
+			  <a href="javascript:form_newdepartment.submit()" id="btn_newdepartment">登録</a>
+			</form>
+		  </div>
+		</div>
+	</div>
+	<!-- モーダルここまで　部署管理 -->
 
 	<!-- モーダル部分　社員情報管理 -->
 	<div class="signup-modal-wrapper" id="userinfo-modal">
@@ -253,11 +297,19 @@
                 <% for(var i in usertabledata) { %>
                     <%- include('data_item', {usertabledata:usertabledata[i]}) %>
 				<% } %>
+
 				<tr class="mobile-hide tr_add admin_only">
-					<td><input type="text" class="text_add" name="department" placeholder="部署"></td>
+					<td><select name="department" class="select_add placeholder_select" id="department" placeholder="部署">
+						<option value='' disabled selected style='display:none;'>部署名</option>
+						<% datadepartment.forEach ( (element)=> {  %>
+							<option value="<%= element.attributes.department %>"><%= element.attributes.department %></option>
+						<% }); %>
+						</select>
+					</td>
 					<td><input type="text" class="text_add add_name" name="name" placeholder="名前"></td>
 					<td><input type="text" class="text_add" name="information" placeholder="内線"></td>
 					<td><select name="status" class="select_add" id="status">
+						<option value=""></option>
 						<% datastatus.forEach ( (element)=> {  %>
 							<option value="<%= element.attributes.status %>"><%= element.attributes.status %></option>
 						<% }); %>
@@ -406,6 +458,10 @@
 				return true;
 			}
 		});
+
+		$('.placeholder_select').change(function() {
+			$(this).css('color','black');
+		})
 
 		$('#status').change(function() {
 
@@ -606,7 +662,6 @@
 			$('#addshanai-modal').fadeOut();
 		});
 
-
 		// 基本情報変更モーダル
 		$('#change_userinfo').click(function() {
 			$('#userinfo-modal').fadeIn();
@@ -615,15 +670,19 @@
 			$('#userinfo-modal').fadeOut();
 		});
 
+		//部署管理モーダル
+		$('#create_department').click(function() {
+			$('#form_newdepartment').children().children('input[name="department"]').parent().show();
+			$('#adddepartment-modal').fadeIn();
+		});
+		$('#close-modal5').click(function() {
+			$('#adddepartment-modal').fadeOut();
+		});
+
 		// まとめ変更モーダル
 
 		//まとめ編集用
 		$('#edit-group').hide();
-		$('.table_name').hover(function(){
-			$(this).css('border','2px solid #169ddb2c');
-		},function(){
-			$(this).css('border','');
-		});
 
 		$('.table_name').click(function(){
 
@@ -718,6 +777,7 @@
 
 		// 社員新規入力passwordチェック
 		$('#btn_newuser').click(function(){
+			alert($('#create_department option:selected').text();
 			if ($('#create_name').val() == '' || $('#create_department').val() == '' || $('#create_password').val() == '' || $('#tmp_password').val() == '') {
 				alert('\n名前、所属、パスワードは必ず入力してください！');
 				return false;
@@ -856,6 +916,64 @@
 				}
 			}
 		})
+
+		//部署追加INPUTBOXをclone
+		var minCount = 1;
+		var maxCount = 7;
+
+		$('#btn_department_add').on('click', function(){
+			var inputCount = $('div.clone_newdepartment').length;
+			if (inputCount < maxCount){
+				$('div#clone_newdepartment')
+				.clone(true)
+				.removeAttr('id')
+				.removeClass('hide')
+				.children('input').attr('name','newdepartment')
+				.end()
+				.appendTo('#clonearea_newdepartment')
+			}
+		});
+		$('#btn_department_add').hover(function(){
+			$(this).animate({fontSize: '25px'},0);
+		},function(){
+			$(this).animate({fontSize: '15px'},100);
+		});
+
+		$('.btn_department_minus').on('click', function(){
+
+			var inputCount = $('div.clone_newdepartment').length;
+			if (inputCount > minCount){
+				$(this).parent('span').parent('div').remove();
+			}
+			
+		});
+
+		$('.btn_department_delete').on('click', function(){
+			$(this).parent().parent().children('input[name="department"]').end().slideUp();
+		});
+		$('.btn_department_delete').hover(function(){
+			$(this).animate({fontSize: '15px'},0);
+		},function(){
+			$(this).animate({fontSize: '15px'},100);
+		});
+
+		$('#btn_newdepartment').on('click', function(){
+			var data = '';
+			$('#form_newdepartment').children().children('input[name="department"]').parent().each(function(){
+				if ($(this).is(':hidden')){
+					data += $(this).children('input[name="department"]').val() + '，';
+					$(this).children('input[name="department"]').val('');
+				}
+			})
+			if (data != ''){
+				if(!confirm('\n"' + data.slice(0,-1) + '"は削除されます。\nよろしいですか？')){
+					window.location.href = '/';
+					return false;
+				} else {
+					return true;
+				}
+			}
+		})
 	
 		//tr td hover　色変化
 		$('.table_index tbody tr').hover(function(){
@@ -885,7 +1003,9 @@
 
 
 		//連絡事項
-		if ($("#contact_text").val().length > 0){
+		if ($('#contact_text').val().length > 0){
+			$('.kakomi-smart2').show().addClass('open');
+			$('.contact_icon').css('color','#907b6e');
 			$('.contact_icon').click(function(){
 				if ($('.kakomi-smart2').hasClass('open')){
 					$('.kakomi-smart2').fadeOut(420).removeClass('open');

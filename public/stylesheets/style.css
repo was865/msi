@@ -212,7 +212,9 @@ header {
 }
 
 
-.btn_kyakusaki_delete, .btn_kyakusaki_minus,.btn_shanai_delete, .btn_shanai_minus {
+.btn_kyakusaki_delete, .btn_kyakusaki_minus,
+.btn_shanai_delete, .btn_shanai_minus,
+.btn_department_delete, .btn_department_minus {
   display: inline-block;
   font-size: 15px;
   padding: 12px 12px;
@@ -220,14 +222,16 @@ header {
   cursor: pointer;
 }
 .btn_kyakusaki_delete:hover,
-.btn_shanai_delete:hover {
+.btn_shanai_delete:hover,
+.btn_department_delete:hover {
   background-color: #ff3b3b;
 }
 .btn_kyakusaki_minus:hover, 
-.btn_shanai_minus:hover {
+.btn_shanai_minus:hover,
+.btn_department_minus:hover {
   background-color: #ff3b3b;
 }
-#btn_kyakusaki_add {
+#btn_kyakusaki_add, #btn_department_add {
   display: block;
   position: relative;
   text-align: center;
@@ -259,15 +263,16 @@ header {
   cursor: pointer;
 }
 #btn_kyakusaki_add:hover,
-#btn_shanai_add:hover {
+#btn_shanai_add:hover,
+#btn_department_add:hover {
   background-color: #0084ff;
 }
 
-#adduser-form, #addkyakusaki-form, #addshanai-form, #userinfo-form, #editing-form {
+#adduser-form, #addkyakusaki-form, #addshanai-form, #userinfo-form, #editing-form, #adddepartment-form {
   width: 100%;
 }
 
-#adduser-form h2, #addkyakusaki-form h2, #userinfo-form h2,#editing-form h2 {
+#adduser-form h2, #addkyakusaki-form h2, #userinfo-form h2,#editing-form h2, #adddepartment-form h2 {
   color: #5f5d60;
   letter-spacing: 1px;
   margin-bottom: 25px;
@@ -278,7 +283,7 @@ header {
   margin-bottom: 15px;
 }
 
-#adduser-form input, #addkyakusaki-form input, #userinfo-form input, 
+#adduser-form input, #adduser-form select, #addkyakusaki-form input, #adddepartment-form input, #userinfo-form input, 
 #editing-form input, #editing-form select, #editing-form textarea {
   width: 320px;
   margin-bottom: 10px;
@@ -296,7 +301,7 @@ header {
   border-radius: 5px;
 }
 
-#btn_newuser,  #btn_newkyakusaki, #btn_newshanai, #btn_newuserinfo, #btn_editing {
+#btn_newuser,  #btn_newkyakusaki, #btn_newshanai, #btn_newdepartment, #btn_newuserinfo, #btn_editing {
   display: inline-block;
   padding: 14px 140px;
   background-color: #56bed8;
@@ -308,7 +313,7 @@ header {
   text-decoration: none;
   transition: .3s;
 }
-#btn_newkyakusaki:hover, #btn_newshanai:hover, #btn_editing:hover {
+#btn_newkyakusaki:hover, #btn_newshanai:hover, #btn_newdepartment:hover, #btn_editing:hover {
   background-color: #35abc9;
 }
 
@@ -509,6 +514,7 @@ header {
 }
 .table_name:hover {
   cursor: pointer;
+  border: 2px solid #1ca3e256;
 }
 
 .table_index td{
@@ -601,6 +607,13 @@ header {
   border:none;
   padding: 0 5px;
 }
+.placeholder_select {
+  color: #959595;
+}
+.placeholder_select option {
+  color: black;
+}
+
 .memo_add {
   width: 100%;
   height: 55%;
@@ -1098,19 +1111,12 @@ button.btn {
   color: #FFF;
   text-decoration: none;
   font-weight: bold;
-  padding: 15px 70px 15px 140px;
+  padding: 15px 70px 15px 70px;
   position: relative;
   transition: .9s;
   border: 1px solid #FFF;
 }
-.btn-massage:before {
-  font-family: "FontAwesome";
-  content: "\f235";
-  position: absolute;
-  left: 30px;
-  top: 39%;
-  margin-top: -10px;
-}
+
 .btn-massage:hover span {
   transform: translateY(88px);
 }
