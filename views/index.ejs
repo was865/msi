@@ -63,7 +63,7 @@
 		  <div id="adduser-form">
 			<h2>社員新規登録</h2>
 			<form name="form_newuser" method="POST" action="/newuser">
-				<select name="department" class="form-control placeholder_select" id="create_department">
+				<select name="department" class="form-control placeholder_select" id="select_create_department">
 					<option value='' disabled selected style='display:none;'>部署名</option>
 					<% datadepartment.forEach ( (element)=> {  %>
 						<option value="<%= element.attributes.department %>"><%= element.attributes.department %></option>
@@ -223,7 +223,7 @@
 	<!-- モーダル部分　まとめ編集 -->
 	<div class="signup-modal-wrapper" id="editing-modal">
 		<div class="modal">
-		  <div id="close-modal5">
+		  <div id="close-modal6">
 			<i class="fa fa-2x fa-times"></i>
 		  </div>
 		  <div id="editing-form">
@@ -364,7 +364,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css">
 <script>
 	$(function() {
 		$("#sortableArea").sortable();
@@ -763,7 +762,7 @@
 			console.log(editingNames);
 			$('#edting_name').val(editingNames.slice(0,-1));
 		});
-		$('#close-modal5').click(function(){
+		$('#close-modal6').click(function(){
 			$('#editing-modal').fadeOut();
 			$('.append_area').remove();
 		});　
@@ -777,8 +776,7 @@
 
 		// 社員新規入力passwordチェック
 		$('#btn_newuser').click(function(){
-			alert($('#create_department option:selected').text();
-			if ($('#create_name').val() == '' || $('#create_department').val() == '' || $('#create_password').val() == '' || $('#tmp_password').val() == '') {
+			if ($('#create_name').val() == '' || $('#select_create_department').val() == '' || $('#create_password').val() == '' || $('#tmp_password').val() == '') {
 				alert('\n名前、所属、パスワードは必ず入力してください！');
 				return false;
 			} else if ($('#create_password').val() != $('#tmp_password').val()) {
