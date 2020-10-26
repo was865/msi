@@ -29,8 +29,22 @@ var kyakusakidata = Bookshelf.Model.extend({
 
 var shanaidata = Bookshelf.Model.extend({
   tableName: 'shanai_list',
-})
+});
 
+var departmentdata = Bookshelf.Model.extend({
+  tableName: 'department_list',
+});
+
+var datadepartment;
+function getDepartment(){
+  new departmentdata().fetchAll().then((collection) => {
+    datadepartment = collection.toArray();
+  }).catch((err) => { 
+    response.status(500).json({error: true, data: {message: err.message}});
+  }); 
+  
+  return datadepartment;
+}
 
 var datastatus;
 function getStatus(){
@@ -70,7 +84,7 @@ function getShanai(){
 }
 
 
-/* GET home page. */
+/* GET page. */
 router.get('/:id', function(req, res, next) {
 
   if (req.session.login == null) {
@@ -82,6 +96,7 @@ router.get('/:id', function(req, res, next) {
   getStatus();
   getKyakusaki();
   getShanai();
+  getDepartment();
 
   new Userdata()
     .where('id','=', req.params.id)
@@ -99,7 +114,8 @@ router.get('/:id', function(req, res, next) {
         content: collection.attributes,
         datastatus: datastatus,
         datakyakusaki: datakyakusaki,
-        datashanai: datashanai
+        datashanai: datashanai,
+        datadepartment: datadepartment
       };
       res.render('edit', data);
     }).catch((err) => { 
@@ -113,6 +129,7 @@ router.post('/:id', function(req, res, next) {
   getStatus();
   getKyakusaki();
   getShanai();
+  getDepartment();
     
   if (req.body.status == '' ||  req.body.status == '在席' || req.body.status == '帰宅')　{
     req.body.ikisaki = '／' ;
@@ -147,6 +164,7 @@ router.post('/:id', function(req, res, next) {
       datastatus: datastatus,
       datakyakusaki: datakyakusaki,
       datashanai: datashanai,
+      datadepartment: datadepartment,
       login: req.session.login
     };
     res.render('edit', data);

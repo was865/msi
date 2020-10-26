@@ -50,7 +50,7 @@
 	<div id="contact_wrap">
 		<form method="POST" action="/contact" id="form_contact">
 			<div class="contact_icon"><i class="fas fa-feather-alt"></i></div>
-			<div class="kakomi-smart2"><span class="title-smart2">連絡事項</span><textarea class="contact_text" id="contact_text" name="msg"><%= msg %></textarea></div>
+			<div class="kakomi-smart2"><span class="title-smart2">連絡事項</span><textarea class="contact_text" id="contact_text" name="msg" placeholder="ENTERキーで送信；SHIFT+ENTERで改行"><%= msg %></textarea></div>
 		</form>
 	</div>
 
@@ -971,7 +971,7 @@
 					return true;
 				}
 			}
-		})
+		});
 	
 		//tr td hover　色変化
 		$('.table_index tbody tr').hover(function(){

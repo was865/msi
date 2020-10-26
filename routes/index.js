@@ -106,25 +106,25 @@ function getMsg(){
 var db = new sqlite3.Database('ikisaki.sqlite3')
 router.get('/', function(req, res, next) {
 
-  if (req.session.login == null) {
-    res.redirect('/login');
-    return;
-  }
-
   getStatus();
   getKyakusaki();
   getShanai();
   getMsg();
   getDepartment();
 
+  if (req.session.login == null) {
+    res.redirect('/login');
+    return;
+  }
+
   var usertabledata = new Array();
   var login = req.session.login;
 
   var sql = 'SELECT * , CASE WHEN department = "' + login.department + '" THEN "AA" ELSE department END as sort1, CASE WHEN name = "' + login.name + '" THEN "00" ELSE name END as sort2 FROM users ORDER BY sort1,sort2 ASC;';
-  Bookshelf.knex.raw(sql).then((collection) => { 
+
+  Bookshelf.knex.raw(sql).then((collection) => {
 
     collection.forEach(element => {
-      console.log("element : " + element);
       var d1 = moment(new Date(element.updated_at));
           d1.locale('ja');
           d1.tz('Asia/Tokyo');
@@ -344,12 +344,12 @@ router.post('/', (req,res,next) => {
           title: '“' + find_content + '”の検索結果',
           finding : '状態、行先、メモ内容などでも検索可能',
           usertabledata: usertabledata,
+          datadepartment: datadepartment,
           datastatus: datastatus,
           datakyakusaki: datakyakusaki,
           datashanai: datashanai,
           login: req.session.login,
-          msg:datacontact,
-          datadepartment: datadepartment
+          msg:datacontact
       };
       res.render('index', data);
   }).catch((err) => { 
@@ -465,7 +465,7 @@ router.post('/newkyakusaki', (req,res,next) => {
     }
   })
   
-})
+});
 
 //部署変更
 router.post('/newdepartment', (req,res,next) => {
