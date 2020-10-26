@@ -283,7 +283,8 @@ header {
   margin-bottom: 15px;
 }
 
-#adduser-form input, #adduser-form select, #addkyakusaki-form input, #adddepartment-form input, #userinfo-form input, 
+#adduser-form input, #adduser-form select, #addkyakusaki-form input, #adddepartment-form input, 
+#userinfo-form input, #userinfo-form select,
 #editing-form input, #editing-form select, #editing-form textarea {
   width: 320px;
   margin-bottom: 10px;
@@ -996,7 +997,8 @@ header {
   font-size:40px;
 }
 
-#adduser-form input, #addkyakusaki-form input, #addshanai-form input, #userinfo-form input, 
+#adduser-form input, #addkyakusaki-form input, #addshanai-form input, 
+#userinfo-form input, #userinfo-form select,
 #editing-form input, #editing-form select, #editing-form textarea {
   width: 80%;
   margin-bottom: 40px;

@@ -373,7 +373,7 @@ router.post("/", (req, res, next) => {
     });
 });
 
-//社員新規
+//テーブル社員新規
 router.post("/add", (req, res, next) => {
   if (req.session.login == null) {
     res.redirect("/login");
@@ -398,6 +398,7 @@ router.post("/add", (req, res, next) => {
   });
 });
 
+//モーダル社員新規
 router.post("/newuser", (req, res, next) => {
   if (req.session.login == null) {
     res.redirect("/login");
@@ -661,6 +662,7 @@ router.post("/newshanai", (req, res, next) => {
 
 // });
 
+//基本情報変更
 router.post("/newuserinfo", (req, res, next) => {
   if (req.session.login == null) {
     res.redirect("/login");
@@ -668,31 +670,41 @@ router.post("/newuserinfo", (req, res, next) => {
   }
   console.log(req.body);
 
-  var rec = {
-    name: req.body.userinfo_name,
-    department: req.body.userinfo_department,
-    information: req.body.userinfo_information,
-    email: req.body.userinfo_email,
-    password: req.body.userinfo_newpassword
-  };
+  if (req.body.userinfo_newpassword == ''){
+    var rec = {
+      name: req.body.userinfo_name,
+      department: req.body.userinfo_department,
+      information: req.body.userinfo_information,
+      email: req.body.userinfo_email
+    }
+  } else {
+    var rec = {
+      name: req.body.userinfo_name,
+      department: req.body.userinfo_department,
+      information: req.body.userinfo_information,
+      email: req.body.userinfo_email,
+      password: req.body.userinfo_newpassword
+    }
+  }
+
   new Userdata({ id: req.session.login.id })
     .save(rec, { patch: true })
     .then(result => {
       console.log(
         req.session.login.name +
-          "の基本情報を更新しました：" +
+          "の基本情報を更新しました：名前：" +
           req.body.userinfo_name +
-          "; " +
+          "; 部署：" +
           req.body.userinfo_department +
-          "; " +
+          "; 内線：" +
           req.body.userinfo_information +
-          "; " +
+          "; 新パスワード：" +
           req.body.userinfo_newpassword +
           "; result.attributes.name：" +
           result.attributes.name
       );
       res.redirect("/logout");
-      console.log("更新完了；ログアウト。");
+      console.log("更新完了 >> ログアウトします。");
     });
 });
 

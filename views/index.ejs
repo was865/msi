@@ -4,7 +4,6 @@
 		<meta charset="utf-8">
 		<title><%= title %></title>
 		<link rel="stylesheet" href="/stylesheets/style.css" />
-		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" />
 	</head>
@@ -208,11 +207,19 @@
 			<h2>基本情報変更</h2>
 			<form name="form_newuserinfo" method="POST" action="/newuserinfo">
 			  <input id="userinfo_name" name="userinfo_name" class="form-control" type="text" placeholder="名前" value="<%= login.name %>">
-			  <input id="userinfo_department" name="userinfo_department" class="form-control" type="text" placeholder="部署名" value="<%= login.department %>">
+			  <select name="userinfo_department" class="form-control" id="userinfo_department" value="<%= login.department %>">
+				<% datadepartment.forEach ( (element)=> {  %>
+					<option value="<%= element.attributes.department %>"
+						<% if (element.attributes.department == login.department) { %>
+							selected
+						<% } %> 
+						><%= element.attributes.department %></option>
+				<% }); %>
+			  </select>
 			  <input id="userinfo_information" name="userinfo_information" class="form-control" type="text" placeholder="内線番号（省略可）" value="<%= login.information %>">
 			  <input id="userinfo_email" name="userinfo_email" class="form-control" type="text" placeholder="メールアドレス（省略可）" value="<%= login.email %>">
-			  <input id="userinfo_newpassword" name="userinfo_newpassword" class="form-control" type="password" placeholder="新しいパスワードを入力">
-			  <input id="userinfo_newpassword_tmp" class="form-control" type="password" placeholder="新しいパスワードを確認入力">
+			  <input id="userinfo_newpassword" name="userinfo_newpassword" class="form-control" type="password" placeholder="新しいパスワード（入力しない場合無変更）">
+			  <input id="userinfo_newpassword_tmp" class="form-control" type="password" placeholder="新しいパスワードを確認">
 			  <a href="javascript:form_newuserinfo.submit()" id="btn_newuserinfo">変更</a>
 			</form>
 		  </div>
@@ -792,9 +799,12 @@
 
 		// 基本情報変更passwordチェック
 		$('#btn_newuserinfo').click(function(){
-			if ($('#userinfo_name').val() == '' || $('#userinfo_department').val() == '' || $('#userinfo_newpassword').val() == '' || $('#userinfo_newpassword_tmp').val() == '') {
-				alert('\n名前、所属、パスワードは必ず入力してください！');
+			if ($('#userinfo_name').val() == '' || $('#userinfo_department').val() == '') {
+				alert('\n名前と所属は必ず入力してください！');
 				return false;
+			} else if ($('#userinfo_newpassword').val() == '' && $('#userinfo_newpassword_tmp').val() == '') {
+				alert('\n情報変更できました！\n\nログインし直してください。');
+				return true;
 			} else if ($('#userinfo_newpassword').val() != $('#userinfo_newpassword_tmp').val()) {
 				$('#userinfo_newpassword').val('');
 				$('#userinfo_newpassword_tmp').val('');
@@ -802,7 +812,7 @@
 				$('#userinfo_newpassword_tmp').attr('placeholder','パスワードを確認してください。');
 				return false;
 			} else {
-				alert('\n変更できました！\n\nログインし直してください。')
+				alert('\n情報変更できました！\n\nログインし直してください。');
 				return true;
 			}
 		});
