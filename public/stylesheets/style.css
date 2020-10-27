@@ -455,21 +455,7 @@ header {
   font-size: 17px;
   width: 180px;
 }
-.table_edit select, .table_edit #information {
-  font-size: 16px;
-  font-weight: 400;
-  font-family: "UD Digi Kyokasho N-R";
-  width: 100%;
-  height:30px; 
-  padding:5px; 
-  position: relative;
-  background: #f8f8f8;
-  border-radius: 6px;
-  vertical-align:bottom; 
-  display:inline-block; 
-  border:1px solid #d3d3d3;
-}
-.table_edit #email {
+.table_edit select, .table_edit #information, .table_edit #email {
   font-size: 16px;
   font-weight: 400;
   font-family: "UD Digi Kyokasho N-R";
@@ -501,8 +487,6 @@ header {
   border-radius: 6px;
   border:1px solid rgb(51, 142, 194);
 }
-
-
 
 .table_index {
   border-collapse: collapse;
@@ -1091,7 +1075,17 @@ header {
   font-weight:bolder;
   padding:4px;
   letter-spacing:5px;
+  position: relative;
 }
+#edit_name span {
+  font-size: 1.1em;
+  position: absolute;
+  right: 50px;
+  cursor: pointer;
+}
+/* #edit_name span:hover {
+  opacity: 1;
+} */
 .table_edit {
   width: 95%;
   font-size: 40px;
@@ -1100,7 +1094,7 @@ header {
   font-size:40px;
   width: 100%;
 }
-.table_edit select {
+.table_edit select, .table_edit #information, .table_edit #email {
   font-size: 40px;
   font-weight: 400;
   font-family: "UD Digi Kyokasho N-R";
