@@ -261,7 +261,7 @@ router.get("/", function(req, res, next) {
   //   var data = {
   //     title: "login",
   //     form: { name: "", password: "" },
-  //     content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+  //     content: "<p class='error login_info'>ログインしてください。</p>"
   //   };
   //   res.render("login", data);
   //   return;
@@ -329,7 +329,7 @@ router.post("/", (req, res, next) => {
     var data = {
       title: "login",
       form: { name: "", password: "" },
-      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。<br>再度ログインしてください。</p>"
+      content: "<p class='error login_info'>ログインしてください。</p>"
     };
     res.render("login", data);
     return;
@@ -408,7 +408,7 @@ router.post("/add", (req, res, next) => {
     var data = {
       title: "login",
       form: { name: "", password: "" },
-      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+      content: "<p class='error login_info'>ログインしてください。</p>"
     };
     res.render("login", data);
     return;
@@ -438,7 +438,7 @@ router.post("/newuser", (req, res, next) => {
     var data = {
       title: "login",
       form: { name: "", password: "" },
-      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+      content: "<p class='error login_info'>ログインしてください。</p>"
     };
     res.render("login", data);
     return;
@@ -465,7 +465,7 @@ router.post("/newkyakusaki", (req, res, next) => {
     var data = {
       title: "login",
       form: { name: "", password: "" },
-      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+      content: "<p class='error login_info'>ログインしてください。</p>"
     };
     res.render("login", data);
     return;
@@ -538,7 +538,7 @@ router.post("/newdepartment", (req, res, next) => {
     var data = {
       title: "login",
       form: { name: "", password: "" },
-      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+      content: "<p class='error login_info'>ログインしてください。</p>"
     };
     res.render("login", data);
     return;
@@ -614,7 +614,7 @@ router.post("/newshanai", (req, res, next) => {
     var data = {
       title: "login",
       form: { name: "", password: "" },
-      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+      content: "<p class='error login_info'>ログインしてください。</p>"
     };
     res.render("login", data);
     return;
@@ -723,7 +723,7 @@ router.post("/newuserinfo", (req, res, next) => {
     var data = {
       title: "login",
       form: { name: "", password: "" },
-      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+      content: "<p class='error login_info'>ログインしてください。</p>"
     };
     res.render("login", data);
     return;
@@ -775,7 +775,7 @@ router.post("/editing", (req, res, next) => {
     var data = {
       title: "login",
       form: { name: "", password: "" },
-      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+      content: "<p class='error login_info'>ログインしてください。</p>"
     };
     res.render("login", data);
     return;
@@ -815,7 +815,7 @@ router.post("/contact", (req, res, next) => {
     var data = {
       title: "login",
       form: { name: "", password: "" },
-      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+      content: "<p class='error login_info'>ログインしてください。</p>"
     };
     res.render("login", data);
     return;
