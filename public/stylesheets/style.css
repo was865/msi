@@ -871,11 +871,11 @@ a.btn-switch:active span {
   right: 2.5%;
   z-index: 60;
   font-size:30px;
-  color: #4edfe9;
+  color: #169ddb; 
+  cursor: pointer;
  }
  .contact_icon:hover {
   opacity: 0.7;
-  cursor: pointer;
  }
 
 
