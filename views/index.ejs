@@ -674,6 +674,8 @@
 		});
 		$('#close-modal4').click(function(){
 			$('#userinfo-modal').fadeOut();
+			$('#userinfo_newpassword').val('').attr('placeholder','新しいパスワード（入力しない場合無変更）');
+			$('#userinfo_newpassword_tmp').val('').attr('placeholder','新しいパスワードを確認').hide();
 		});
 
 		//部署管理モーダル
@@ -798,6 +800,10 @@
 		});
 
 		// 基本情報変更passwordチェック
+		$('#userinfo_newpassword_tmp').hide();
+		$('#userinfo_newpassword').keypress(function(){
+			$('#userinfo_newpassword_tmp').show();
+		});
 		$('#btn_newuserinfo').click(function(){
 			if ($('#userinfo_name').val() == '' || $('#userinfo_department').val() == '') {
 				alert('\n名前と所属は必ず入力してください！');

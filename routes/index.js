@@ -6,6 +6,8 @@ var datautils = require("date-utils");
 const { response } = require("express");
 const { get } = require("./login");
 
+var db = new sqlite3.Database("ikisaki.sqlite3");
+
 var knex = require("knex")({
   dialect: "sqlite3",
   connection: {
@@ -118,18 +120,33 @@ function getMsg() {
 }
 
 //SQL router.GETはここから
-var db = new sqlite3.Database("ikisaki.sqlite3");
 router.get("/", function(req, res, next) {
+
+  if (req.session.login == null) {
+    var data = {
+      title: "login",
+      form: { name: "", password: "" },
+      content: "<p class='error login_info'>ログインしてください。</p>"
+    };
+    res.render("login", data);
+
+    getStatus();
+    getKyakusaki();
+    getShanai();
+    getMsg();
+    getDepartment();
+    return;
+  }
+
+  // if (req.session.login == null) {
+  //   res.redirect("/login");
+  // }
+
   getStatus();
   getKyakusaki();
   getShanai();
   getMsg();
   getDepartment();
-
-  if (req.session.login == null) {
-    res.redirect("/login");
-    return;
-  }
 
   var usertabledata = new Array();
   var login = req.session.login;
@@ -240,10 +257,15 @@ router.get("/", function(req, res, next) {
 //Bookshelf router.getはここから
 // router.get('/', function(req, res, next) {
 
-//   if (req.session.login == null) {
-//     res.redirect('/login');
-//     return;
-//   }
+  // if (req.session.login == null) {
+  //   var data = {
+  //     title: "login",
+  //     form: { name: "", password: "" },
+  //     content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+  //   };
+  //   res.render("login", data);
+  //   return;
+  // }
 
 //   getStatus();
 //   getKyakusaki();
@@ -302,10 +324,17 @@ router.get("/", function(req, res, next) {
 
 //検索バー
 router.post("/", (req, res, next) => {
+
   if (req.session.login == null) {
-    res.redirect("/login");
+    var data = {
+      title: "login",
+      form: { name: "", password: "" },
+      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。<br>再度ログインしてください。</p>"
+    };
+    res.render("login", data);
     return;
   }
+
   if (req.body.find == "") {
     res.redirect("/");
     return;
@@ -376,7 +405,12 @@ router.post("/", (req, res, next) => {
 //テーブル社員新規
 router.post("/add", (req, res, next) => {
   if (req.session.login == null) {
-    res.redirect("/login");
+    var data = {
+      title: "login",
+      form: { name: "", password: "" },
+      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+    };
+    res.render("login", data);
     return;
   }
 
@@ -401,7 +435,12 @@ router.post("/add", (req, res, next) => {
 //モーダル社員新規
 router.post("/newuser", (req, res, next) => {
   if (req.session.login == null) {
-    res.redirect("/login");
+    var data = {
+      title: "login",
+      form: { name: "", password: "" },
+      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+    };
+    res.render("login", data);
     return;
   }
 
@@ -423,7 +462,12 @@ router.post("/newuser", (req, res, next) => {
 //客先変更
 router.post("/newkyakusaki", (req, res, next) => {
   if (req.session.login == null) {
-    res.redirect("/login");
+    var data = {
+      title: "login",
+      form: { name: "", password: "" },
+      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+    };
+    res.render("login", data);
     return;
   }
 
@@ -491,7 +535,12 @@ router.post("/newkyakusaki", (req, res, next) => {
 //部署変更
 router.post("/newdepartment", (req, res, next) => {
   if (req.session.login == null) {
-    res.redirect("/login");
+    var data = {
+      title: "login",
+      form: { name: "", password: "" },
+      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+    };
+    res.render("login", data);
     return;
   }
 
@@ -562,7 +611,12 @@ router.post("/newdepartment", (req, res, next) => {
 //社内ポジション変更
 router.post("/newshanai", (req, res, next) => {
   if (req.session.login == null) {
-    res.redirect("/login");
+    var data = {
+      title: "login",
+      form: { name: "", password: "" },
+      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+    };
+    res.render("login", data);
     return;
   }
   console.log(req.body);
@@ -664,10 +718,17 @@ router.post("/newshanai", (req, res, next) => {
 
 //基本情報変更
 router.post("/newuserinfo", (req, res, next) => {
+
   if (req.session.login == null) {
-    res.redirect("/login");
+    var data = {
+      title: "login",
+      form: { name: "", password: "" },
+      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+    };
+    res.render("login", data);
     return;
   }
+  
   console.log(req.body);
 
   if (req.body.userinfo_newpassword == ''){
@@ -711,7 +772,12 @@ router.post("/newuserinfo", (req, res, next) => {
 //まとめ編集
 router.post("/editing", (req, res, next) => {
   if (req.session.login == null) {
-    res.redirect("/login");
+    var data = {
+      title: "login",
+      form: { name: "", password: "" },
+      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+    };
+    res.render("login", data);
     return;
   }
   console.log(req.body);
@@ -746,7 +812,12 @@ router.get("/logout", function(req, res) {
 
 router.post("/contact", (req, res, next) => {
   if (req.session.login == null) {
-    res.redirect("/login");
+    var data = {
+      title: "login",
+      form: { name: "", password: "" },
+      content: "<p class='error login_info'>長時間操作がなかったため、ログアウトされました。再度ログインしてください。</p>"
+    };
+    res.render("login", data);
     return;
   }
 

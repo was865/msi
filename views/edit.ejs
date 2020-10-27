@@ -187,15 +187,42 @@
 	</div>
 	<!-- モーダルここまで　部署管理 -->
 
+	<!-- 編集 -->
 	<div role="main" class="main_edit">
 		<form name="form_edit" method="POST" action="/edit/<%= content.id %>">
 			<table class="table_edit">
 				<p class="editing_name"><span>ログイン中のユーザー：<span><%= login.name %><i class="fas fa-user-shield admin_only" style="margin-left: 5px;"></i></span></span><br><%- greeting %></p>
 				<tr><th>名前</th></tr>
-				<tr><td id="edit_name"><input type="hidden" name="name" id="name" value="<%= content.name %>"><%= content.name %></td></tr>
-				<tr><th>情報</th></tr>
-				<tr><td><input type="hidden" name="information" id="information" value="<%= content.information %>" >
-					<%= content.information %></td></tr>
+				<tr><td id="edit_name"><input type="hidden" name="name" id="name" value="<%= content.name %>"><%= content.name %><span><i class="fas fa-ellipsis-h"></i></span></td></tr>
+				<tr id="department_tr"><th style="background-color: #e7853e; border: none;">部署</th></tr>
+				<% if (login.admin != 1 && login.id != content.id){ %>
+					<tr><td><input type="hidden" name="department" id="department" value="<%= content.department %>" >
+						<%= content.department %></td></tr>
+				<% } else { %>
+					<tr><td><select name="department" id="department" value="<%= content.department %>">
+						<% datadepartment.forEach ( (element)=> {  %>
+							<option value="<%= element.attributes.department %>"
+								<% if (element.attributes.department == content.department) { %>
+									selected
+								<% } %> 
+								><%= element.attributes.department %></option>
+						<% }); %>
+					</select></td></tr>
+				<% } %>
+				<tr id="information_tr"><th style="background-color:#e7853e; border: none;">情報</th></tr>
+				<% if (login.admin != 1 && login.id != content.id){ %>
+					<tr><td><input type="hidden" name="information" id="information" value="<%= content.information %>" >
+						<%= content.information %></td></tr>
+				<% } else { %>
+				<tr><td><input name="information" id="information" value="<%= content.information %>"></td></tr>
+				<% } %>
+				<tr id="email_tr"><th style="background-color: #e7853e; border: none;">メールアドレス</th></tr>
+				<% if (login.admin != 1 && login.id != content.id){ %>
+					<tr><td><input type="hidden" name="email" id="email" value="<%= content.email %>" >
+						<%= content.email %></td></tr>
+				<% } else { %>
+				<tr><td><input name="email" id="email" value="<%= content.email %>"></td></tr>
+				<% } %>
 				<tr><th>状態</th></tr>
 				<tr><td><select name="status" id="status" >
 					<option value=""></option>
@@ -569,51 +596,53 @@
 
 				});
 
-				$('#btn_post').click(function(){
-				if ($('#check').prop('checked') == true){
-					$('#admin').val('1');
-				} else if ($('#check').prop('checked') == false) {
-					$('#admin').val('0');
-				}
-				console.log("$('#admin').val()は：" + $('#admin').val());
+				if ($('#admin').length > 0) { 　//もしadminのチェックボックスが存在していれば
+					$('#btn_post').click(function(){
+						if ($('#check').prop('checked') == true){
+							$('#admin').val('1');
+						} else if ($('#check').prop('checked') == false) {
+							$('#admin').val('0');
+						}
+						console.log("$('#admin').val()は：" + $('#admin').val());
 
-				if ($('#admin').val() != '<%= content.admin %>'){
-					if ($('#admin').val() == 1){
-						if ('<%= content.name %>' == '<%= login.name %>'){
-							if(!confirm('\n管理者権限を回収します。\nよろしいですか？')){
-								$('#check').prop('checked', false);
-								return false;
+						if ($('#admin').val() != '<%= content.admin %>'){
+							if ($('#admin').val() == 1){
+								if ('<%= content.name %>' == '<%= login.name %>'){
+									if(!confirm('\n管理者権限を回収します。\nよろしいですか？')){
+										$('#check').prop('checked', false);
+										return false;
+									} else {
+										return true;
+									}
+								} else {
+									if(!confirm('\n<%= content.department %>＂<%= content.name %>＂に管理者権限を付与します。\n\nよろしいですか？')){
+										$('#check').prop('checked', false);
+										return false;
+									} else {
+										return true;
+									}
+								}
 							} else {
-								return true;
-							}
-						} else {
-							if(!confirm('\n<%= content.department %>＂<%= content.name %>＂に管理者権限を付与します。\n\nよろしいですか？')){
-								$('#check').prop('checked', false);
-								return false;
-							} else {
-								return true;
+								if ('<%= content.name %>' == '<%= login.name %>'){
+									if(!confirm('\nあなたは管理者権限を失います。\nよろしいですか？\n\n※管理者権限はログアウトするまで有効です。')){
+										$('#check').prop('checked', true);
+										return false;
+									} else {
+										return true;
+									}
+								} else if('<%= content.name %>' != '<%= login.name %>') {
+									if(!confirm('\n<%= content.department %>＂<%= content.name %>＂は管理者権限を失います。\nよろしいですか？')){
+										$('#check').prop('checked', true);
+										return false;
+									} else {
+										return true;
+									}
+								}
 							}
 						}
-					} else {
-						if ('<%= content.name %>' == '<%= login.name %>'){
-							if(!confirm('\nあなたは管理者権限を失います。\nよろしいですか？\n\n※管理者権限はログアウトするまで有効です。')){
-								$('#check').prop('checked', true);
-								return false;
-							} else {
-								return true;
-							}
-						} else {
-							if(!confirm('\n<%= content.department %>＂<%= content.name %>＂は管理者権限を失います。\nよろしいですか？')){
-								$('#check').prop('checked', true);
-								return false;
-							} else {
-								return true;
-							}
-						}
-					}
+						return true;
+					});
 				}
-				return true;
-				});
 			}
 
 		// 新規登録モーダル
@@ -941,7 +970,29 @@
 			}
 		});
 
-		
+		//編集tr td整理
+		$('#department').parent().parent('tr').hide();
+		$('#department_tr').hide();
+		$('#information').parent().parent('tr').hide();
+		$('#information_tr').hide();
+		$('#email').parent().parent('tr').hide();
+		$('#email_tr').hide();
+
+		$('#edit_name span').click(function(){
+			if ($('.opened').length == 0) {
+				$('#department').parent().parent('tr').show().addClass('opened');
+				$('#department_tr').show().addClass('opened');
+				$('#information').parent().parent('tr').show().addClass('opened');
+				$('#information_tr').show().addClass('opened');
+				$('#email').parent().parent('tr').show().addClass('opened');
+				$('#email_tr').show().addClass('opened');
+				$('#edit_name span').css('color','#e7853e');
+			} else {
+				$('.opened').hide().removeClass('opened');
+				$('#edit_name span').css('color','');
+			}
+		})
+
 
 				// var deleteBtn = $('#delete_content');    
 				// deleteBtn.hide();
@@ -955,6 +1006,7 @@
 				// });
 
 		}); 
+
 
 		
 
