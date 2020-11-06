@@ -402,6 +402,7 @@
 
 		console.log('管理者権限: <%= login.admin %>');
 		if ('<%= login.admin %>' != 1){
+			$('body').css('background-image','url(https://msi-net.co.jp/main/wp-content/uploads/2020/01/image5.jpg)');
 			$('.admin_only').remove();
 		} else {
 			$('body').css('background-image','url(https://recruit.msi-net.co.jp/main/wp-content/uploads/2019/12/mainvisual-002.jpg)');
